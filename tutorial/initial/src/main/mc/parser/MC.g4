@@ -47,9 +47,10 @@ ID: Letter(Letter|Digit)*;
 
 INTLIT: [0-9]+;
 
-fragment Float: Sign?Digit+ Dot Digit+;
+fragment Float: (Digit* Dot Digit+) | (Digit+ Dot Digit*);
+fragment FloatEx: Digit+ Dot Digit+;
 
-FLOATLIT: Float|(Digit+|Float)'e'Sign?Digit+;
+FLOATLIT: Float|(Digit+|FloatEx)'e'Sign?Digit+;
 
 LB: '(' ;
 
