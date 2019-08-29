@@ -11,4 +11,6 @@ class LexerSuite(unittest.TestCase):
     def test_integer(self):
         """test integers"""
     def test_float(self):
-        self.assertTrue(TestLexer.checkLexeme(" 0.000000001 12 1.0e-12 1e-12 1. .1","0.000000001,12,1.0e-12,1e-12,1.,.1,<EOF>",104))
+        self.assertTrue(TestLexer.checkLexeme("0.000000001 12 1.0e-12 1e-12 1. .1","0.000000001,12,1.0e-12,1e-12,1.,.1,<EOF>",104))
+    def test_string(self):
+        self.assertTrue(TestLexer.checkLexeme("'dads\n'","'dads\n',<EOF>",105));

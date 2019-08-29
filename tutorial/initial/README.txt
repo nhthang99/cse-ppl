@@ -1,5 +1,5 @@
 Change current directory to initial/src where there is file run.py
-Type: python run.py gen 
-Then type: python run.py test LexerSuite
-Then type: python run.py test ParserSuite
+Type: python3 run.py gen 
+Then type: python3 run.py test LexerSuite
+Then type: python3 run.py test ParserSuite
 

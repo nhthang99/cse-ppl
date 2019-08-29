@@ -40,17 +40,22 @@ VOIDTYPE: 'void' ;
 
 fragment Letter: [a-z];
 fragment Digit: [0-9];
-fragment Sign: [+-];
+fragment Sign: '-';
 fragment Dot: '.';
 
 ID: Letter(Letter|Digit)*;
 
 INTLIT: [0-9]+;
 
-fragment Float: (Digit* Dot Digit+) | (Digit+ Dot Digit*);
-fragment FloatEx: Digit+ Dot Digit+;
+Float: (Digit* Dot Digit+) | (Digit+ Dot Digit*);
+
+FloatEx: Digit+ Dot Digit+;
 
 FLOATLIT: Float|(Digit+|FloatEx)'e'Sign?Digit+;
+
+fragment Quote: '\'';
+
+STRLIT: Quote ('\'\'' | ~('\''))*?  Quote;
 
 LB: '(' ;
 
