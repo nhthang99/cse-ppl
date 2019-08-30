@@ -1,1 +1,1 @@
-abc,<EOF>
+true,abc,<EOF>

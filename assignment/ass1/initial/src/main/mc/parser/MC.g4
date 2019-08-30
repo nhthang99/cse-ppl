@@ -38,6 +38,8 @@ funcall: ID LB exp? RB ;
 
 fragment Digit: [0-9];
 
+fragment NonDigit: [a-zA-Z_];
+
 fragment NonZeroDigit: [1-9];
 
 fragment LowerCase: [a-z];
@@ -69,14 +71,40 @@ BOOLTYPE: 'boolean';
 
 VOIDTYPE: 'void' ;
 
+fragment PrimitiveTypes
+    : INTTYPE
+    | FLOATTYPE
+    | STRTYPE
+    | BOOLTYPE
+    | VOIDTYPE
+    ;
+
 /********************* KEY WORDS **********************/
+
+BREAK: 'break';
+
+CONTINUE: 'continue';
+
+ELSE: 'else';
+
+FOR: 'for';
+
+IF: 'if';
+
+RETURN: 'return';
+
+DO: 'do';
+
+WHILE: 'while';
+
+TRUE: 'true';
+
+FALSE: 'false';
 
 /******************** IDENTIFIERS *********************/
 
 ID
-    : 
-    (LowerCase | UpperCase | Dash)
-    (LowerCase | UpperCase | Digit | Dash)*
+    : NonDigit (NonDigit | Digit)*
     ;
 
 /********************* LITERALS ***********************/
@@ -92,8 +120,8 @@ FLOATLIT
     ;
 
 BOOLLIT
-    : 'true'
-    | 'false'
+    : TRUE
+    | FALSE
     ;
 
 STRLIT
