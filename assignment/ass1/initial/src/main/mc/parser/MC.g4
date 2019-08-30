@@ -48,10 +48,11 @@ fragment Dash: '_';
 
 fragment Dot: '.';
 
+fragment DoubleQuote: '"';
+
 fragment ExponentPart: [eE] '-'? Digit+;
 
-fragment
-FractionalPart
+fragment FractionalPart
     : Digit+ '.' Digit*
     | Digit* '.' Digit+
     ;
@@ -90,6 +91,14 @@ FLOATLIT
     | Digit+ ExponentPart
     ;
 
+BOOLLIT
+    : 'true'
+    | 'false'
+    ;
+
+STRLIT
+    : DoubleQuote ~'"' DoubleQuote
+    ;
 
 /******************** SEPARATORS **********************/
 
@@ -106,6 +115,42 @@ LSB: '[';
 RSB: ']';
 
 SEMI: ';' ;
+
+COMMA: ',';
+
+/********************* OPERATORS **********************/
+
+ADD: '+';
+
+SUB: '-';
+
+MUL: '*';
+
+DIV: '/';
+
+MOD: '%';
+
+NOT: '!';
+
+OR: '||';
+
+AND: '&&';
+
+NOT_EQUAL: '!=';
+
+EQUAL: '==';
+
+LT: '<';
+
+GT: '>';
+
+LE: '<=';
+
+GE: '>=';
+
+ASSIGN: '=';
+
+/*********************** SKIP *************************/
 
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 

@@ -1,1 +1,1 @@
-1.0,1.,.1,<EOF>
+true,12,false,<EOF>
