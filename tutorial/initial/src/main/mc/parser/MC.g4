@@ -42,6 +42,7 @@ fragment Letter: [a-z];
 fragment Digit: [0-9];
 fragment Sign: '-';
 fragment Dot: '.';
+fragment Quote: '\'';
 
 ID: Letter(Letter|Digit)*;
 
@@ -53,9 +54,7 @@ FloatEx: Digit+ Dot Digit+;
 
 FLOATLIT: Float|(Digit+|FloatEx)'e'Sign?Digit+;
 
-fragment Quote: '\'';
-
-STRLIT: Quote ('\'\'' | ~('\''))*?  Quote;
+STRLIT: Quote ('\'\'' | ~('\''))*? Quote;
 
 LB: '(' ;
 
