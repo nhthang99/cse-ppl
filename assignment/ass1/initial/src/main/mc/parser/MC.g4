@@ -107,6 +107,18 @@ ID
     : NonDigit (NonDigit | Digit)*
     ;
 
+/********************** COMMENT ***********************/
+
+LINE_CMT
+    : '//' ~[\r\n]*
+    -> skip
+    ;
+
+BLOCK_CMT
+    : '/*' .*? '*/'
+    -> skip
+    ;
+
 /********************* LITERALS ***********************/
 
 INTLIT

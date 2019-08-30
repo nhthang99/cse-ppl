@@ -15,3 +15,7 @@ class LexerSuite(unittest.TestCase):
         """test float"""
         self.assertTrue(TestLexer.checkLexeme("1.0 1. .1","1.0,1.,.1,<EOF>",106))
         self.assertTrue(TestLexer.checkLexeme("1e10 1e-10 1.9e1 1.e1 .5e1","1e10,1e-10,1.9e1,1.e1,.5e1,<EOF>",107))
+    def test_comment(self):
+        """test comments"""
+        self.assertTrue(TestLexer.checkLexeme("abc//abc","abc,<EOF>",108))
+        self.assertTrue(TestLexer.checkLexeme("abc/*abc*/","abc,<EOF>",108))
