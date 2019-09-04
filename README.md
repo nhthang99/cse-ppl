@@ -1,3 +1,7 @@
 # Principles of Programming Language
-1. Lexical Analysis
-2. Syntax Analysis
+## Reference
+
+## Table of contents
+1. [Introduction][./introduction]
+2. [Lexical Analysis](./lexical_analysis)
+3. [Syntax Analysis](./syntax_analysis)
