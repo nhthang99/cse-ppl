@@ -54,7 +54,7 @@ FloatEx: Digit+ Dot Digit+;
 
 FLOATLIT: Float|(Digit+|FloatEx)'e'Sign?Digit+;
 
-STRLIT: Quote ('\'\'' | ~('\''))*? Quote;
+STRLIT: Quote ('\'\'' | ~'\'')* Quote;
 
 LB: '(' ;
 
