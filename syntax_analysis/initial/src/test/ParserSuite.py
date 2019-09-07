@@ -11,7 +11,7 @@ class ParserSuite(unittest.TestCase):
     def test_more_complex_program(self):
         """More complex program"""
         input = """int main () {
-            putIntLn(4);
+            putintln(4);
         }"""
         expect = "successful"
         self.assertTrue(TestParser.checkParser(input,expect,202))

@@ -1,27 +1,7 @@
 grammar MC;
 
-@lexer::header {
-from lexererr import *
-}
-
-@lexer::member {
-def emit(self):
-    tk = self.type
-    if tk == UNCLOSE_STRING:       
-        result = super.emit();
-        raise UncloseString(result.text);
-    elif tk == ILLEGAL_ESCAPE:
-        result = super.emit();
-        raise IllegalEscape(result.text);
-    elif tk == ERROR_CHAR:
-        result = super.emit();
-        raise ErrorToken(result.text); 
-    else:
-        return super.emit();
-}
-
 options{
-	language=Python3;
+	language=Java;
 }
 
 program: manydcls EOF ;
@@ -52,9 +32,7 @@ vardcl_stmt_list: (vardcl_stmt vardcl_stmt_list)?;
 
 vardcl_stmt: vardcls | stmt;
 
-stmt: stmt_type SM;
-
-stmt_type: assign | call | return;
+stmt: assign SM | call SM | return_t SM;
 
 assign: ID EQ exp;
 
@@ -64,7 +42,7 @@ explist: (exp exptail)?;
 
 exptail: (CM exp exptail)?;
 
-return: RETURN exp;
+return_t: RETURN exp;
 
 exp
     : 
@@ -85,14 +63,14 @@ operand
 
 subexp: LP exp RP;
 
-fragment Letter: [a-z];
+fragment NonDigit: [a-zA-Z_];
 fragment Digit: [0-9];
 fragment NonZeroDigit: [1-9];
 fragment Sign: '-';
 fragment Dot: '.';
 fragment Quote: '\'';
 
-ID: Letter(Letter|Digit)*;
+ID: NonDigit(NonDigit|Digit)*;
 
 INTLIT: '0' | NonZeroDigit Digit*;
 
