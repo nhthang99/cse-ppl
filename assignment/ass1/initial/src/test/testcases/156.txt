@@ -1,0 +1,5 @@
+
+procedure foo();
+begin
+    with string a,b,c,d; int f do ok();
+end

@@ -1,0 +1,9 @@
+int a;
+void main() {
+    a = 0;
+    putInt(a);
+}
+int foo(){
+    a = 1;
+    return a;
+}

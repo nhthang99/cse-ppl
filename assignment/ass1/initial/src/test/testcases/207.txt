@@ -1,0 +1,3 @@
+int a;
+int x;
+x = a + 9;

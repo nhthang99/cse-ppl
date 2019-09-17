@@ -1,0 +1,5 @@
+void main(int x) {
+    int a;
+    a = 0;
+    for ( x = 0 ; a < 3 ; x = x + 1 ) x = x - 1 ;
+}

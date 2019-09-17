@@ -1,4 +1,4 @@
-// Generated from /home/thang/ppl/syntax_analysis/initial/src/main/mc/parser/MC.g4 by ANTLR 4.7.1
+// Generated from /home/thang/Dropbox/ppl/syntax_analysis/initial/src/main/mc/parser/MC.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;

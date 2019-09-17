@@ -1,0 +1,12 @@
+void main() {
+    //declaration
+    int a;
+    float b;
+    string c;
+    boolean d;
+    //statements
+    a = 69;
+    b = - 6.9e96;
+    c = "this is a";
+    d = false;
+}

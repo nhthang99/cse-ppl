@@ -1,1 +1,2 @@
-123a123
+
+// This is a line comment

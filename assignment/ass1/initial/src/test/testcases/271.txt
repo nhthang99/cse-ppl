@@ -1,0 +1,5 @@
+void foo() {
+    for ( x = 1 ; x < 5 ; x = x + 1 ) {
+        for ( a = 1 ; a < 3 ; a = a + 1 ) b = b * b ;
+    }
+}

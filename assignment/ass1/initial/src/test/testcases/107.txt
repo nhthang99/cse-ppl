@@ -1,1 +1,13 @@
-1e10 1e-10 1.9e1 1.e1 .5e1
+
+/* This is a block comment */
+// This is a line comment
+/* Comment with multiple lines
+    Hello comments
+*/
+/*
+    Comment multiple lines
+*/
+/* nest comments
+    // inline comment 
+// inline comment
+*/

@@ -1,0 +1,12 @@
+void main(){
+    // first block
+    {
+        // second block
+        {
+            // third block
+            {
+                // fourth block
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+
+float a, b, c;
+boolean x, y, z;
+int g, h, y;
+float function nty();
+int x, y, z;
+begin
+    readLine();
+    // This is readLine()
+    fs = readStdin();
+    
+    with int i; do begin
+        for i = 4 downto -5 do h = 6;
+        if i > 6 then return 0;
+    end
+    return 1;
+end
+int q, w;
+string a;
+begin 
+    /*
+        =======================================
+        Comment here
+        =======================================
+    */
+end

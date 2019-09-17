@@ -1,0 +1,5 @@
+
+procedure foo();
+begin
+    while 1<2<3<4<5 do ok();
+end

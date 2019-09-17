@@ -1,0 +1,1 @@
+procedure,foo,(,),;,begin,with,sring,a,;,do,ok,(,),;,end,<EOF>

@@ -6,9 +6,10 @@ from antlr4 import *
 
 #Make sure that ANTLR_JAR is set to antlr-4.7.2-complete.jar
 ANTLR_JAR = os.environ.get('ANTLR_JAR')
+TARGET = '../target/main/mc/parser' if os.name == 'posix' else os.path.normpath('../target/')
 
 def main(argv):
-    global ANTLR_JAR 
+    global ANTLR_JAR, TARGET
     if len(argv) < 1:
         printUsage()
     elif argv[0] == 'gen':
@@ -18,16 +19,24 @@ def main(argv):
     elif argv[0] == 'test':
         if not './main/mc/parser/' in sys.path:
             sys.path.append('./main/mc/parser/')
-        if os.path.isdir('../target/main/mc/parser') and not '../target/main/mc/parser/' in sys.path:
-            sys.path.append('../target/main/mc/parser/')
+        if os.path.isdir(TARGET) and not TARGET in sys.path:
+            sys.path.append(TARGET)
         if len(argv) < 2:
             printUsage()
         elif argv[1] == 'LexerSuite':
             from LexerSuite import LexerSuite
             suite = unittest.makeSuite(LexerSuite)
             test(suite)
+        elif argv[1] == 'LexerSuite1':
+            from LexerSuite1 import LexerSuite
+            suite = unittest.makeSuite(LexerSuite)
+            test(suite)
         elif argv[1] == 'ParserSuite':
             from ParserSuite import ParserSuite
+            suite = unittest.makeSuite(ParserSuite)
+            test(suite)
+        elif argv[1] == 'ParserSuite1':
+            from ParserSuite1 import ParserSuite
             suite = unittest.makeSuite(ParserSuite)
             test(suite)
         else:

@@ -1,1 +1,1 @@
-true,abc,<EOF>
+a,Error Token ?

@@ -1,0 +1,7 @@
+void main(int a) {
+    do {
+        do x = x + 1;
+        while true ;
+    }
+    while x < 10 ;
+}
