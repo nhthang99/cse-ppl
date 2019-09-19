@@ -1,1 +1,1 @@
-Formfeed   \f,<EOF>
+Illegal,Illegal Escape In String: \a

@@ -1,5 +1,0 @@
-int double(int x){
-    int a;
-    a = a * a;
-    return a ;
-}

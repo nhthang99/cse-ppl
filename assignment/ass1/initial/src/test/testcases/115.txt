@@ -1,1 +1,2 @@
- for(int i = 0; i < n; i = i +1) {printf("");} 
+
+e-12 e12 1e 12e 12.05e .05e ee e01 .

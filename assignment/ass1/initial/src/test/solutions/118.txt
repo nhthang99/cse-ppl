@@ -1,1 +1,1 @@
- abc \n xyz , abc \\n xyz ,<EOF>
+ hello lexer \t \b \n \",asdf,<EOF>

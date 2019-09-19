@@ -1,3 +1,0 @@
-void main() {
-    if ( a == true ) return b else return c;
-}

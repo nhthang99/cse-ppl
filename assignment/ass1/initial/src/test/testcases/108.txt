@@ -1,2 +1,14 @@
 
-0 1 2 3 4 123 123456789
+/* This is a block comment */
+// This is a line comment
+/* Comment with multiple lines
+    Hello comments
+*/
+/*
+    Comment multiple lines
+*/
+/* nest comments
+    // inline comment 
+// inline comment
+*/
+            

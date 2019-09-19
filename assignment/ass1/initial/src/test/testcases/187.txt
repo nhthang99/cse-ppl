@@ -1,0 +1,10 @@
+
+int main()
+{
+    printf("\n\n\t\tLexer - Best place to practice\n\n\n");
+    int num;
+    printf("\nHello world!\nWelcome to Lexer: Best place to practice\n");
+    printf("\n\n\t\t\tCoding is Fun !\n\n\n");
+    return 0;
+}
+            

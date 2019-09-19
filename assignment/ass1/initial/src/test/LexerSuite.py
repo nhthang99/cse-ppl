@@ -3,92 +3,88 @@ from TestUtils import TestLexer
 
 class LexerSuite(unittest.TestCase):
       
-    def test_lower_identifier(self):
-        """test identifiers"""
-        self.assertTrue(TestLexer.checkLexeme("a?","a,Error Token ?",101))
-
-    def test_4_inline_comment(self):
-        """ Test Inline Comment """
+    def test_valid_identifier1(self):
+        """Test Valid Identifiers"""
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-// This is a line comment
-""",
-
-            "<EOF>",
-            104
-        ))
-    def test_1_valid_lowercase_keywords(self):
-        """ Test Valid Lowercase Keywords """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-function procedure
-begin end
-true false
-if then else
-for while with do to downto
-return break continue
-integer string real boolean
-array
-var of
-and then
-or else
-and         then
-or          else
-div mod not and or
-""",
-            r"function,procedure,begin,end,true,false,if,then,else,for,while,with,do,to,downto,return,break,continue,integer,string,real,boolean,array,var,of,and,then,or,else,and,then,or,else,div,mod,not,and,or,<EOF>",
+id ID _id 89id 89ID 89_id
+            """,
+            "id,ID,_id,89,id,89,ID,89,_id,<EOF>",
             101
         ))
-        
 
-    def test_2_valid_keywords(self):
-        """ Test Valid Keywords """
+    def test_valid_identifier2(self):
+        """Test Valid Identifiers"""
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-FuNctiOn prOceDure
-Begin END
-True FalSE
-IF thEn ELSE
-fOR While with DO To downTo
-RETURN break COntiNue
-integer string REAL BOOLean
-ARRAY
-VAR Of
-anD Then
-or eLse
-AND             THeN   OR   elSE
-dIV mOd NOT and OR
-""",
-
-            "FuNctiOn,prOceDure,Begin,END,True,FalSE,IF,thEn,ELSE,fOR,While,with,DO,To,downTo,RETURN,break,COntiNue,integer,string,REAL,BOOLean,ARRAY,VAR,Of,anD,Then,or,eLse,AND,THeN,OR,elSE,dIV,mOd,NOT,and,OR,<EOF>",
+id boolean_id float_id int_id string_id void_id 
+            """,
+            "id,boolean_id,float_id,int_id,string_id,void_id,<EOF>",
             102
         ))
-    def test_3_valid_specific_characters(self):
-        """ Test Specific Characters """
+
+    def test_valid_identifier3(self):
+        """ Test Valid Identifiers """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-+ - * / == <= >= <> = < >
-( ) [ ] ; ,  ,
-""",
+a abc a123 a_ a_bc a_bc123 a_123 a_123bc a_bc_123
+_ _abc _123 _abc123 _abc_123 _123_abc
+__ ____ ____123____
+abc ABC aBC Abc _ABC __ABc __123ABc
+hdad_adsajdk_hf__T_
+            """,
 
-            "+,-,*,/,==,<=,>=,<,>,=,<,>,(,),[,],;,,,,,<EOF>",
+            "a,abc,a123,a_,a_bc,a_bc123,a_123,a_123bc,a_bc_123,_,_abc,_123,_abc123,_abc_123,_123_abc,__,____,____123____,abc,ABC,aBC,Abc,_ABC,__ABc,__123ABc,hdad_adsajdk_hf__T_,<EOF>",
             103
         ))
-    def test_5_block_comment(self):
+        
+    def test_invalid_identifier(self):
+        """Test Invalid Identifiers"""
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+id-1 id&1  
+            """,
+            "id,-,1,id,Error Token &",
+            104
+        ))
+
+    def test_invalid_id(self):
+        """ Test Invalid Identifiers """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+123abc 123_abc 00000123_123abc
+            """,
+
+            "123,abc,123,_abc,00000123,_123abc,<EOF>",
+            105
+        ))
+
+    def test_inline_comment(self):
+        """Test Inline Comment"""
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+// inline comment  
+// This is inline comment
+            """,
+            "<EOF>",
+            106
+        ))
+
+    def test_block_comment(self):
         """ Test Block Comment """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 /* Comment with multiple lines
     Hello comments
+    This is block comment
 */
-""",
+            """,
 
             "<EOF>",
-            105
+            107
         ))
-        
 
-    def test_7_mix_comment(self):
+    def test_mix_comment(self):
         """ Test Mix Comment """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
@@ -104,116 +100,112 @@ dIV mOd NOT and OR
     // inline comment 
 // inline comment
 */
-""",
+            """,
 
             "<EOF>",
-            107
+            108
         ))
-    def test_8_int_lit(self):
+
+    def test_invalid_comment(self):
+        """ Test Invalid Comments """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+// inline comment \b \t
+    is multiple lines
+// inline comment
+""",
+
+            "is,multiple,lines,<EOF>",
+            109
+        ))
+    
+    def test_int_lit(self):
         """ Test Integer Literal """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-0 1 2 3 4 123 123456789
-""",
+0 1 2 3 4 123 123456789 001 0x123
+            """,
 
-            "0,1,2,3,4,123,123456789,<EOF>",
-            108
+            "0,1,2,3,4,123,123456789,001,0,x123,<EOF>",
+            110
         ))
-        
 
-    def test_9_real_lit(self):
-        """ Test Real Literal """
+    def test_bool_lit(self):
+        """ Test Boolean Literal """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+true false
+            """,
+
+            "true,false,<EOF>",
+            111
+        ))   
+
+    def test_float_lit(self):
+        """ Test Float Literal """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 1.2 1. .1 1e2 1.2E-2 1.2e-2 .1E2 9.0 12e8 0.33E-3 128e-42
 12.     .05     12.05 1e-5      1.5e-6  0.0005e3   2e21
-""",
+            """,
 
             "1.2,1.,.1,1e2,1.2E-2,1.2e-2,.1E2,9.0,12e8,0.33E-3,128e-42,12.,.05,12.05,1e-5,1.5e-6,0.0005e3,2e21,<EOF>",
-            109
+            112
         ))
-    def test_10_string_lit(self):
+
+    def test_string_lit(self):
         """ Test String Literal """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-""      "A"     
+""
+"String"
+" "
+"?"
+"-"
+"#"
 "Mulitiple Characters"
-""",
+            """,
 
-            ',A,Mulitiple Characters,<EOF>',
-            110
-        ))
-        
-
-    def test_11_id(self):
-        """ Test Identifiers """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-a abc a123 a_ a_bc a_bc123 a_123 a_123bc a_bc_123
-_ _abc _123 _abc123 _abc_123 _123_abc
-__ ____ ____123____
-abc ABC aBC Abc _ABC __ABc __123ABc
-h98f394__VWT_b5_VT_YGU87udhf__T_
-""",
-
-            "a,abc,a123,a_,a_bc,a_bc123,a_123,a_123bc,a_bc_123,_,_abc,_123,_abc123,_abc_123,_123_abc,__,____,____123____,abc,ABC,aBC,Abc,_ABC,__ABc,__123ABc,h98f394__VWT_b5_VT_YGU87udhf__T_,<EOF>",
-            111
-        ))
-    def test_12_invalid_id(self):
-        """ Test Invalid Identifiers """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-123abc 123_abc 00000123_123abc
-""",
-
-            "123,abc,123,_abc,00000123,_123abc,<EOF>",
-            112
-        ))
-        
-
-    def test_13_invalid_comment(self):
-        """ Test Invalid Comments """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-// inline comment but
-    is multiple lines
-""",
-
-            "is,multiple,lines,<EOF>",
+            ",String, ,?,-,#,Mulitiple Characters,<EOF>",
             113
         ))
-    def test_14_invalid_real(self):
-        """ Test Invalid Real Literal """
+    
+    def test_mix_lit(self):
+        """ Test Mix Literal """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-e-12 e12 . 1e 12e 12.05e .05e ee e01
-""",
+""
+12 32.43 43.E12 4e-1 true "false" false "012" 1.32 1. .0
+"String"
+            """,
 
-            "e,-,12,e12,Error Token .",
+            ",12,32.43,43.E12,4e-1,true,false,false,012,1.32,1.,.0,String,<EOF>",
             114
-        ))      
-
-    def test_16_unclose_without_endline(self):
-        """ Test Unclose String without endline """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""  " hello lexer """,
-
-            "Unclosed String:  hello lexer ",
-            116
-        ))
-    def test_17_unclose_with_endline(self):
-        """ Test Unclose String with endline """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-" abcxyz
-""",
-
-            r"""Unclosed String:  abcxyz""",
-            117
         ))
         
+    def test_invalid_float(self):
+        """ Test Invalid Float Literal """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+e-12 e12 1e 12e 12.05e .05e ee e01 .
+""",
 
-    def test_18_escape(self):
+            "e,-,12,e12,1,e,12,e,12.05,e,.05,e,ee,e01,Error Token .",
+            115
+        ))      
+
+    def test_unclose_without_endline(self):
+        """ Test Unclose String without endline """
+        self.assertTrue(TestLexer.checkLexeme(
+            r""" 
+" hello lexer
+            """,
+
+            "Unclosed String:  hello lexer",
+            116
+        ))
+        
+    def test_escape1(self):
         """ Test Escape String """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
@@ -221,99 +213,52 @@ e-12 e12 . 1e 12e 12.05e .05e ee e01
 " abc \\n xyz "
 """,
 
-            r''' abc \n xyz , abc \\n xyz ,<EOF>''',
-            118
+            r""" abc \n xyz , abc \\n xyz ,<EOF>""",
+            117
         ))
-    def test_19_escape(self):
+
+    def test_escape2(self):
         """ Test Escape String """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-" hello lexer \t "     asdf 
+" hello lexer \t \b \n \""     asdf 
 """,
 
-            r' hello lexer \t ,asdf,<EOF>',
-            119
+            r""" hello lexer \t \b \n \",asdf,<EOF>""",
+            118
         ))
-        
 
-    def test_20_escape(self):
+    def test_escape3(self):
         """ Test Escape String """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 "Backspace  \b"
-""",
-
-            r'Backspace  \b,<EOF>',
-            120
-        ))
-    def test_21_escape(self):
-        """ Test Escape String """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
 "Formfeed   \f"
-""",
-
-            r'Formfeed   \f,<EOF>',
-            121
-        ))
-        
-
-    def test_22_escape(self):
-        """ Test Escape """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
 "Return     \r"
-""",
-
-            r'''Return     \r,<EOF>''',
-            122
-        ))
-    def test_23_escape(self):
-        """ Test Escape """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
 "Newline    \n"
-""",
-
-            r'''Newline    \n,<EOF>''',
-            123
-        ))
-    def test_25_escape(self):
-        """ Test Escape """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
 "Tab        \t"
-""",
-
-            r'Tab        \t,<EOF>',
-            125
-        ))
-        
-
-    def test_26_escape(self):
-        """ Test Escape """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
+"Double quote       \""
 "Backslash  \\ "
-""",
+            """,
 
-            r"Backslash  \\ ,<EOF>",
-            126
-        ))
-        
+            r"""Backspace  \b,Formfeed   \f,Return     \r,Newline    \n,Tab        \t,Double quote       \",Backslash  \\ ,<EOF>""",
+            119
+        ))    
 
-    def test_24_unclose_multi_lines(self):
+    def test_unclose_multi_lines(self):
         """ Test Unclosed String """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 "Newline
     multiple lines
-"           """,
+"           
+            """,
 
-            r'''Unclosed String: Newline''',
-            124
+            r"""Unclosed String: Newline""",
+            120
         ))
-    def test_27_illegal(self):
+
+    def test_illegal1(self):
         """ Test Illegal Escape """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
@@ -321,375 +266,266 @@ Illegal"\a"
 """,
 
             r"""Illegal,Illegal Escape In String: \a""",
-            127
+            121
         ))
-        
 
-    def test_28_illegal(self):
+    def test_illegal2(self):
         """ Test Illegal Escape """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 " Hi Hi \c \d "
-""",
+            """,
 
             "Illegal Escape In String:  Hi Hi \c",
-            128
+            122
         ))
-    def test_29_illegal(self):
+
+    def test_illegal3(self):
         """ Test Illegal Escape """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-" Hi Hi \m\n\c\s\d\\f "
-""",
+" Hi Hi \s\d\\f "
+            """,
 
-            "Illegal Escape In String:  Hi Hi \m",
-            129
-        ))
-        
-
-    def test_30_nevermind(self):
-        """ Test Nevermind :) """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-" asdf ` asdf"
-""",
-
-            " asdf ` asdf,<EOF>",
-            130
-        ))
-    def test_31_err_str(self):
-        """ Test Error String """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-" abc ' xyz "
-""",
-
-            " abc ' xyz ,<EOF>",
-            131
-        ))
-        
-
-    def test_32_escape_doublequote(self):
-        """ Test Escape """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-" abc \" xyz "
-""",
-
-            r" abc \" xyz ,<EOF>",
-            132
-        ))
-    def test_33_escape_doublequote(self):
-        """ Test Escape String """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-" abc \" xyz " ghi
-""",
-
-            r" abc \" xyz ,ghi,<EOF>",
-            133
-        ))
-    def test_35_err_tok(self):
-        """ Test Error Token """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-!== != & ^ % $ # ... \
-""",
-
-            "!=,=,!=,Error Token &",
-            135
-        ))
-        
-
-    def test_36_err_tok(self):
-        """ Test Error Token """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-if a != b then
-""",
-
-            "if,a,!=,b,then,<EOF>",
-            136
-        ))
-        
-
-    def test_34_illegal(self):
-        """ Test Error String """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-"abc" 123 __123 "abc xyz"
-" abc\m "
-""",
-
-            "abc,123,__123,abc xyz,Illegal Escape In String:  abc\m",
-            134
-        ))
-    def test_37_err_tok(self):
-        """ Test Error Token """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-a = a & 1
-""",
-
-            "a,=,a,Error Token &",
-            137
-        ))
-        
-
-    def test_38_err_tok(self):
-        """ Test Error Token """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-xyz
-$a = 5
-""",
-
-            "xyz,Error Token $",
-            138
-        ))
-    def test_39_err_tok(self):
-        """ Test Error Token """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-#define for 1
-""",
-
-            "Error Token #",
-            139
-        ))
-        
-
-    def test_40_num_leading_0(self):
-        """ Test Number leading 0 """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-1234 0000001234 0000043123
-""",
-
-            "1234,0000001234,0000043123,<EOF>",
-            140
+            "Illegal Escape In String:  Hi Hi \s",
+            123
         ))  
-    def test_41_num_leading_0(self):
-        """ Test Real Leading 0 """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-00001.1111000000
-0e-4
-000000001e-40000
-""",
 
-            "00001.1111000000,0e-4,000000001e-40000,<EOF>",
-            141
-        ))
-        
-
-    def test_42_illegal(self):
+    def test_illegal4(self):
         """ Test Error String """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 "abc - xyz"
 "abc \ xyz"
-""",
+            """,
 
             "abc - xyz,Illegal Escape In String: abc \ ",
-            142
+            124
         ))
-    def test_43_illegal(self):
+    def test_illegal5(self):
         """ Test Error String """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 "abc - xyz"
 "abc \yyz"
-""",
+            """,
 
             "abc - xyz,Illegal Escape In String: abc \y",
-            143
+            125
         ))
-        
 
-    def test_44_escape_backsplash_spacing(self):
-        """ Test Escape """
+    def test_keyword(self):
+        """ Test Keyword """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-"abc \\ xyz"
-""",
+int float string void true false boolean if else for do while break continue return  
+            """,
+            "int,float,string,void,true,false,boolean,if,else,for,do,while,break,continue,return,<EOF>",
+            126
+        ))   
 
-            r"abc \\ xyz,<EOF>",
-            144
-        ))
-    def test_45_escape_backsplash_trim(self):
-        """ Test Escape """
+    def test_err_tok1(self):
+        """ Test Error Token """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-"\\"
-""",
+!== != & ^ % $ # ... \
+            """,
 
-            r'''\\,<EOF>''',
-            145
-        ))
-        
+            "!=,=,!=,Error Token &",
+            127
+        ))        
 
-    def test_46_escape_backsplash_tail_spacing(self):
-        """ Test Escape """
+    def test_err_tok2(self):
+        """ Test Error Token """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-"\\ "
-""",
+a = a & 1
+            """,
 
-            r"\\ ,<EOF>",
-            146
+            "a,=,a,Error Token &",
+            128
         ))
-    def test_47_unclose_use_escape(self):
+
+    def test_err_tok3(self):
+        """ Test Error Token """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+$a = 5
+            """,
+
+            "Error Token $",
+            129
+        ))
+
+    def test_err_tok4(self):
+        """ Test Error Token """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+abc#
+            """,
+
+            "abc,Error Token #",
+            130
+        ))
+
+    def test_int_leading_zero(self):
+        """ Test Int Leading Zero """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+1234 00003132234 00002132123
+            """,
+
+            "1234,00003132234,00002132123,<EOF>",
+            131
+        ))  
+    
+    def test_float_leading_zero2(self):
+        """ Test Float Leading Zero """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+00001.1101010101000
+0e-432
+000000001e-542400
+000313121.e00031321132
+            """,
+
+            "00001.1101010101000,0e-432,000000001e-542400,000313121.e00031321132,<EOF>",
+            132
+        ))    
+
+    def test_unclose_use_escape(self):
         """ Test Unclosed String """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-"\"
-""",
+"\"abc
+            """,
 
-            r"""Unclosed String: \"""",
-            147
+            r"""Unclosed String: \"abc""",
+            133
         ))
         
-
-    def test_48_escape(self):
-        """ Test Escape String """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-"\""
-""",
-
-            r"""\",<EOF>""",
-            148
-        ))
-    def test_49_unclose_with_invalid_close(self):
+    def test_unclose_with_invalid_close(self):
         """ Test Unclosed String """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-s = "string           
+s = "string          '
 "a = 4
 g = 9
-""",
+            """,
 
-            r'''s,=,Unclosed String: string           ''',
-            149
+            r"""s,=,Unclosed String: string          '""",
+            134
+        ))
+    
+    def test_illegal6(self):
+        """ Test Illegal String """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+"abc\mabc"
+            """,
+
+            r"""Illegal Escape In String: abc\m""",
+            135
+        ))
+
+    def test_illegal7(self):
+        """ Test Illegal String """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+"\a"
+            """,
+
+            r"""Illegal Escape In String: \a""",
+            136
+        ))
+    
+    def test_illegal8(self):
+        """ Test Illegal String """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+"2.dasd1f21.da1.24@%761!809!@808132)318()^*&*13\o"
+            """,
+
+            r"""Illegal Escape In String: 2.dasd1f21.da1.24@%761!809!@808132)318()^*&*13\o""",
+            137
+        ))
+
+    def test_operator(self):
+        """ Test Operator """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
++ - * / ! % || && != == <= >= > < =
+            """,
+
+            "+,-,*,/,!,%,||,&&,!=,==,<=,>=,>,<,=,<EOF>",
+            138
+        ))
+    
+    def test_float(self):
+        """ Test Float Literal """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+1.2 1. .1 1e2 1.2E-2 1.2e-2 .1E2 9.0 12e8 0.33E-3 128e-42 e-12 143e
+            """,
+
+            "1.2,1.,.1,1e2,1.2E-2,1.2e-2,.1E2,9.0,12e8,0.33E-3,128e-42,e,-,12,143,e,<EOF>",
+            138
         ))
         
-
-    def test_50_complex(self):
-        """ Test Complex Function """
+    def test_complex_program1(self):
+        """ Test Complex Program """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 float a, b, c;
 boolean x, y, z;
 int g, h, y;
-float function nty();
+float nty();
 int x, y, z;
-begin
-    readLine();
-    // This is readLine()
-    fs = readStdin();
-    
-    with int i; do begin
-        for i = 4 downto -5 do h = 6;
-        if i > 6 then return 0;
-    end
-    return 1;
-end
 int q, w;
-string a;
-begin 
+string a; 
     /*
         =======================================
         Comment here
         =======================================
     */
-end
 """,
 
-            r"float,a,,,b,,,c,;,boolean,x,,,y,,,z,;,int,g,,,h,,,y,;,float,function,nty,(,),;,int,x,,,y,,,z,;,begin,readLine,(,),;,fs,=,readStdin,(,),;,with,int,i,;,do,begin,for,i,=,4,downto,-,5,do,h,=,6,;,if,i,>,6,then,return,0,;,end,return,1,;,end,int,q,,,w,;,string,a,;,begin,end,<EOF>",
-            150
+            r"float,a,,,b,,,c,;,boolean,x,,,y,,,z,;,int,g,,,h,,,y,;,float,nty,(,),;,int,x,,,y,,,z,;,int,q,,,w,;,string,a,;,<EOF>",
+            180
         ))
-    def test_51_complex(self):
-        """ Test Complex Function """
+
+    def test_complex_program2(self):
+        """ Test Complex Program """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-procedure foo();
-begin
-    while i do begin
-        ok()
-    end
-end
-""",
+int sum(int num1, int num2){
+   int num3 = num1+num2;
+   return num3;
+}
+            """,
 
-            r"procedure,foo,(,),;,begin,while,i,do,begin,ok,(,),end,end,<EOF>",
-            151
+            r"int,sum,(,int,num1,,,int,num2,),{,int,num3,=,num1,+,num2,;,return,num3,;,},<EOF>",
+            181
         ))
-        
 
-    def test_52_unclose_eof(self):
-        """ Test Unclosed String """
+    def test_complex_program3(self):
+        """ Test Complex Program """
         self.assertTrue(TestLexer.checkLexeme(
             r"""
-s = "abc""",
+int plusFuncInt(int x, int y) {
+  return x + y;
+}
 
-            r"s,=,Unclosed String: abc",
-            152
-        ))
-    def test_53_unclose_newline(self):
-        """ Test Unclosed """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-s = "abc                   ;
-a = "xyz"
-""",
+double plusFuncDouble(double x, double y) {
+  return x + y;
+}
+            """,
 
-            r"""s,=,Unclosed String: abc                   ;""",
-            153
-        ))
-        
+            r"int,plusFuncInt,(,int,x,,,int,y,),{,return,x,+,y,;,},double,plusFuncDouble,(,double,x,,,double,y,),{,return,x,+,y,;,},<EOF>",
+            182
+        ))        
 
-    def test_54_complex(self):
-        """ Test Complex Function """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-procedure foo();
-begin
-    while 1<2<3<4<5 do ok();
-end
-""",
-
-            r"procedure,foo,(,),;,begin,while,1,<,2,<,3,<,4,<,5,do,ok,(,),;,end,<EOF>",
-            154
-        ))
-    def test_55_complex(self):
-        """ Test Complex Function """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-procedure foo();
-begin
-    with sring a; do ok();
-end
-""",
-
-            r"procedure,foo,(,),;,begin,with,sring,a,;,do,ok,(,),;,end,<EOF>",
-            155
-        ))
-        
-
-    def test_56_complex(self):
-        """ Test Complex Function """
-        self.assertTrue(TestLexer.checkLexeme(
-            r"""
-procedure foo();
-begin
-    with string a,b,c,d; int f do ok();
-end
-""",
-
-            r"procedure,foo,(,),;,begin,with,string,a,,,b,,,c,,,d,;,int,f,do,ok,(,),;,end,<EOF>",
-            156
-        ))
-    def test_as(self):
+    def test_complex_program4(self):
         self.assertTrue(TestLexer.checkLexeme(
             r"""
 int main()
@@ -705,5 +541,126 @@ int main()
 }
             """
         , r"int,main,(,),{,int,x,;,printf,(,Input an integer\n,),;,scanf,(,%d,,,Error Token &"
-        , 157
+        , 183
+        ))
+
+    def test_complex_program5(self):
+        """ Test Complex Program """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+int i = 0;
+do
+  print("\n");
+  i++;
+while (i < 5);
+            """,
+
+            r"int,i,=,0,;,do,print,(,\n,),;,i,+,+,;,while,(,i,<,5,),;,<EOF>",
+            184
+        )) 
+    
+    def test_complex_program6(self):
+        """ Test Complex Program """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+int time = 22;
+if (time < 10)
+    print("Good morning.");
+if (time < 20) {
+    print("Good day.");
+else
+    print("Good evening.");
+// Outputs "Good evening."
+            """,
+
+            r"int,time,=,22,;,if,(,time,<,10,),print,(,Good morning.,),;,if,(,time,<,20,),{,print,(,Good day.,),;,else,print,(,Good evening.,),;,<EOF>",
+            185
+        ))
+    
+    def test_complex_program7(self):
+        """ Test Complex Program """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+for (i = 0; i < 10; i = i + 1) {
+  if (i == 4)
+    continue;
+  print("%d\n", i);
+}
+            """,
+            r"""for,(,i,=,0,;,i,<,10,;,i,=,i,+,1,),{,if,(,i,==,4,),continue,;,print,(,%d\n,,,i,),;,},<EOF>""",
+            186
+        ))
+
+    def test_complex_program8(self):
+        """ Test Complex Program """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+int main()
+{
+    printf("\n\n\t\tLexer - Best place to practice\n\n\n");
+    int num;
+    printf("\nHello world!\nWelcome to Lexer: Best place to practice\n");
+    printf("\n\n\t\t\tCoding is Fun !\n\n\n");
+    return 0;
+}
+            """,
+            r"""int,main,(,),{,printf,(,\n\n\t\tLexer - Best place to practice\n\n\n,),;,int,num,;,printf,(,\nHello world!\nWelcome to Lexer: Best place to practice\n,),;,printf,(,\n\n\t\t\tCoding is Fun !\n\n\n,),;,return,0,;,},<EOF>""",
+            187
+        ))
+    
+    def test_complex_program9(self):
+        """ Test Complex Program """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+int fibonacci (int n)  
+{
+    if (n==0)
+        return 0;
+    if (n == 1)   
+        return 1;
+    else  
+        return fibonacci(n-1)+fibonacci(n-2);
+}  
+            """,
+            r"""int,fibonacci,(,int,n,),{,if,(,n,==,0,),return,0,;,if,(,n,==,1,),return,1,;,else,return,fibonacci,(,n,-,1,),+,fibonacci,(,n,-,2,),;,},<EOF>""",
+            188
+        ))
+
+    def test_complex_program10(self):
+        """ Test Complex Program """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+int main()
+{
+  printf("Main function.\n");
+ 
+  my_function();  // Calling the function
+ 
+  printf("Back in function main.\n");
+ 
+  return 0;
+}
+ 
+// Defining the function
+void my_function()
+{
+  printf("Welcome to my function. Feel at home.\n");
+}
+            """,
+            r"""int,main,(,),{,printf,(,Main function.\n,),;,my_function,(,),;,printf,(,Back in function main.\n,),;,return,0,;,},void,my_function,(,),{,printf,(,Welcome to my function. Feel at home.\n,),;,},<EOF>""",
+            189
+        ))
+    
+    def test_complex_program11(self):
+        """ Test Complex Program """
+        self.assertTrue(TestLexer.checkLexeme(
+            r"""
+int [] foo ( int b[] ) {
+int a[ 1 ] ;
+if ( ) return a ;
+else return b ;
+}
+            """,
+            r"""int,[,],foo,(,int,b,[,],),{,int,a,[,1,],;,if,(,),return,a,;,else,return,b,;,},<EOF>""",
+            190
         ))

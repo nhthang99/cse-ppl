@@ -1,6 +1,0 @@
-// Begin
-    int main() {
-    /* code here */
-    int x;
-    // end
-}

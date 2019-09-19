@@ -1,2 +1,9 @@
 
-" hello lexer \t "     asdf 
+"Backspace  \b"
+"Formfeed   \f"
+"Return     \r"
+"Newline    \n"
+"Tab        \t"
+"Double quote       \""
+"Backslash  \\ "
+            

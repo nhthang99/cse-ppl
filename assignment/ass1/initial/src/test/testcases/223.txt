@@ -1,4 +1,0 @@
-int str;
-void main() {
-        str = "hello world";
-}

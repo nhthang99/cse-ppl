@@ -39,6 +39,10 @@ def main(argv):
             from ParserSuite1 import ParserSuite
             suite = unittest.makeSuite(ParserSuite)
             test(suite)
+        elif argv[1] == 'ParserSuite2':
+            from ParserSuite2 import ParserSuite
+            suite = unittest.makeSuite(ParserSuite)
+            test(suite)
         else:
             printUsage()
     else:

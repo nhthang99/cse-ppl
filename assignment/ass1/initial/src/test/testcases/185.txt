@@ -1,0 +1,10 @@
+
+int time = 22;
+if (time < 10)
+    print("Good morning.");
+if (time < 20) {
+    print("Good day.");
+else
+    print("Good evening.");
+// Outputs "Good evening."
+            

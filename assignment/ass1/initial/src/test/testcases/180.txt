@@ -1,0 +1,13 @@
+
+float a, b, c;
+boolean x, y, z;
+int g, h, y;
+float nty();
+int x, y, z;
+int q, w;
+string a; 
+    /*
+        =======================================
+        Comment here
+        =======================================
+    */

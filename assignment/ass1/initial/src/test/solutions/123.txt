@@ -1,1 +1,1 @@
-Newline    \n,<EOF>
+Illegal Escape In String:  Hi Hi \s

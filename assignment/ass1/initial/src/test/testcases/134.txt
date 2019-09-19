@@ -1,3 +1,5 @@
 
-"abc" 123 __123 "abc xyz"
-" abc\m "
+s = "string          '
+"a = 4
+g = 9
+            

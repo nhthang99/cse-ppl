@@ -220,6 +220,16 @@ ASSIGN: '=';
 
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
+ILLEGAL_ESCAPE
+    : DoubleQuote (StringChar | IllegalString)* DoubleQuote
+    {
+        illegal_str = str(self.text)
+        possible = ['\b', '\t', '\f', '\n', '\r', '"', '\\']
+        backslash = illegal_str.find('\\')
+        if illegal_str[backslash:backslash + 2] not in possible:
+            raise IllegalEscape(illegal_str[1:backslash + 2])
+    }
+    ;
 
 UNCLOSE_STRING
     : DoubleQuote StringChar* ([\b\t\f\n\r"\\] | EOF)
@@ -232,13 +242,7 @@ UNCLOSE_STRING
             raise UncloseString(unclose_str[1:])
     }
     ;
-ILLEGAL_ESCAPE
-    : DoubleQuote StringChar* IllegalString
-    {
-        y = str(self.text)
-        raise IllegalEscape(y[1:])
-    }
-    ;
+
 ERROR_CHAR
     : .
     {

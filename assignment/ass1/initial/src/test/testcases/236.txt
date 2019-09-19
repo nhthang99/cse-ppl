@@ -1,6 +1,0 @@
-void main () {
-    int a;
-    boolean x;
-    a = -69;
-    x = !true;
-}

@@ -1,3 +1,9 @@
 
-// inline comment but
-    is multiple lines
+""
+"String"
+" "
+"?"
+"-"
+"#"
+"Mulitiple Characters"
+            

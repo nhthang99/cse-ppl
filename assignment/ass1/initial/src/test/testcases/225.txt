@@ -1,5 +1,0 @@
-int str;
-void main() {
-    str = "hello word";
-}
-    str = str + 1;

@@ -1,8 +1,0 @@
-void main() {
-    if ( a == true )
-        return b;
-    else {
-        if ( b == true )
-            return x;
-    }
-}
