@@ -1,4 +1,7 @@
 
-1.2 1. .1 1e2 1.2E-2 1.2e-2 .1E2 9.0 12e8 0.33E-3 128e-42
-12.     .05     12.05 1e-5      1.5e-6  0.0005e3   2e21
+/* This is another way to do it, also in C.
+ ** It is easier to do in editors that do not automatically indent the second
+ ** through last lines of the comment one space from the first.
+ ** It is also used in Holub's book, in rule 31.
+ */
             

@@ -1,5 +1,0 @@
-int main () {
-            putIntLn(2);
-            (fun())[4];
-            (arr)[5];
-        }

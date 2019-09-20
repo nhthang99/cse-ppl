@@ -1,3 +1,4 @@
 
-" abc \n xyz "
-" abc \\n xyz "
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+            

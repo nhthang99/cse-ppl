@@ -1,1 +1,1 @@
-s,=,Unclosed String: string          '
+Unclosed String:  hello lexer

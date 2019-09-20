@@ -1,5 +1,14 @@
 
-""
-12 32.43 43.E12 4e-1 true "false" false "012" 1.32 1. .0
-"String"
+/* This is a block comment */
+// This is a line comment
+/* Comment with multiple lines
+    Hello comments
+*/
+/*
+    Comment multiple lines
+*/
+/* nest comments
+    // inline comment 
+// inline comment
+*/
             

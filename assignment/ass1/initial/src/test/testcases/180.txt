@@ -1,13 +1,5 @@
 
-float a, b, c;
-boolean x, y, z;
-int g, h, y;
-float nty();
-int x, y, z;
-int q, w;
-string a; 
-    /*
-        =======================================
-        Comment here
-        =======================================
-    */
+            int a,b       ,c ,a                   b;
+            float a = b (abc).12;
+            str abc[] = {1,2,3};
+            

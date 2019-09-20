@@ -1,3 +1,9 @@
 
-abc#
+""
+"String"
+" "
+"?"
+"-"
+"#"
+"Mulitiple Characters"
             

@@ -1,10 +1,5 @@
 
-int time = 22;
-if (time < 10)
-    print("Good morning.");
-if (time < 20) {
-    print("Good day.");
-else
-    print("Good evening.");
-// Outputs "Good evening."
+// and,<=,return v415f ( division,and,or
++ , or b328b = <= ) G39be ? else break / * = [ Qd057 ] float[] break * >= do >
+(* end , b60f1,>=,dd28e , dd3ab,string,of*)
             

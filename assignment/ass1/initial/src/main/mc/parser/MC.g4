@@ -7,7 +7,7 @@ from lexererr import *
 @lexer::members {
 def emit(self):
     tk = self.type
-    if tk == self.UNCLOSE_STRING:       
+    if tk == self.UNCLOSE_STRING:
         result = super().emit();
         raise UncloseString(result.text)
     elif tk == self.ILLEGAL_ESCAPE:
@@ -15,7 +15,7 @@ def emit(self):
         raise IllegalEscape(result.text);
     elif tk == self.ERROR_CHAR:
         result = super().emit();
-        raise ErrorToken(result.text); 
+        raise ErrorToken(result.text);
     else:
         return super().emit();
 }
@@ -24,26 +24,28 @@ options{
 	language=Python3;
 }
 
+
+
 /*********************PARSER**********************/
 
 program: decl+ EOF;
 decl: var_decl | func_decl;
 var_decl: primitive_type idlist SM;
 primitive_type
-    : INTTYPE 
-    | FLOATTYPE 
-    | STRTYPE 
+    : INTTYPE
+    | FLOATTYPE
+    | STRTYPE
     | BOOLTYPE
     ;
 idlist: id_or_arr (CM id_or_arr)*;
 id_or_arr
-    : ID 
+    : ID
     | ID LSB INTLIT RSB
     ;
 func_decl: func_type ID LP paralist RP block_stmt;
 func_type
-    : primitive_type 
-    | VOIDTYPE 
+    : primitive_type
+    | VOIDTYPE
     | primitive_type LSB RSB;
 paralist: (para (CM para)*)?;
 para
@@ -56,17 +58,17 @@ stmt
     | for_stmt
     | return_stmt
     | block_stmt
-    | break_stmt 
+    | break_stmt
     | continue_stmt
     | exp SM
     ;
 block_stmt: LCB (stmt | var_decl)* RCB;
 if_stmt
-    : IF LP exp RP 
+    : IF LP exp RP
         stmt
     (ELSE
         stmt)*
-    ; 
+    ;
 do_while_stmt
     : DO stmt+
     WHILE exp SM
@@ -110,11 +112,11 @@ fragment UpperCase: [A-Z];
 fragment Dot: '.';
 fragment DoubleQuote: '"';
 fragment IllegalString
-    : '\\' ~[bfrnt"\\] 
+    : '\\' ~[bfrnt"\\]
     | '\\'
     ;
 fragment StringChar
-    : ~[\b\f\r\n\t"\\] 
+    : ~[\b\f\r\n\t"\\]
     | EscapeSequence
     ;
 fragment EscapeSequence: '\\' [bfrnt"\\];
@@ -215,21 +217,10 @@ ASSIGN: '=';
 
 
 
-    
+
 /*********************** SKIP *************************/
 
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
-
-ILLEGAL_ESCAPE
-    : DoubleQuote (StringChar | IllegalString)* DoubleQuote
-    {
-        illegal_str = str(self.text)
-        possible = ['\b', '\t', '\f', '\n', '\r', '"', '\\']
-        backslash = illegal_str.find('\\')
-        if illegal_str[backslash:backslash + 2] not in possible:
-            raise IllegalEscape(illegal_str[1:backslash + 2])
-    }
-    ;
+WS : [ \t\r\n\f]+ -> skip ; // skip spaces, tabs, newlines
 
 UNCLOSE_STRING
     : DoubleQuote StringChar* ([\b\t\f\n\r"\\] | EOF)
@@ -240,6 +231,14 @@ UNCLOSE_STRING
             raise UncloseString(unclose_str[1:-1])
         else:
             raise UncloseString(unclose_str[1:])
+    }
+    ;
+
+ILLEGAL_ESCAPE
+    : DoubleQuote StringChar* IllegalString
+    {
+        illegal_str = str(self.text)
+        raise IllegalEscape(illegal_str[1:])
     }
     ;
 

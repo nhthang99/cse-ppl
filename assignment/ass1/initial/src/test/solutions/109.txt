@@ -1,1 +1,1 @@
-is,multiple,lines,<EOF>
+<EOF>

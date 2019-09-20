@@ -1,9 +1,8 @@
 
-""
-"String"
-" "
-"?"
-"-"
-"#"
-"Mulitiple Characters"
+/***************************\
+*                           *
+* This is the comment body. *
+* Variation Two.            *
+*                           *
+\***************************/
             

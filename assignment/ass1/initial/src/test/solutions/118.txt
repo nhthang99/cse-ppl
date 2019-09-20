@@ -1,1 +1,1 @@
- hello lexer \t \b \n \",asdf,<EOF>
+<,!,-,-,begin,Error Token :

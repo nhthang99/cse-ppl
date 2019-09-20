@@ -1,9 +1,6 @@
 
-int plusFuncInt(int x, int y) {
-  return x + y;
-}
-
-double plusFuncDouble(double x, double y) {
-  return x + y;
-}
+            INT abc = 12;
+            abc = "";
+            float = 2.e2
+            char = ''
             

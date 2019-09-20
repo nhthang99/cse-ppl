@@ -172,7 +172,7 @@ class MCParser ( Parser ):
                       "ID", "LP", "RP", "LCB", "RCB", "LSB", "RSB", "SM", 
                       "CM", "ADD", "SUB", "MUL", "DIV", "MOD", "NOT", "OR", 
                       "AND", "NOT_EQUAL", "EQUAL", "LT", "GT", "LE", "GE", 
-                      "ASSIGN", "WS", "ILLEGAL_ESCAPE", "UNCLOSE_STRING", 
+                      "ASSIGN", "WS", "UNCLOSE_STRING", "ILLEGAL_ESCAPE", 
                       "ERROR_CHAR" ]
 
     RULE_program = 0
@@ -258,8 +258,8 @@ class MCParser ( Parser ):
     GE=44
     ASSIGN=45
     WS=46
-    ILLEGAL_ESCAPE=47
-    UNCLOSE_STRING=48
+    UNCLOSE_STRING=47
+    ILLEGAL_ESCAPE=48
     ERROR_CHAR=49
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):

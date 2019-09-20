@@ -1,2 +1,4 @@
 
-" hello lexer \t \b \n \""     asdf 
+<!-- begin: wsf_resource_nodes -->
+<!-- end: wsf_resource_nodes -->
+            

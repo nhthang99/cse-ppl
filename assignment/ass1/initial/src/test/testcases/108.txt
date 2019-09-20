@@ -1,14 +1,4 @@
 
-/* This is a block comment */
-// This is a line comment
-/* Comment with multiple lines
-    Hello comments
-*/
-/*
-    Comment multiple lines
-*/
-/* nest comments
-    // inline comment 
-// inline comment
-*/
+thang__hip_hop thang___dep________trai
+thang##thang nguyen&huu&thang id_d
             
