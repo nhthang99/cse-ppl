@@ -1,7 +1,1 @@
-
-/* This is another way to do it, also in C.
- ** It is easier to do in editors that do not automatically indent the second
- ** through last lines of the comment one space from the first.
- ** It is also used in Holub's book, in rule 31.
- */
-            
+{{{{{{{{{int a= 10;}}}}}}}}}

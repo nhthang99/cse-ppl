@@ -1,4 +1,1 @@
-
-thang__hip_hop thang___dep________trai
-thang##thang nguyen&huu&thang id_d
-            
+ "Compiler" "Escape\n" "\f\r\n\t\"\\" 

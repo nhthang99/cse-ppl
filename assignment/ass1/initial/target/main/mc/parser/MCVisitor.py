@@ -144,8 +144,18 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by MCParser#exp9.
+    def visitExp9(self, ctx:MCParser.Exp9Context):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by MCParser#operand.
     def visitOperand(self, ctx:MCParser.OperandContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#call.
+    def visitCall(self, ctx:MCParser.CallContext):
         return self.visitChildren(ctx)
 
 

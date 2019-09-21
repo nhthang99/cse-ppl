@@ -1,9 +1,8 @@
-
-if (discriminant > 0)
-    {
-    // sqrt() function returns square root
-        root1 = (-b+sqrt(discriminant))/(2*a);
-        root2 = (-b-sqrt(discriminant))/(2*a);
-        printf("root1 = %.2lf and root2 = %.2lf",root1 , root2);
+void foo(){
+i = 2; {
+    a = "true"; {
+        69;
     }
-            
+}
+foo(i, a);
+}

@@ -1,1 +1,1 @@
-,String, ,?,-,#,Mulitiple Characters,<EOF>
+Error Token @

@@ -67,7 +67,7 @@ if_stmt
     : IF LP exp RP
         stmt
     (ELSE
-        stmt)*
+        stmt)?
     ;
 do_while_stmt
     : DO stmt+
@@ -87,21 +87,22 @@ return_stmt
 exp: exp1 ASSIGN exp | exp1;
 exp1: exp1 OR exp2 | exp2;
 exp2: exp2 AND exp3 | exp3;
-exp3: exp3 (EQUAL | NOT_EQUAL) exp3 | exp4;
-exp4: exp4 (LT | LE | GT | GE) exp4 | exp5;
+exp3: exp4 (EQUAL | NOT_EQUAL) exp4 | exp4;
+exp4: exp5 (LT | LE | GT | GE) exp5 | exp5;
 exp5: exp5 (ADD | SUB) exp6 | exp6;
 exp6: exp6 (DIV | MUL | MOD) exp7 | exp7;
 exp7: (SUB | NOT) exp7 | exp8;
-exp8: exp8 LSB exp8 RSB | operand;
+exp8: exp9 LSB exp RSB | exp9;
+exp9: LP exp RP | operand;
 operand
     : INTLIT
     | FLOATLIT
     | STRLIT
     | BOOLLIT
     | ID
-    | ID LP (exp (CM exp)*)? RP
-    | LP exp RP
+    | call
     ;
+call: ID LP (exp (CM exp)*)? RP;
 /********************* FRAGMENTS **********************/
 
 fragment Digit: [0-9];
@@ -116,7 +117,7 @@ fragment IllegalString
     | '\\'
     ;
 fragment StringChar
-    : ~[\b\f\r\n\t"\\]
+    : ~[\b\t\f\r\n"\\]
     | EscapeSequence
     ;
 fragment EscapeSequence: '\\' [bfrnt"\\];
@@ -138,7 +139,7 @@ FLOATLIT
 BOOLLIT: TRUE | FALSE;
 
 STRLIT
-    : DoubleQuote (~'"' | StringChar*) DoubleQuote
+    : DoubleQuote ( StringChar*) DoubleQuote
     {
         result = str(self.text)
         self.text = result[1:-1]

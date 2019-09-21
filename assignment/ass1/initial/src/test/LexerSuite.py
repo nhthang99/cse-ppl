@@ -999,8 +999,8 @@ int float string void true false boolean if else for do while break continue ret
     def test_random11(self):
         """ Test Random """
         self.assertTrue(TestLexer.checkLexeme(
-            """ " """"" " " " """,
-            """Unclosed String:    """,
+            """ " """"" " " " a""",
+            """Unclosed String:    a""",
             188
         ))
     

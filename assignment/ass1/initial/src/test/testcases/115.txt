@@ -1,11 +1,1 @@
-
-/* This is the style recommended by Holub for C and C++.
-* It is demonstrated in ''Enough Rope'', in rule 29.
-*/
-// This is inline comment
-//                                    
-/**/
-/*                          */
-// This is comment
-
-            
+ for(int i = 0; i < n; i = i +1) {printf("");} 

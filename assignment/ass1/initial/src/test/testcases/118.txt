@@ -1,4 +1,1 @@
-
-<!-- begin: wsf_resource_nodes -->
-<!-- end: wsf_resource_nodes -->
-            
+ while(1<2<3>4>5) {ok();} 
