@@ -1,5 +1,3 @@
-import math
-
 class Rational:
     def __init__(self, n=0, d=1):
         if d == 0:
