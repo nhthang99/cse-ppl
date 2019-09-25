@@ -9,14 +9,14 @@ class Var(Expr):
 
 class Number(Expr):
     def __init__(self, num):
-        self.num = float(num)
+        self.num = num
     
     def print(self):
         print(self.num)
 
 class UpOp(Expr):
     def __init__(self, operator, arg):
-        self.operator = str(operator)
+        self.operator = operator
         self.arg = arg
 
 class BinOp(Expr):
@@ -25,4 +25,14 @@ class BinOp(Expr):
         self.left = left
         self.right = right
 
-var v = Var("x")
+    def eval(self):
+        if self.operator == '*':
+            return Number(self.left * self.right)
+        if self.operator == '/':
+            return Number(self.left / self.right)
+        if self.operator == '+':
+            return Number(self.left + self.right)
+        if self.operator == '-':
+            return Number(self.left - self.right)
+
+# BinOp('*',2,Number(3)).eval().print()

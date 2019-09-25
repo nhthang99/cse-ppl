@@ -8,7 +8,7 @@ def flatten_a(lst):
     return [x for y in lst for x in y]
 
 def flatten_b(lst):
-    if len(lst) != 0:
+    if lst:
         return lst[0] + flatten_b(lst[1:])
     else:
         return []

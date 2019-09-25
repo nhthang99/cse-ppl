@@ -2,10 +2,10 @@ def double_a(lst):
     return [ele * 2 for ele in lst]
 
 def double_b(lst):
-    if len(lst) == 0:
-        return []
-    else:
+    if len:
         return [lst[0]*2] + double_b(lst[1:])
+    else:
+        return []
 
 def double_c(lst):
     return list(map(lambda x: x * 2, lst))
