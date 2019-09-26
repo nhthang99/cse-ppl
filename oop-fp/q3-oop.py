@@ -35,4 +35,4 @@ class BinOp(Expr):
         if self.operator == '-':
             return Number(self.left - self.right)
 
-# BinOp('*',2,Number(3)).eval().print()
+BinOp('*',2,3).eval().print()
