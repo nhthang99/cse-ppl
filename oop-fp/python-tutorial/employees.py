@@ -1,4 +1,5 @@
 from salary import *
+
 class Manager(SalaryEmployee):
     def work(self, hours):
         print(f'{self.name} screams and yells for {hours} hours.')
@@ -14,3 +15,6 @@ class SalesPerson(CommissionEmployee):
 class FactoryWorker(HourlyEmployee):
     def work(self, hours):
         print(f'{self.name} manufactures gadgets for {hours} hours.')
+
+class TemporarySecretary(Secretary, HourlyEmployee):
+    pass
