@@ -1,1 +1,1 @@
-1.,.1,1.e1,1E-2,1.0e1,3.14,<EOF>
+123,abc,123,_abc,00000123,_123abc,id_id,1,id,321,id,1321,_id,89,________________id,id___2,90,___abc__ads___sba____abc____dba,ds,Error Token &

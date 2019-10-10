@@ -1,1 +1,5 @@
- if(m % 2 == 0) return true;
+
+!* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+!* All characters after an exclamation mark are considered as comments *
+!* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+            

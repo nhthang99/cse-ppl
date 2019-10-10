@@ -1,1 +1,4 @@
- float a; while(a < 10) {a = a - 1;} 
+
+// inline comment \b \t
+    is multiple lines
+// inline comment

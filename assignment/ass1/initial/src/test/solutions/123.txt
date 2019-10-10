@@ -1,1 +1,1 @@
-Error Token .
+true,false,<EOF>

@@ -1,4 +1,5 @@
-int char_int(char *);
-	float char_float(char *);
-	void str_copy(char *,  char *, int, int);
-	string str_copy(char *, int , int );
+
+"Newline
+    multiple lines
+"           
+            

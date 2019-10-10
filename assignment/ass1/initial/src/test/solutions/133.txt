@@ -1,1 +1,1 @@
-heint,count,(,struct,student,*,students,),{,for,(,int,i,=,0,;,i,<,MAX_STUDENT,;,+,+,i,),{,if,(,!,students,[,i,],Error Token .
+multiple string,1233,13290.31321,true12,true,false12,.131,.0,.112,.00000000000000000000001,00000000000000000000001,0, ,<EOF>
