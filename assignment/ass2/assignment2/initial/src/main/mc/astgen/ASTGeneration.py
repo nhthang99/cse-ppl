@@ -28,11 +28,7 @@ class ASTGeneration(MCVisitor):
         if ctx.BOOLTYPE():  return BoolType()
 
     def visitIdlist(self, ctx:MCParser.IdlistContext):
-        IDList = []
-        for x in ctx.id_or_arr():
-            idlist = self.visitId_or_arr(x)
-            IDList.append(idlist)
-        return IDList
+        return [self.visitId_or_arr(x) for x in ctx.id_or_arr()]
 
     def visitId_or_arr(self, ctx:MCParser.Id_or_arrContext):
         if ctx.INTLIT():
@@ -54,48 +50,32 @@ class ASTGeneration(MCVisitor):
         else: return self.visitPrimitive_type(ctx.primitive_type())
 
     def visitParalist(self, ctx:MCParser.ParalistContext):
-        paraList = []
-        for x in ctx.para():
-            para = self.visitPara(x)
-            paraList.append(para)
-        return paraList
+        return [self.visitPara(x) for x in ctx.para()]
 
     def visitPara(self, ctx:MCParser.ParaContext):
         if ctx.LSB():
-            return VarDecl(ctx.ID().getText(), ArrayPointerType(self.visitPrimitive_type(ctx.primitive_type())))
+            return VarDecl(Id(ctx.ID().getText()), ArrayPointerType(self.visitPrimitive_type(ctx.primitive_type())))
         else:
-            return VarDecl(ctx.ID().getText(), self.visitPrimitive_type(ctx.primitive_type()))
+            return VarDecl(Id(ctx.ID().getText()), self.visitPrimitive_type(ctx.primitive_type()))
 
     def visitBlock_stmt(self, ctx:MCParser.Block_stmtContext):
         memBlock = []
         for x in ctx.stmt_vardecl():
             stmt_vardecls = self.visitStmt_vardecl(x)
-            memBlock.extend(stmt_vardecls)
+            if isinstance(stmt_vardecls, list):
+                memBlock.extend(stmt_vardecls)
+            else:
+                memBlock.append(stmt_vardecls)
         return Block(memBlock)
 
     def visitStmt_vardecl(self, ctx:MCParser.Stmt_vardeclContext):
-        if ctx.stmt():
-            return [self.visitStmt(ctx.stmt())]
-        else:
-            return self.visitVar_decl(ctx.var_decl())
+        return self.visitChildren(ctx)
 
     def visitStmt(self, ctx:MCParser.StmtContext):
-        if ctx.if_stmt():
-            return self.visitIf_stmt(ctx.if_stmt())
-        if ctx.do_while_stmt():
-            return self.visitDo_while_stmt(ctx.do_while_stmt())
-        if ctx.for_stmt():
-            return self.visitFor_stmt(ctx.for_stmt())
-        if ctx.return_stmt():
-            return self.visitReturn_stmt(ctx.return_stmt())
-        if ctx.block_stmt():
-            return self.visitBlock_stmt(ctx.block_stmt())
-        if ctx.break_stmt():
-            return self.visitBreak_stmt(ctx.break_stmt())
-        if ctx.continue_stmt():
-            return self.visitContinue_stmt(ctx.continue_stmt())
         if ctx.exp():
             return self.visitExp(ctx.exp())
+        else:
+            return self.visitChildren(ctx)
 
     def visitIf_stmt(self, ctx:MCParser.If_stmtContext):
         if ctx.IF() and ctx.ELSE():
@@ -104,19 +84,14 @@ class ASTGeneration(MCVisitor):
             return If(self.visitExp(ctx.exp()), self.visitStmt(ctx.stmt(0)))
     
     def visitDo_while_stmt(self, ctx:MCParser.Do_while_stmtContext):
-        stmtList = []
-        for x in ctx.stmt():
-            stmts = self.visitStmt(x)
-            stmtList.extend(stmts)
         exps = self.visitExp(ctx.exp())
+        stmts = [self.visitStmt(x) for x in ctx.stmt()]
         return Dowhile(stmts, exps)
     
     def visitFor_stmt(self, ctx:MCParser.For_stmtContext):
-        expr1 = self.visitExp(ctx.exp(0))
-        expr2 = self.visitExp(ctx.exp(1))
-        expr3 = self.visitExp(ctx.exp(2))
+        expr = [self.visitExp(x) for x in ctx.exp()]
         loop = self.visitStmt(ctx.stmt())
-        return For(expr1, expr2, expr3, loop)
+        return For(expr[0], expr[1], expr[2], loop)
 
     def visitBreak_stmt(self, ctx:MCParser.Break_stmtContext):
         return Break()
@@ -205,18 +180,14 @@ class ASTGeneration(MCVisitor):
 
     def visitOperand(self, ctx:MCParser.OperandContext):
         if ctx.INTLIT(): return IntLiteral(int(ctx.INTLIT().getText()))
-        if ctx.FLOATLIT(): return FloatLiteral(float(ctx.FLOATLIT().getText()))
-        if ctx.STRLIT(): return StringLiteral(str(ctx.STRLIT().getText()))
-        if ctx.BOOLLIT(): return BooleanLiteral(True if ctx.BOOLLIT().getText() == 'true' else False)
-        if ctx.ID(): return Id(ctx.ID().getText())
-        if ctx.call(): return self.visitCall(ctx.call())
+        elif ctx.FLOATLIT(): return FloatLiteral(float(ctx.FLOATLIT().getText()))
+        elif ctx.STRLIT(): return StringLiteral(str(ctx.STRLIT().getText()))
+        elif ctx.BOOLLIT(): return BooleanLiteral(True if ctx.BOOLLIT().getText() == 'true' else False)
+        elif ctx.ID(): return Id(ctx.ID().getText())
+        else: return self.visitCall(ctx.call())
 
     def visitCall(self, ctx:MCParser.CallContext):
         id = Id(ctx.ID().getText())
-        expList = []
-        if ctx.exp():
-            for x in ctx.exp():
-                exps = self.visitExp(x)
-                expList.extend(exps)
-        return CallExpr(id, expList)
+        exps = [self.visitExp(x) for x in ctx.exp()]
+        return CallExpr(id, exps)
 

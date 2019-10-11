@@ -36,6 +36,10 @@ def main(argv):
             from ASTGenSuite import ASTGenSuite
             suite = unittest.makeSuite(ASTGenSuite)
             test(suite)
+        elif argv[1] == 'ASTGenSuite1':
+            from ASTGenSuite1 import ASTGenSuite
+            suite = unittest.makeSuite(ASTGenSuite)
+            test(suite)
         else:
             printUsage()
     else:
