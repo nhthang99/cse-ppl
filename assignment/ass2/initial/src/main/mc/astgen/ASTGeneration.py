@@ -32,9 +32,9 @@ class ASTGeneration(MCVisitor):
 
     def visitId_or_arr(self, ctx:MCParser.Id_or_arrContext):
         if ctx.INTLIT():
-            return (int(ctx.INTLIT().getText()), Id(ctx.ID().getText()))
+            return (int(ctx.INTLIT().getText()), ctx.ID().getText())
         else:
-            return Id(ctx.ID().getText())
+            return ctx.ID().getText()
             
         
     def visitFunc_decl(self, ctx:MCParser.Func_declContext):
@@ -54,9 +54,9 @@ class ASTGeneration(MCVisitor):
 
     def visitPara(self, ctx:MCParser.ParaContext):
         if ctx.LSB():
-            return VarDecl(Id(ctx.ID().getText()), ArrayPointerType(self.visitPrimitive_type(ctx.primitive_type())))
+            return VarDecl(ctx.ID().getText(), ArrayPointerType(self.visitPrimitive_type(ctx.primitive_type())))
         else:
-            return VarDecl(Id(ctx.ID().getText()), self.visitPrimitive_type(ctx.primitive_type()))
+            return VarDecl(ctx.ID().getText(), self.visitPrimitive_type(ctx.primitive_type()))
 
     def visitBlock_stmt(self, ctx:MCParser.Block_stmtContext):
         memBlock = []
