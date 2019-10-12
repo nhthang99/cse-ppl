@@ -6,7 +6,7 @@ class ASTGenSuite(unittest.TestCase):
     def test_var_decl1(self):
         """ Test Variable Declare """
         input = """int a,b,c[3];"""
-        expect = "Program([VarDecl(Id(a),IntType),VarDecl(Id(b),IntType),VarDecl(Id(c),ArrayType(IntType,IntLiteral(3)))])"
+        expect = "Program([VarDecl(Id(a),IntType),VarDecl(Id(b),IntType),VarDecl(Id(c),ArrayType(IntType,3))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,300))
 
     def test_var_decl2(self):
@@ -18,7 +18,7 @@ class ASTGenSuite(unittest.TestCase):
     def test_var_decl3(self):
         """ Test Variable Declare """
         input = """int a[1], b[5], c[0], d[100];"""
-        expect = "Program([VarDecl(Id(a),ArrayType(IntType,IntLiteral(1))),VarDecl(Id(b),ArrayType(IntType,IntLiteral(5))),VarDecl(Id(c),ArrayType(IntType,IntLiteral(0))),VarDecl(Id(d),ArrayType(IntType,IntLiteral(100)))])"
+        expect = "Program([VarDecl(Id(a),ArrayType(IntType,1)),VarDecl(Id(b),ArrayType(IntType,5)),VarDecl(Id(c),ArrayType(IntType,0)),VarDecl(Id(d),ArrayType(IntType,100))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,302))
 
     def test_var_decl4(self):
@@ -28,7 +28,7 @@ class ASTGenSuite(unittest.TestCase):
         float c, d, e[10];
         boolean e , a[1];
         """
-        expect = "Program([VarDecl(Id(a),ArrayType(IntType,IntLiteral(1))),VarDecl(Id(b),ArrayType(IntType,IntLiteral(5))),VarDecl(Id(c),IntType),VarDecl(Id(d),IntType),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(e),ArrayType(FloatType,IntLiteral(10))),VarDecl(Id(e),BoolType),VarDecl(Id(a),ArrayType(BoolType,IntLiteral(1)))])"
+        expect = "Program([VarDecl(Id(a),ArrayType(IntType,1)),VarDecl(Id(b),ArrayType(IntType,5)),VarDecl(Id(c),IntType),VarDecl(Id(d),IntType),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(e),ArrayType(FloatType,10)),VarDecl(Id(e),BoolType),VarDecl(Id(a),ArrayType(BoolType,1))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,303))
 
     def test_var_decl5(self):
@@ -37,7 +37,7 @@ class ASTGenSuite(unittest.TestCase):
         float c, d; int e[10];
         boolean e , a[1];
         string a, d[5]; int a; int f4;"""
-        expect = "Program([VarDecl(Id(a),ArrayType(IntType,IntLiteral(1))),VarDecl(Id(b),ArrayType(IntType,IntLiteral(5))),VarDecl(Id(c),IntType),VarDecl(Id(d),IntType),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(e),ArrayType(IntType,IntLiteral(10))),VarDecl(Id(e),BoolType),VarDecl(Id(a),ArrayType(BoolType,IntLiteral(1))),VarDecl(Id(a),StringType),VarDecl(Id(d),ArrayType(StringType,IntLiteral(5))),VarDecl(Id(a),IntType),VarDecl(Id(f4),IntType)])"
+        expect = "Program([VarDecl(Id(a),ArrayType(IntType,1)),VarDecl(Id(b),ArrayType(IntType,5)),VarDecl(Id(c),IntType),VarDecl(Id(d),IntType),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(e),ArrayType(IntType,10)),VarDecl(Id(e),BoolType),VarDecl(Id(a),ArrayType(BoolType,1)),VarDecl(Id(a),StringType),VarDecl(Id(d),ArrayType(StringType,5)),VarDecl(Id(a),IntType),VarDecl(Id(f4),IntType)])"
         self.assertTrue(TestAST.checkASTGen(input,expect,304))
 
     def test_var_decl6(self):
@@ -47,14 +47,14 @@ class ASTGenSuite(unittest.TestCase):
         boolean n,                   m,            t, abc;
         boolean abc; boolean abc_____xyz;
         """
-        expect = "Program([VarDecl(Id(a),ArrayType(IntType,IntLiteral(1))),VarDecl(Id(b),ArrayType(IntType,IntLiteral(5))),VarDecl(Id(c),IntType),VarDecl(Id(d),IntType),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(e),ArrayType(IntType,IntLiteral(10))),VarDecl(Id(a),StringType),VarDecl(Id(b),StringType),VarDecl(Id(c),StringType),VarDecl(Id(d),ArrayType(StringType,IntLiteral(5))),VarDecl(Id(o),ArrayType(StringType,IntLiteral(0))),VarDecl(Id(n),BoolType),VarDecl(Id(m),BoolType),VarDecl(Id(t),BoolType),VarDecl(Id(abc),BoolType),VarDecl(Id(abc),BoolType),VarDecl(Id(abc_____xyz),BoolType)])"
+        expect = "Program([VarDecl(Id(a),ArrayType(IntType,1)),VarDecl(Id(b),ArrayType(IntType,5)),VarDecl(Id(c),IntType),VarDecl(Id(d),IntType),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(e),ArrayType(IntType,10)),VarDecl(Id(a),StringType),VarDecl(Id(b),StringType),VarDecl(Id(c),StringType),VarDecl(Id(d),ArrayType(StringType,5)),VarDecl(Id(o),ArrayType(StringType,0)),VarDecl(Id(n),BoolType),VarDecl(Id(m),BoolType),VarDecl(Id(t),BoolType),VarDecl(Id(abc),BoolType),VarDecl(Id(abc),BoolType),VarDecl(Id(abc_____xyz),BoolType)])"
         self.assertTrue(TestAST.checkASTGen(input,expect,305))
 
     def test_var_decl7(self):
         """ Test Variable Declare """
         input = """int a; float b; string c; boolean a;
         int a[1]; float b[1]; string d[5]; boolean e[6];"""
-        expect = "Program([VarDecl(Id(a),IntType),VarDecl(Id(b),FloatType),VarDecl(Id(c),StringType),VarDecl(Id(a),BoolType),VarDecl(Id(a),ArrayType(IntType,IntLiteral(1))),VarDecl(Id(b),ArrayType(FloatType,IntLiteral(1))),VarDecl(Id(d),ArrayType(StringType,IntLiteral(5))),VarDecl(Id(e),ArrayType(BoolType,IntLiteral(6)))])"
+        expect = "Program([VarDecl(Id(a),IntType),VarDecl(Id(b),FloatType),VarDecl(Id(c),StringType),VarDecl(Id(a),BoolType),VarDecl(Id(a),ArrayType(IntType,1)),VarDecl(Id(b),ArrayType(FloatType,1)),VarDecl(Id(d),ArrayType(StringType,5)),VarDecl(Id(e),ArrayType(BoolType,6))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,306))
 
     def test_var_decl8(self):
@@ -66,7 +66,7 @@ class ASTGenSuite(unittest.TestCase):
         float b; string cbc, ___abc; boolean abc, xyz; string a[1];
 
         int a[1]; float b[1];           int a;"""
-        expect = "Program([VarDecl(Id(a),IntType),VarDecl(Id(d),ArrayType(StringType,IntLiteral(5))),VarDecl(Id(e),ArrayType(BoolType,IntLiteral(6))),VarDecl(Id(b),FloatType),VarDecl(Id(cbc),StringType),VarDecl(Id(___abc),StringType),VarDecl(Id(abc),BoolType),VarDecl(Id(xyz),BoolType),VarDecl(Id(a),ArrayType(StringType,IntLiteral(1))),VarDecl(Id(a),ArrayType(IntType,IntLiteral(1))),VarDecl(Id(b),ArrayType(FloatType,IntLiteral(1))),VarDecl(Id(a),IntType)])"
+        expect = "Program([VarDecl(Id(a),IntType),VarDecl(Id(d),ArrayType(StringType,5)),VarDecl(Id(e),ArrayType(BoolType,6)),VarDecl(Id(b),FloatType),VarDecl(Id(cbc),StringType),VarDecl(Id(___abc),StringType),VarDecl(Id(abc),BoolType),VarDecl(Id(xyz),BoolType),VarDecl(Id(a),ArrayType(StringType,1)),VarDecl(Id(a),ArrayType(IntType,1)),VarDecl(Id(b),ArrayType(FloatType,1)),VarDecl(Id(a),IntType)])"
         self.assertTrue(TestAST.checkASTGen(input,expect,307))
 
     def test_var_decl9(self):
@@ -77,7 +77,7 @@ class ASTGenSuite(unittest.TestCase):
         float a,b, c[10], c[10000000000], d[999999999];
         boolean abc[1000], a; int abc, m[199999999];
         """
-        expect = "Program([VarDecl(Id(a),IntType),VarDecl(Id(a),StringType),VarDecl(Id(__a),ArrayType(FloatType,IntLiteral(1))),VarDecl(Id(m),ArrayType(BoolType,IntLiteral(0))),VarDecl(Id(abc),ArrayType(StringType,IntLiteral(2))),VarDecl(Id(abc),StringType),VarDecl(Id(ac),StringType),VarDecl(Id(a),FloatType),VarDecl(Id(b),FloatType),VarDecl(Id(c),ArrayType(FloatType,IntLiteral(10))),VarDecl(Id(c),ArrayType(FloatType,IntLiteral(10000000000))),VarDecl(Id(d),ArrayType(FloatType,IntLiteral(999999999))),VarDecl(Id(abc),ArrayType(BoolType,IntLiteral(1000))),VarDecl(Id(a),BoolType),VarDecl(Id(abc),IntType),VarDecl(Id(m),ArrayType(IntType,IntLiteral(199999999)))])"
+        expect = "Program([VarDecl(Id(a),IntType),VarDecl(Id(a),StringType),VarDecl(Id(__a),ArrayType(FloatType,1)),VarDecl(Id(m),ArrayType(BoolType,0)),VarDecl(Id(abc),ArrayType(StringType,2)),VarDecl(Id(abc),StringType),VarDecl(Id(ac),StringType),VarDecl(Id(a),FloatType),VarDecl(Id(b),FloatType),VarDecl(Id(c),ArrayType(FloatType,10)),VarDecl(Id(c),ArrayType(FloatType,10000000000)),VarDecl(Id(d),ArrayType(FloatType,999999999)),VarDecl(Id(abc),ArrayType(BoolType,1000)),VarDecl(Id(a),BoolType),VarDecl(Id(abc),IntType),VarDecl(Id(m),ArrayType(IntType,199999999))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,308))
 
     def test_var_decl10(self):
@@ -85,7 +85,7 @@ class ASTGenSuite(unittest.TestCase):
         input = """int a[5],b; float b[5]; string b[1]; boolean m[100];
         float a,b,c,d,f,g,h;                    float f1,f2,f3[10], f[14];
         string m[10]; float b[10];"""
-        expect = "Program([VarDecl(Id(a),ArrayType(IntType,IntLiteral(5))),VarDecl(Id(b),IntType),VarDecl(Id(b),ArrayType(FloatType,IntLiteral(5))),VarDecl(Id(b),ArrayType(StringType,IntLiteral(1))),VarDecl(Id(m),ArrayType(BoolType,IntLiteral(100))),VarDecl(Id(a),FloatType),VarDecl(Id(b),FloatType),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(f),FloatType),VarDecl(Id(g),FloatType),VarDecl(Id(h),FloatType),VarDecl(Id(f1),FloatType),VarDecl(Id(f2),FloatType),VarDecl(Id(f3),ArrayType(FloatType,IntLiteral(10))),VarDecl(Id(f),ArrayType(FloatType,IntLiteral(14))),VarDecl(Id(m),ArrayType(StringType,IntLiteral(10))),VarDecl(Id(b),ArrayType(FloatType,IntLiteral(10)))])"
+        expect = "Program([VarDecl(Id(a),ArrayType(IntType,5)),VarDecl(Id(b),IntType),VarDecl(Id(b),ArrayType(FloatType,5)),VarDecl(Id(b),ArrayType(StringType,1)),VarDecl(Id(m),ArrayType(BoolType,100)),VarDecl(Id(a),FloatType),VarDecl(Id(b),FloatType),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(f),FloatType),VarDecl(Id(g),FloatType),VarDecl(Id(h),FloatType),VarDecl(Id(f1),FloatType),VarDecl(Id(f2),FloatType),VarDecl(Id(f3),ArrayType(FloatType,10)),VarDecl(Id(f),ArrayType(FloatType,14)),VarDecl(Id(m),ArrayType(StringType,10)),VarDecl(Id(b),ArrayType(FloatType,10))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,309))
 
     def test_non_body_func_decl1(self):
@@ -190,7 +190,7 @@ class ASTGenSuite(unittest.TestCase):
         boolean a[1000];
         float a;
         }"""
-        expect = "Program([FuncDecl(Id(main),[VarDecl(Id(b),ArrayTypePointer(FloatType)),VarDecl(Id(a),StringType)],ArrayTypePointer(IntType),Block([VarDecl(Id(a),ArrayType(IntType,IntLiteral(10))),VarDecl(Id(c),StringType),VarDecl(Id(a),ArrayType(BoolType,IntLiteral(1000))),VarDecl(Id(a),FloatType)]))])"
+        expect = "Program([FuncDecl(Id(main),[VarDecl(Id(b),ArrayTypePointer(FloatType)),VarDecl(Id(a),StringType)],ArrayTypePointer(IntType),Block([VarDecl(Id(a),ArrayType(IntType,10)),VarDecl(Id(c),StringType),VarDecl(Id(a),ArrayType(BoolType,1000)),VarDecl(Id(a),FloatType)]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,321))
 
     def test_func_decl_body_vardecl3(self):
@@ -212,7 +212,7 @@ class ASTGenSuite(unittest.TestCase):
             string c[15];
             boolean d[20];
         }"""
-        expect = "Program([FuncDecl(Id(main),[VarDecl(Id(b),ArrayTypePointer(FloatType)),VarDecl(Id(a),StringType)],ArrayTypePointer(IntType),Block([VarDecl(Id(a),ArrayType(IntType,IntLiteral(5))),VarDecl(Id(b),ArrayType(FloatType,IntLiteral(10))),VarDecl(Id(c),ArrayType(StringType,IntLiteral(15))),VarDecl(Id(d),ArrayType(BoolType,IntLiteral(20)))]))])"
+        expect = "Program([FuncDecl(Id(main),[VarDecl(Id(b),ArrayTypePointer(FloatType)),VarDecl(Id(a),StringType)],ArrayTypePointer(IntType),Block([VarDecl(Id(a),ArrayType(IntType,5)),VarDecl(Id(b),ArrayType(FloatType,10)),VarDecl(Id(c),ArrayType(StringType,15)),VarDecl(Id(d),ArrayType(BoolType,20))]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,323))
 
     def test_func_decl_body_vardecl5(self):
@@ -223,7 +223,7 @@ class ASTGenSuite(unittest.TestCase):
             string a,b,c; string a[20];
             boolean a; float b; boolean a;
         }"""
-        expect = "Program([FuncDecl(Id(main),[VarDecl(Id(b),ArrayTypePointer(FloatType)),VarDecl(Id(a),StringType)],ArrayTypePointer(IntType),Block([VarDecl(Id(a),IntType),VarDecl(Id(a),ArrayType(IntType,IntLiteral(5))),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(e),ArrayType(FloatType,IntLiteral(10))),VarDecl(Id(f),ArrayType(FloatType,IntLiteral(15))),VarDecl(Id(a),IntType),VarDecl(Id(b),IntType),VarDecl(Id(c),IntType),VarDecl(Id(a),StringType),VarDecl(Id(b),StringType),VarDecl(Id(c),StringType),VarDecl(Id(a),ArrayType(StringType,IntLiteral(20))),VarDecl(Id(a),BoolType),VarDecl(Id(b),FloatType),VarDecl(Id(a),BoolType)]))])"
+        expect = "Program([FuncDecl(Id(main),[VarDecl(Id(b),ArrayTypePointer(FloatType)),VarDecl(Id(a),StringType)],ArrayTypePointer(IntType),Block([VarDecl(Id(a),IntType),VarDecl(Id(a),ArrayType(IntType,5)),VarDecl(Id(c),FloatType),VarDecl(Id(d),FloatType),VarDecl(Id(e),ArrayType(FloatType,10)),VarDecl(Id(f),ArrayType(FloatType,15)),VarDecl(Id(a),IntType),VarDecl(Id(b),IntType),VarDecl(Id(c),IntType),VarDecl(Id(a),StringType),VarDecl(Id(b),StringType),VarDecl(Id(c),StringType),VarDecl(Id(a),ArrayType(StringType,20)),VarDecl(Id(a),BoolType),VarDecl(Id(b),FloatType),VarDecl(Id(a),BoolType)]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,324))
 
     def test_if_stmt1(self):
@@ -378,7 +378,7 @@ class ASTGenSuite(unittest.TestCase):
                 }
             }
         }"""
-        expect = "Program([FuncDecl(Id(main),[],VoidType,Block([VarDecl(Id(a),IntType),BinaryOp(=,Id(a),BooleanLiteral(true)),VarDecl(Id(b),StringType),VarDecl(Id(c),FloatType),If(Id(a),Block([BinaryOp(=,Id(b),Id(a)),BinaryOp(=,Id(c),Id(a)),If(BinaryOp(!=,Id(c),Id(a)),Block([BinaryOp(=,Id(c),Id(a)),BinaryOp(=,Id(b),Id(c))]),Block([If(BinaryOp(==,Id(c),Id(a)),Block([VarDecl(Id(d),BoolType),BinaryOp(=,Id(d),Id(e)),BinaryOp(=,Id(d),Id(b))]),Block([If(UnaryOp(!,Id(d)),Block([VarDecl(Id(e),ArrayType(IntType,IntLiteral(0))),VarDecl(Id(y),FloatType)]))]))]))]),Block([If(UnaryOp(!,Id(a)),Block([VarDecl(Id(d),StringType),BinaryOp(=,Id(d),Id(a))]))]))]))])"
+        expect = "Program([FuncDecl(Id(main),[],VoidType,Block([VarDecl(Id(a),IntType),BinaryOp(=,Id(a),BooleanLiteral(true)),VarDecl(Id(b),StringType),VarDecl(Id(c),FloatType),If(Id(a),Block([BinaryOp(=,Id(b),Id(a)),BinaryOp(=,Id(c),Id(a)),If(BinaryOp(!=,Id(c),Id(a)),Block([BinaryOp(=,Id(c),Id(a)),BinaryOp(=,Id(b),Id(c))]),Block([If(BinaryOp(==,Id(c),Id(a)),Block([VarDecl(Id(d),BoolType),BinaryOp(=,Id(d),Id(e)),BinaryOp(=,Id(d),Id(b))]),Block([If(UnaryOp(!,Id(d)),Block([VarDecl(Id(e),ArrayType(IntType,0)),VarDecl(Id(y),FloatType)]))]))]))]),Block([If(UnaryOp(!,Id(a)),Block([VarDecl(Id(d),StringType),BinaryOp(=,Id(d),Id(a))]))]))]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,333))
 
     def test_if_stmt10(self):
@@ -856,7 +856,7 @@ class ASTGenSuite(unittest.TestCase):
             }
             return a;
         }"""
-        expect = "Program([FuncDecl(Id(main),[],VoidType,Block([VarDecl(Id(a),ArrayType(IntType,IntLiteral(10))),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(10));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));Block([BinaryOp(=,ArrayCell(Id(a),Id(i)),IntLiteral(1))])),Return(Id(a))]))])"
+        expect = "Program([FuncDecl(Id(main),[],VoidType,Block([VarDecl(Id(a),ArrayType(IntType,10)),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(10));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));Block([BinaryOp(=,ArrayCell(Id(a),Id(i)),IntLiteral(1))])),Return(Id(a))]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,362))
 
     def test_return_primitivetype_stmt4(self):
@@ -875,7 +875,7 @@ class ASTGenSuite(unittest.TestCase):
                 b[i] = 1;
             return b;
         }"""
-        expect = "Program([FuncDecl(Id(main),[],ArrayTypePointer(IntType),Block([VarDecl(Id(a),ArrayType(IntType,IntLiteral(10))),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(10));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));Block([BinaryOp(=,ArrayCell(Id(a),Id(i)),IntLiteral(1))])),Return(Id(a))])),FuncDecl(Id(main),[],ArrayTypePointer(FloatType),Block([VarDecl(Id(b),ArrayType(FloatType,IntLiteral(5))),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(5));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));BinaryOp(=,ArrayCell(Id(b),Id(i)),IntLiteral(1))),Return(Id(b))]))])"
+        expect = "Program([FuncDecl(Id(main),[],ArrayTypePointer(IntType),Block([VarDecl(Id(a),ArrayType(IntType,10)),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(10));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));Block([BinaryOp(=,ArrayCell(Id(a),Id(i)),IntLiteral(1))])),Return(Id(a))])),FuncDecl(Id(main),[],ArrayTypePointer(FloatType),Block([VarDecl(Id(b),ArrayType(FloatType,5)),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(5));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));BinaryOp(=,ArrayCell(Id(b),Id(i)),IntLiteral(1))),Return(Id(b))]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,363))
 
     def test_return_primitivetype_stmt5(self):
@@ -898,7 +898,7 @@ class ASTGenSuite(unittest.TestCase):
             }
             return a;
         }"""
-        expect = "Program([FuncDecl(Id(main),[],ArrayTypePointer(StringType),Block([VarDecl(Id(a),ArrayType(StringType,IntLiteral(10))),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(10));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));Block([BinaryOp(=,ArrayCell(Id(a),Id(i)),CallExpr(Id(str),[Id(i)]))])),Return(Id(a))])),FuncDecl(Id(main),[],ArrayTypePointer(BoolType),Block([VarDecl(Id(a),ArrayType(BoolType,IntLiteral(10))),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(10));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));Block([If(BinaryOp(==,BinaryOp(%,Id(i),IntLiteral(2)),IntLiteral(0)),BinaryOp(=,ArrayCell(Id(a),Id(i)),BooleanLiteral(true)),BinaryOp(=,ArrayCell(Id(a),Id(i)),BooleanLiteral(false)))])),Return(Id(a))]))])"
+        expect = "Program([FuncDecl(Id(main),[],ArrayTypePointer(StringType),Block([VarDecl(Id(a),ArrayType(StringType,10)),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(10));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));Block([BinaryOp(=,ArrayCell(Id(a),Id(i)),CallExpr(Id(str),[Id(i)]))])),Return(Id(a))])),FuncDecl(Id(main),[],ArrayTypePointer(BoolType),Block([VarDecl(Id(a),ArrayType(BoolType,10)),For(BinaryOp(=,Id(i),IntLiteral(0));BinaryOp(<,Id(i),IntLiteral(10));BinaryOp(=,Id(i),BinaryOp(+,Id(i),IntLiteral(1)));Block([If(BinaryOp(==,BinaryOp(%,Id(i),IntLiteral(2)),IntLiteral(0)),BinaryOp(=,ArrayCell(Id(a),Id(i)),BooleanLiteral(true)),BinaryOp(=,ArrayCell(Id(a),Id(i)),BooleanLiteral(false)))])),Return(Id(a))]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,364))
 
     def test_call_func1(self):
@@ -1003,7 +1003,7 @@ class ASTGenSuite(unittest.TestCase):
             if (true) return a;
             else return b;
         }"""
-        expect = "Program([FuncDecl(Id(main),[],ArrayTypePointer(IntType),Block([VarDecl(Id(a),ArrayType(IntType,IntLiteral(1))),If(BooleanLiteral(true),Return(Id(a)),Return(Id(b)))]))])"
+        expect = "Program([FuncDecl(Id(main),[],ArrayTypePointer(IntType),Block([VarDecl(Id(a),ArrayType(IntType,1)),If(BooleanLiteral(true),Return(Id(a)),Return(Id(b)))]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,374))
 
     def test_expression6(self):

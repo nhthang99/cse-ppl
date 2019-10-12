@@ -32,7 +32,7 @@ class ASTGeneration(MCVisitor):
 
     def visitId_or_arr(self, ctx:MCParser.Id_or_arrContext):
         if ctx.INTLIT():
-            return (IntLiteral(int(ctx.INTLIT().getText())), Id(ctx.ID().getText()))
+            return (int(ctx.INTLIT().getText()), Id(ctx.ID().getText()))
         else:
             return Id(ctx.ID().getText())
             

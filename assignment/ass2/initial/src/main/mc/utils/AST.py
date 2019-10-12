@@ -98,7 +98,7 @@ class VoidType(Type):
     def accept(self, v, param):
         return v.visitVoidType(self, param)
 
-class ArrayType(Type):  
+class ArrayType(Type):
     #dimen:int
     #eleType:Type
     def __init__(self, dimen, eleType):
