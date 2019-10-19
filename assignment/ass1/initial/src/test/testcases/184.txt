@@ -1,5 +1,6 @@
-
-// ],],* ae0bc not mod,return,,
-{} < + Qefbe and ; of o366c false array else < > and for J4981 : <> return = for if ..
-(* of break h80bb,or,bfa18 ) W6bd3,float,<*)
-            
+void foo() {
+for ( x = 1 ; x < 3 ; x = x + 1 ) {
+    a = a + 2 ;
+}
+break ;
+}

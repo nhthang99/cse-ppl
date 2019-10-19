@@ -1,5 +1,6 @@
-
-// and,<=,return v415f ( division,and,or
-+ , or b328b = <= ) G39be ? else break / * = [ Qd057 ] float[] break * >= do >
-(* end , b60f1,>=,dd28e , dd3ab,string,of*)
-            
+void foo() {
+for ( x = 1 ; x < 3 ; x = x + 1 ) {
+    a = a + 2 ;
+}
+break ;
+}

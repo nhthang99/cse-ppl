@@ -1,1 +1,1 @@
-is,multiple,lines,<EOF>
+float,a,;,while,(,a,<,10,),{,a,=,a,-,1,;,},<EOF>

@@ -1,1 +1,1 @@
-thang__hip_hop,thang___dep________trai,thang,Error Token #
+Compiler,Escape\n,\f\r\n\t\"\\,<EOF>

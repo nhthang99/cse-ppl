@@ -40,6 +40,10 @@ def main(argv):
             from ASTGenSuite1 import ASTGenSuite
             suite = unittest.makeSuite(ASTGenSuite)
             test(suite)
+        elif argv[1] == 'ASTGenSuite2':
+            from ASTGenSuite2 import ASTGenSuite
+            suite = unittest.makeSuite(ASTGenSuite)
+            test(suite)
         else:
             printUsage()
     else:
