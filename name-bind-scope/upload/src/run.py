@@ -1,5 +1,4 @@
 import sys,os
-
 import platform
 import subprocess
 import unittest
@@ -8,10 +7,11 @@ import shutil
 
 ANTLR_JAR = os.environ.get('ANTLR_JAR')
 TARGET = '../target/main/mc/parser' if os.name == 'posix' else os.path.normpath('../target/')
-locpath = ['test','./main/mc/parser/','./main/mc/astgen/','./main/mc/utils/','./main/mc/checker']
+locpath = ['test', './main/mc/parser/','./main/mc/astgen/','./main/mc/utils/','./main/mc/checker']
 for p in locpath:
     if not p in sys.path:
         sys.path.append(p)
+print(sys.path)
 def main(argv):
     global ANTLR_JAR, TARGET
     if len(argv) < 1:
