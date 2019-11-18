@@ -1,0 +1,7 @@
+
+        int main(){
+            boolean is_true;
+            boolean a;
+            is_true = a > 14.0;
+        }
+        

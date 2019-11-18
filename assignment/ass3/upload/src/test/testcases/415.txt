@@ -1,0 +1,8 @@
+
+        float main(){
+            int a;
+            a = a + 1;
+            a = a - b;
+            a = a + a * c;
+        }
+        

@@ -1,0 +1,1 @@
+   income+=salary.12*12+month#3

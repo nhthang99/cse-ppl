@@ -1,0 +1,6 @@
+
+        void main(){
+            boolean a;
+            a = !4.5e10000;
+        }
+        

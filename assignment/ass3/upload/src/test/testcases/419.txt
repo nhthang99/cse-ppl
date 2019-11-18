@@ -1,0 +1,8 @@
+
+        int main(){
+            float a;
+            int b;
+            a = 1;
+            b = 1.000;
+        }
+        

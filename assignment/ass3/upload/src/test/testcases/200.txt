@@ -1,0 +1,7 @@
+
+int [] foo ( int b[] ) {
+int a[ 1 ] ;
+if ( ) return a ;
+else return b ;
+}
+            

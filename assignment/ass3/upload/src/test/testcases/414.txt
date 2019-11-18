@@ -1,0 +1,7 @@
+
+        int a;
+        void main(){
+            a = a + 1;
+            a = a - b;
+        }
+        

@@ -1,0 +1,6 @@
+
+        int main(){
+            boolean is_true;
+            is_true = 14 == 14.0;
+        }
+        

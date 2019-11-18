@@ -1,0 +1,359 @@
+INFO  time: initialize in 0.78s
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Kangaroo.scala
+INFO  no build target: using presentation compiler with only scala-library
+Sep 06, 2019 3:19:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2
+Sep 06, 2019 3:19:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 6
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Modifier.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Solution.scala
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Solution.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Kagaroo.scala
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Kagaroo.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala, 44, 44, 59)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala, 44, 44, 52)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala, 44, 44, 57)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala, 44, 44, 57)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala, 44, 44, 57)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala, 44, 44, 57)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Demo.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Demo.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Kagaroo.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Kagaroo.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Kagaroo.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/Kagaroo.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+Sep 06, 2019 4:01:58 PM scala.meta.internal.pc.CompletionProvider expected$1
+WARNING: String index out of range: -1
+INFO  shutting down Metals
+INFO  time: initialize in 0.66s
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+INFO  no build target: using presentation compiler with only scala-library
+Sep 06, 2019 7:10:20 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+Sep 06, 2019 7:12:26 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 170
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+Sep 06, 2019 7:19:16 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 461
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BetweenTwoSets.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 68, 68, 83)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 68, 68, 76)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 68, 68, 81)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 68, 68, 81)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 68, 68, 81)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 68, 68, 81)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 252, 252, 267)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 252, 252, 260)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 252, 252, 262)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 252, 252, 262)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 252, 252, 262)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+Sep 06, 2019 7:39:52 PM scala.meta.internal.pc.Completions completionPosition
+SEVERE: null
+java.lang.NullPointerException
+	at scala.meta.internal.pc.Completions$CompletionPosition$Override.<init>(Completions.scala:948)
+	at scala.meta.internal.pc.Completions.completionPositionUnsafe(Completions.scala:467)
+	at scala.meta.internal.pc.Completions.completionPositionUnsafe$(Completions.scala:387)
+	at scala.meta.internal.pc.MetalsGlobal.completionPositionUnsafe(MetalsGlobal.scala:23)
+	at scala.meta.internal.pc.Completions.completionPosition(Completions.scala:379)
+	at scala.meta.internal.pc.Completions.completionPosition$(Completions.scala:364)
+	at scala.meta.internal.pc.MetalsGlobal.completionPosition(MetalsGlobal.scala:23)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:402)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:47)
+	at scala.meta.internal.pc.ScalaPresentationCompiler.$anonfun$complete$1(ScalaPresentationCompiler.scala:87)
+	at scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:120)
+	at scala.meta.internal.pc.CompilerAccess.$anonfun$withInterruptableCompiler$1(CompilerAccess.scala:77)
+	at scala.meta.internal.pc.CompilerAccess.$anonfun$onCompilerJobQueue$1(CompilerAccess.scala:192)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:73)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+Sep 06, 2019 7:39:52 PM scala.meta.internal.pc.Completions completionPosition
+SEVERE: null
+java.lang.NullPointerException
+	at scala.meta.internal.pc.Completions$CompletionPosition$Override.<init>(Completions.scala:948)
+	at scala.meta.internal.pc.Completions.completionPositionUnsafe(Completions.scala:467)
+	at scala.meta.internal.pc.Completions.completionPositionUnsafe$(Completions.scala:387)
+	at scala.meta.internal.pc.MetalsGlobal.completionPositionUnsafe(MetalsGlobal.scala:23)
+	at scala.meta.internal.pc.Completions.completionPosition(Completions.scala:379)
+	at scala.meta.internal.pc.Completions.completionPosition$(Completions.scala:364)
+	at scala.meta.internal.pc.MetalsGlobal.completionPosition(MetalsGlobal.scala:23)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:402)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:47)
+	at scala.meta.internal.pc.ScalaPresentationCompiler.$anonfun$complete$1(ScalaPresentationCompiler.scala:87)
+	at scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:120)
+	at scala.meta.internal.pc.CompilerAccess.$anonfun$withInterruptableCompiler$1(CompilerAccess.scala:77)
+	at scala.meta.internal.pc.CompilerAccess.$anonfun$onCompilerJobQueue$1(CompilerAccess.scala:192)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:73)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+Sep 06, 2019 7:39:53 PM scala.meta.internal.pc.Completions completionPosition
+SEVERE: null
+java.lang.NullPointerException
+	at scala.meta.internal.pc.Completions$CompletionPosition$Override.<init>(Completions.scala:948)
+	at scala.meta.internal.pc.Completions.completionPositionUnsafe(Completions.scala:467)
+	at scala.meta.internal.pc.Completions.completionPositionUnsafe$(Completions.scala:387)
+	at scala.meta.internal.pc.MetalsGlobal.completionPositionUnsafe(MetalsGlobal.scala:23)
+	at scala.meta.internal.pc.Completions.completionPosition(Completions.scala:379)
+	at scala.meta.internal.pc.Completions.completionPosition$(Completions.scala:364)
+	at scala.meta.internal.pc.MetalsGlobal.completionPosition(MetalsGlobal.scala:23)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:402)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:47)
+	at scala.meta.internal.pc.ScalaPresentationCompiler.$anonfun$complete$1(ScalaPresentationCompiler.scala:87)
+	at scala.meta.internal.pc.CompilerAccess.withSharedCompiler(CompilerAccess.scala:120)
+	at scala.meta.internal.pc.CompilerAccess.$anonfun$withInterruptableCompiler$1(CompilerAccess.scala:77)
+	at scala.meta.internal.pc.CompilerAccess.$anonfun$onCompilerJobQueue$1(CompilerAccess.scala:192)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:73)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build tool detected in workspace '/home/thang/ppl/oop-fp/scala-tutorial'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 442, 442, 457)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 442, 442, 450)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 442, 442, 451)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 442, 442, 452)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 442, 442, 452)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 335, 335, 345)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BreakTheScore.scala, 335, 335, 345)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 46, 46, 61)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 46, 46, 54)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 46, 46, 54)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 46, 46, 59)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 46, 46, 59)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 46, 46, 59)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 327, 327, 342)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 327, 327, 335)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 327, 327, 336)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 327, 327, 337)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 327, 327, 337)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 327, 327, 337)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala, 327, 327, 337)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/BirthdayChocolate.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+Sep 06, 2019 8:08:02 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3381
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 45, 45, 60)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 45, 45, 53)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 45, 45, 58)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 45, 45, 58)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 45, 45, 58)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 282, 282, 297)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 282, 282, 290)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 282, 282, 291)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 282, 282, 292)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 282, 282, 292)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 282, 282, 292)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala, 282, 282, 292)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/DivisibleSumPair.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 42, 42, 57)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 42, 42, 50)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 42, 42, 53)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 42, 42, 55)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 42, 42, 55)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 42, 42, 55)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 251, 251, 266)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[<error>]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 251, 251, 259)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 251, 251, 264)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 251, 251, 264)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 251, 251, 264)
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[String]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 251, 251, 264)
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+Sep 06, 2019 8:51:13 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 5928
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+Sep 06, 2019 9:10:11 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: null
+java.lang.NullPointerException
+	at scala.meta.internal.pc.HoverProvider.seenFromType(HoverProvider.scala:106)
+	at scala.meta.internal.pc.HoverProvider.hover(HoverProvider.scala:42)
+
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+WARN  no build target: /home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala
+something's wrong: no file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala in Array[Int]RangePosition(file:///home/thang/ppl/oop-fp/scala-tutorial/MigratoryBird.scala, 320, 320, 330)
+INFO  shutting down Metals
