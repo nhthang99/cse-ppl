@@ -96,11 +96,7 @@ class TestAST:
         parser = MCParser(tokens)
         tree = parser.program()
         asttree = ASTGeneration().visit(tree)
-<<<<<<< HEAD
-        dest.write(str(asttree))
-=======
         #dest.write(str(asttree))
->>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
         dest.close()
         dest = open("./test/solutions/" + str(num) + ".txt","r")
         line = dest.read()
@@ -128,11 +124,7 @@ class TestChecker:
         checker = StaticChecker(asttree)
         try:
             res = checker.check()
-<<<<<<< HEAD
             # dest.write(str(list(res)))
-=======
-            #dest.write(str(list(res)))
->>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
         except StaticError as e:
             dest.write(str(e))
         finally:

@@ -58,16 +58,11 @@ class StaticChecker(BaseVisitor,Utils):
         # Check Redeclare
         for x in ast.decl:
             if isinstance(x, VarDecl):
-<<<<<<< HEAD
                 global_envi.append(self.visit(x, global_envi))
-=======
-                global_envi.append(self.visit(x, (global_envi, False)))
->>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
             elif isinstance(x, FuncDecl):
                 global_envi.append(self.visit(x, global_envi))
 
     def visitVarDecl(self, ast, envi):
-<<<<<<< HEAD
         is_redeclare = self.lookup(ast.variable, envi, lambda x: x.name)
         if is_redeclare:
             raise Redeclared(Variable(), ast.variable)
@@ -89,15 +84,35 @@ class StaticChecker(BaseVisitor,Utils):
                 local_envi.append(self.visit(param, local_envi))
         
         return_type = self.visit(ast.returnType, None)
-        for stmt in ast.body.member:
+        is_return = self.visit(ast.body, (global_envi, local_envi, return_type))
+        # for stmt in ast.body.member:
+        #     if isinstance(stmt, VarDecl):
+        #         local_envi.append(self.visit(stmt, local_envi))
+        #     elif isinstance(stmt, Expr):
+        #         self.visit(stmt, global_envi + local_envi)
+        #     elif isinstance(stmt, Stmt):
+        #         is_in_loop = False
+        #         is_return = self.visit(stmt, (global_envi + local_envi, is_in_loop, return_type))
+
+        if not is_return and not isinstance(return_type, VoidType):
+            raise FunctionNotReturn(ast.name.name)
+
+        return Symbol(ast.name.name, MType([para.variable for para in ast.param], return_type))
+
+    def visitBlock(self, ast, c):
+        global_envi = c[0]
+        local_envi = c[1]
+        return_type = c[2]
+        is_return = False
+        for stmt in ast.member:
             if isinstance(stmt, VarDecl):
                 local_envi.append(self.visit(stmt, local_envi))
             elif isinstance(stmt, Expr):
                 self.visit(stmt, global_envi + local_envi)
             elif isinstance(stmt, Stmt):
-                self.visit(stmt, None)
-
-        return Symbol(ast.name.name, MType([para.variable for para in ast.param], return_type))
+                is_in_loop = False
+                is_return = self.visit(stmt, (global_envi + local_envi, is_in_loop, return_type))
+        return is_return
     
     def visitUnaryOp(self, ast, c):
         expr = self.visit(ast.body, c)
@@ -167,9 +182,27 @@ class StaticChecker(BaseVisitor,Utils):
 
 
     def visitIf(self, ast, c):
-        expr_type = self.visit(ast.expr, c[0])
+        envi = c[0]
+        expr_type = self.visit(ast.expr, envi)
         if not isinstance(expr_type, BoolType):
             raise TypeMismatchInStatement(ast)
+
+        is_return_if = False
+        is_return_else = False
+
+        if isinstance(ast.thenStmt, (VarDecl, Expr)):
+            return False
+        else:
+            is_return_if = self.visit(ast.thenStmt, c)
+
+        if ast.elseStmt:
+            if isinstance(ast.elseStmt, (VarDecl, Expr)):
+                return False
+            else:
+                is_return_else = self.visit(ast.elseStmt, c)
+            return is_return_if and is_return_else
+        else:
+            return is_return_if
 
     def visitDowhile(self, ast, c):
         expr_type = self.visit(ast.exp, c[0])
@@ -177,23 +210,47 @@ class StaticChecker(BaseVisitor,Utils):
             raise TypeMismatchInStatement(ast)
     
     def visitFor(self, ast, c):
-        expr1_type = self.visit(ast.expr1, c[0])
-        expr2_type = self.visit(ast.expr2, c[0])
-        expr3_type = self.visit(ast.expr3, c[0])
+        envi = c[0]
+        expr1_type = self.visit(ast.expr1, envi)
+        expr2_type = self.visit(ast.expr2, envi)
+        expr3_type = self.visit(ast.expr3, envi)
 
         match = isinstance(expr1_type, IntType) and isinstance(expr2_type, BoolType) and isinstance(expr3_type, IntType)
         if not match:
             raise TypeMismatchInStatement(ast)
 
     def visitReturn(self, ast, c):
-        return_type = c[1]
+        return_type = c[2]
         if not ast.expr:
             if not isinstance(return_type, VoidType):
                 raise TypeMismatchInStatement(ast)
         elif isinstance(return_type, VoidType):
             raise TypeMismatchInStatement(ast)
         else:
-            pass
+            envi = c[0]
+            rlt_expr = self.visit(ast.expr, envi)
+            if isinstance(return_type, ArrayPointerType):
+                if isinstance(rlt_expr, (ArrayPointerType, ArrayType)):
+                    if not isinstance(rlt_expr.eleType, type(return_type.eleType)):
+                        raise TypeMismatchInStatement(ast)
+                else:
+                    raise TypeMismatchInStatement(ast)
+            elif isinstance(return_type, FloatType):
+                if not isinstance(rlt_expr, (IntType, FloatType)):
+                    raise TypeMismatchInStatement(ast)
+            elif not isinstance(rlt_expr, type(return_type)):
+                raise TypeMismatchInStatement(ast)
+        return True # function have returned
+
+    def visitBreak(self,ast,c):
+        is_in_loop = c[1]
+        if not is_in_loop:
+            raise BreakNotInLoop()
+
+    def visitContinue(self,ast,c):
+        is_in_loop = c[1]
+        if not is_in_loop:
+            raise ContinueNotInLoop()
 
     def visitIntType(self,ast, c):
         return IntType()
@@ -230,26 +287,3 @@ class StaticChecker(BaseVisitor,Utils):
     def visitBooleanLiteral(self, ast, c):
         return BoolType()
     
-=======
-        sb = Symbol(ast.variable, MType(None, ast.varType))
-        name_global_envi_lst = (x.name for x in envi[0])
-        if sb.name in name_global_envi_lst:
-            is_param = envi[1]
-            if is_param:
-                raise Redeclared(Parameter(), sb.name)
-            else:
-                raise Redeclared(Variable(), sb.name)
-        else:
-            return sb
-    
-    def visitFuncDecl(self, ast, global_envi):
-        sb = Symbol(ast.name.name, MType([para.variable for para in ast.param], ast.returnType))
-        name_global_envi_lst = (x.name for x in global_envi)
-        if sb.name in name_global_envi_lst:
-            raise Redeclared(Function(), sb.name)
-        else:
-            local_envi = []
-            for param in ast.param:
-                local_envi.append(self.visit(param, (local_envi, True)))
-            return sb
->>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144

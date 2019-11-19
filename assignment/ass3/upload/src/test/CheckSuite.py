@@ -6,11 +6,7 @@ class CheckSuite(unittest.TestCase):
     def test_main_func_defined(self):
         """ Main Function Defined """
         input = Program([
-<<<<<<< HEAD
                 FuncDecl(Id("main"), [], VoidType(), Block([]))
-=======
-                FuncDecl(Id("main"), [], VoidType(), Block([])),
->>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
                 ])
         expect = ""
         self.assertTrue(TestChecker.test(input,expect,400))
@@ -58,7 +54,6 @@ class CheckSuite(unittest.TestCase):
             FuncDecl(Id("main"), [VarDecl("a", IntType()), VarDecl("a", IntType())], VoidType(), Block([])),
             ])
         expect = "Redeclared Parameter: a"
-<<<<<<< HEAD
         self.assertTrue(TestChecker.test(input,expect,405))
 
     def test_1(self):
@@ -313,7 +308,49 @@ class CheckSuite(unittest.TestCase):
         """
         expect = "Type Mismatch In Expression: BinaryOp(=,Id(c),BinaryOp(+,BinaryOp(+,FloatLiteral(1.0),Id(a)),Id(b)))"
         self.assertTrue(TestChecker.test(input,expect,428))
+
+    def test_func_not_return1(self):
+        input = """
+        int main(){
+        }
+        """
+        expect = "Function main Not Return "
+        self.assertTrue(TestChecker.test(input,expect,429))
     
-=======
-        self.assertTrue(TestChecker.test(input,expect,405))
->>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
+    def test_func_not_return2(self):
+        input = """
+        int main(){
+            int a;
+            int b;
+            int c;
+            a = 5;
+            c = 1 + a + b;
+            return;
+        }
+        """
+        expect = "Type Mismatch In Statement: Return()"
+        self.assertTrue(TestChecker.test(input,expect,430))
+    
+    def test_func_not_return_in_ifstmt1(self):
+        input = """
+        int main(){
+            if (true)
+                return 1;
+            else
+                a = a + 1;
+        }
+        """
+        expect = "Function main Not Return "
+        self.assertTrue(TestChecker.test(input,expect,431))
+
+    def test_func_not_return_in_ifstmt2(self):
+        input = """
+        int main(){
+            if (true)
+                a = a + 1;
+            else
+                return 1;
+        }
+        """
+        expect = "Function main Not Return "
+        self.assertTrue(TestChecker.test(input,expect,432))

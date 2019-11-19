@@ -23,11 +23,7 @@ class Type(AST):
 class IntType(Type):
     def __str__(self):
         return "IntType"
-<<<<<<< HEAD
     
-=======
-
->>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
     def accept(self, v, param):
         return v.visitIntType(self, param)
 
@@ -206,11 +202,7 @@ class Block(Stmt):
 class If(Stmt):
     expr:Expr
     thenStmt:Stmt
-<<<<<<< HEAD
     elseStmt:Stmt=None
-=======
-    elseStmt:Stmt
->>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
 
     def __str__(self):
         return "If(" + str(self.expr) + "," + str(self.thenStmt) + ("" if (self.elseStmt is None) else "," + str(self.elseStmt)) + ")"
