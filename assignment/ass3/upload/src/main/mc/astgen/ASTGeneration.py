@@ -4,6 +4,7 @@ from AST import *
 
 class ASTGeneration(MCVisitor):
     def visitProgram(self,ctx:MCParser.ProgramContext):
+<<<<<<< HEAD
         declList = []
         for x in ctx.decl():
             decl = self.visitDecl(x)
@@ -190,4 +191,27 @@ class ASTGeneration(MCVisitor):
         id = Id(ctx.ID().getText())
         exps = [self.visitExp(x) for x in ctx.exp()]
         return CallExpr(id, exps)
+=======
+        return Program([FuncDecl(Id("main"),[],self.visit(ctx.mctype()),Block([self.visit(ctx.body())] if ctx.body() else []))])
+
+    def visitMctype(self,ctx:MCParser.MctypeContext):
+        if ctx.INTTYPE():
+            return IntType()
+        else:
+            return VoidType()
+
+    def visitBody(self,ctx:MCParser.BodyContext):
+        return self.visit(ctx.funcall())
+  
+  	
+    def visitFuncall(self,ctx:MCParser.FuncallContext):
+        return CallExpr(Id(ctx.ID().getText()),[self.visit(ctx.exp())] if ctx.exp() else [])
+
+    def visitExp(self,ctx:MCParser.ExpContext):
+        if (ctx.funcall()):
+            return self.visit(ctx.funcall())
+        else:
+            return IntLiteral(int(ctx.INTLIT().getText()))
+        
+>>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
 

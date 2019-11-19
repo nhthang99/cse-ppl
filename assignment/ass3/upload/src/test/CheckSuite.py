@@ -6,7 +6,11 @@ class CheckSuite(unittest.TestCase):
     def test_main_func_defined(self):
         """ Main Function Defined """
         input = Program([
+<<<<<<< HEAD
                 FuncDecl(Id("main"), [], VoidType(), Block([]))
+=======
+                FuncDecl(Id("main"), [], VoidType(), Block([])),
+>>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
                 ])
         expect = ""
         self.assertTrue(TestChecker.test(input,expect,400))
@@ -54,6 +58,7 @@ class CheckSuite(unittest.TestCase):
             FuncDecl(Id("main"), [VarDecl("a", IntType()), VarDecl("a", IntType())], VoidType(), Block([])),
             ])
         expect = "Redeclared Parameter: a"
+<<<<<<< HEAD
         self.assertTrue(TestChecker.test(input,expect,405))
 
     def test_1(self):
@@ -309,3 +314,6 @@ class CheckSuite(unittest.TestCase):
         expect = "Type Mismatch In Expression: BinaryOp(=,Id(c),BinaryOp(+,BinaryOp(+,FloatLiteral(1.0),Id(a)),Id(b)))"
         self.assertTrue(TestChecker.test(input,expect,428))
     
+=======
+        self.assertTrue(TestChecker.test(input,expect,405))
+>>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144

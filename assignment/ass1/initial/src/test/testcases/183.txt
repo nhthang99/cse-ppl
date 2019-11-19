@@ -1,0 +1,6 @@
+void main(int a) {
+do {
+    x = x + 1;
+}
+while true ;
+}

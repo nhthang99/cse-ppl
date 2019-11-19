@@ -3,6 +3,7 @@ from TestUtils import TestAST
 from AST import *
 
 class ASTGenSuite(unittest.TestCase):
+<<<<<<< HEAD
     def test_var_decl1(self):
         """ Test Variable Declare """
         input = """int a,b,c[3];"""
@@ -1447,3 +1448,27 @@ class ASTGenSuite(unittest.TestCase):
         """
         expect = "Program([FuncDecl(Id(main),[],IntType,Block([VarDecl(base,IntType),VarDecl(exponent,IntType),VarDecl(result,IntType),BinaryOp(=,Id(result),IntLiteral(1)),CallExpr(Id(printf),[StringLiteral(Enter a base number: )]),CallExpr(Id(scanf),[StringLiteral(%d),Id(base)]),CallExpr(Id(printf),[StringLiteral(Enter an exponent: )]),CallExpr(Id(scanf),[StringLiteral(%d),Id(exponent)]),Dowhile([Block([BinaryOp(=,Id(result),BinaryOp(*,Id(result),Id(base))),BinaryOp(=,Id(exponent),BinaryOp(-,Id(exponent),IntLiteral(1)))])],BinaryOp(!=,Id(exponent),IntLiteral(0))),CallExpr(Id(printf),[StringLiteral(Answer = %lld),Id(result)]),Return(IntLiteral(0))]))])"
         self.assertTrue(TestAST.checkASTGen(input,expect,400))
+=======
+    def test_simple_program(self):
+        """Simple program: int main() {} """
+        input = """int main() {}"""
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([],[]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,300))
+
+    def test_more_complex_program(self):
+        """More complex program"""
+        input = """int main () {
+            putIntLn(4);
+        }"""
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([],[CallExpr(Id("putIntLn"),[IntLiteral(4)])]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,301))
+    
+    def test_call_without_parameter(self):
+        """More complex program"""
+        input = """int main () {
+            getIntLn();
+        }"""
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([],[CallExpr(Id("getIntLn"),[])]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,301))
+   
+>>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144

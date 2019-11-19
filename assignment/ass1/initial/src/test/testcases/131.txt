@@ -1,0 +1,7 @@
+void str_copy(char a, char b,int n, int k)
+	{
+		for(int i = n; i < k; i++)
+		{
+			a[i-n] = b[i];
+		}
+	}

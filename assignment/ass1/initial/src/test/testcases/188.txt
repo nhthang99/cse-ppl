@@ -1,0 +1,6 @@
+void foo(){
+i = 2;
+a = "true";
+69;
+foo(i, a);
+}

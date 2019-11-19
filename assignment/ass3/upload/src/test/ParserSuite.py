@@ -20,6 +20,7 @@ class ParserSuite(unittest.TestCase):
         """Miss ) int main( {}"""
         input = """int main( {}"""
         expect = "Error on line 1 col 10: {"
+<<<<<<< HEAD
         self.assertTrue(TestParser.checkParser(input,expect,203))
 
     def test_declare_variable(self):
@@ -1399,3 +1400,6 @@ int factorial( int i)
         '''
         expect = 'successful'
         self.assertTrue(TestParser.checkParser(input, expect, 301))
+=======
+        self.assertTrue(TestParser.checkParser(input,expect,203))
+>>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144

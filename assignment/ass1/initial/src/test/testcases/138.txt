@@ -1,0 +1,3 @@
+int a,b       ,c ,a                   b;
+            float a = int (abc) - 12;
+            str abc[] = {3,2,1};

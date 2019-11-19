@@ -1,0 +1,9 @@
+int char_int(char *a)
+	{
+		int temp = 0;
+		for(int i = 0; i < strlen(a); i++)
+		{
+			temp = temp + static_cast<int>(a[i]-48)*pow(10, strlen(a)-i-1); 
+		}
+		return temp;
+	}llo

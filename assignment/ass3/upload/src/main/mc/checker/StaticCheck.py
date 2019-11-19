@@ -58,11 +58,16 @@ class StaticChecker(BaseVisitor,Utils):
         # Check Redeclare
         for x in ast.decl:
             if isinstance(x, VarDecl):
+<<<<<<< HEAD
                 global_envi.append(self.visit(x, global_envi))
+=======
+                global_envi.append(self.visit(x, (global_envi, False)))
+>>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
             elif isinstance(x, FuncDecl):
                 global_envi.append(self.visit(x, global_envi))
 
     def visitVarDecl(self, ast, envi):
+<<<<<<< HEAD
         is_redeclare = self.lookup(ast.variable, envi, lambda x: x.name)
         if is_redeclare:
             raise Redeclared(Variable(), ast.variable)
@@ -225,3 +230,26 @@ class StaticChecker(BaseVisitor,Utils):
     def visitBooleanLiteral(self, ast, c):
         return BoolType()
     
+=======
+        sb = Symbol(ast.variable, MType(None, ast.varType))
+        name_global_envi_lst = (x.name for x in envi[0])
+        if sb.name in name_global_envi_lst:
+            is_param = envi[1]
+            if is_param:
+                raise Redeclared(Parameter(), sb.name)
+            else:
+                raise Redeclared(Variable(), sb.name)
+        else:
+            return sb
+    
+    def visitFuncDecl(self, ast, global_envi):
+        sb = Symbol(ast.name.name, MType([para.variable for para in ast.param], ast.returnType))
+        name_global_envi_lst = (x.name for x in global_envi)
+        if sb.name in name_global_envi_lst:
+            raise Redeclared(Function(), sb.name)
+        else:
+            local_envi = []
+            for param in ast.param:
+                local_envi.append(self.visit(param, (local_envi, True)))
+            return sb
+>>>>>>> f0636bc072d14da81fc4a4d9076a1e339dce4144
