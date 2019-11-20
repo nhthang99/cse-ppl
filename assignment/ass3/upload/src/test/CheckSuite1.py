@@ -2451,27 +2451,3 @@ class CheckSuite(unittest.TestCase):
                 """
         expect = "Unreachable Function: main1"
         self.assertTrue(TestChecker.test(input,expect,499))
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-
-    
-
-
-
-
-    
-
-
-
-    

@@ -34,9 +34,6 @@ class StaticChecker(BaseVisitor,Utils):
             
     
     def __init__(self,ast):
-        #print(ast)
-        #print(ast)
-        #print()
         self.ast = ast
 
  
@@ -60,6 +57,7 @@ class StaticChecker(BaseVisitor,Utils):
         for x in ast.decl:
             if isinstance(x, VarDecl):
                 global_envi.append(self.visit(x, global_envi))
+
             elif isinstance(x, FuncDecl):
                 rettype = self.visit(x.returnType, None)
                 func = Symbol(
@@ -71,14 +69,13 @@ class StaticChecker(BaseVisitor,Utils):
                         raise Redeclared(Function(), func.name)
     
                 global_envi.append(func)
-                # func = self.visit(x, global_envi)
-                # global_envi.append(func)
+                
                 if func.name != 'main':
                     self.func_defined.append(func)
         
         for decl in ast.decl:
             if isinstance(decl, FuncDecl):
-                self.visit(x, global_envi)
+                self.visit(decl, global_envi)
         
         if self.func_defined:
             raise UnreachableFunction(self.func_defined[0].name)
@@ -87,38 +84,27 @@ class StaticChecker(BaseVisitor,Utils):
         is_redeclare = self.lookup(ast.variable, envi, lambda x: x.name)
         if is_redeclare:
             raise Redeclared(Variable(), ast.variable)
+
         else:
             return Symbol(ast.variable, MType(None, ast.varType))
     
     def visitFuncDecl(self, ast, global_envi):
-        # is_redeclare = self.lookup(ast.name.name, global_envi, lambda x: x.name)
-        # if is_redeclare:
-        #     raise Redeclared(Function(), ast.name.name)
-
         local_envi = []
         para_list = []
+
         for param in ast.param:
             if param.variable in para_list:
                 raise Redeclared(Parameter(), param.variable)
+
             else:
                 para_list.append(param.variable)
                 local_envi.append(self.visit(param, local_envi))
         
         return_type = self.visit(ast.returnType, None)
         is_return = self.visit(ast.body, (global_envi, local_envi, False, return_type))
-        # for stmt in ast.body.member:
-        #     if isinstance(stmt, VarDecl):
-        #         local_envi.append(self.visit(stmt, local_envi))
-        #     elif isinstance(stmt, Expr):
-        #         self.visit(stmt, global_envi + local_envi)
-        #     elif isinstance(stmt, Stmt):
-        #         is_in_loop = False
-        #         is_return = self.visit(stmt, (global_envi + local_envi, is_in_loop, return_type))
-
+        
         if not is_return and not isinstance(return_type, VoidType):
             raise FunctionNotReturn(ast.name.name)
-
-        # return Symbol(ast.name.name, MType([para.variable for para in ast.param], return_type))
 
     def visitBlock(self, ast, c):
         global_envi = c[0]
@@ -136,11 +122,10 @@ class StaticChecker(BaseVisitor,Utils):
                         global_envi.append(var_decl)
                 local_envi.append(var_decl)
                 var_decl_in_block.append(var_decl)
-            # elif isinstance(stmt, Block):
-            #     is_return = self.visit(stmt, (global_envi, local_envi, is_in_loop, return_type))
+            
             elif isinstance(stmt, Expr):
                 self.visit(stmt, global_envi + local_envi)
-            # elif isinstance(stmt, Stmt):
+
             else:
                 is_return = self.visit(stmt, (global_envi, local_envi, is_in_loop, return_type))
                 
@@ -156,6 +141,7 @@ class StaticChecker(BaseVisitor,Utils):
                 return expr
             else:
                 raise TypeMismatchInExpression(ast)
+
         elif ast.op == '-':
             if isinstance(expr, (IntType, FloatType)):
                 return expr
@@ -181,6 +167,7 @@ class StaticChecker(BaseVisitor,Utils):
 
             elif isinstance(left, type(right)):
                 return left
+
             else:
                 raise TypeMismatchInExpression(ast)
 
@@ -201,12 +188,16 @@ class StaticChecker(BaseVisitor,Utils):
             return left
         elif ast.op in ['+', '-', '*', '/']:
             return check_type((IntType, FloatType))
+
         elif ast.op == '%':
             return check_type(IntType, IntType())
+
         elif ast.op in ['!=', '==']:
             return check_type((IntType, BoolType), BoolType())
+
         elif ast.op in ['<', '<=', '>', '>=']:
             return check_type((IntType, FloatType), BoolType())
+
         elif ast.op in ['&&', '||']:
             return check_type(BoolType, BoolType())
 
@@ -214,8 +205,10 @@ class StaticChecker(BaseVisitor,Utils):
         is_declare = self.lookup(ast.name, c, lambda x: x.name)
         if not is_declare:
             raise Undeclared(Identifier(), ast.name)
+
         elif not isinstance(is_declare.mtype, MType):
             return is_declare.mtype
+
         else:
             return is_declare.mtype.rettype
 
@@ -237,6 +230,7 @@ class StaticChecker(BaseVisitor,Utils):
         if ast.elseStmt:
             if not isinstance(ast.elseStmt, Expr):
                 self.visit(ast.elseStmt, c)
+
             else:
                 is_return_else = self.visit(ast.elseStmt, envi)
         
@@ -252,6 +246,7 @@ class StaticChecker(BaseVisitor,Utils):
             if not isinstance(stmt, Expr):
                 is_in_loop = True
                 is_return = self.visit(stmt, (c[0], c[1], is_in_loop, c[-1]))
+
             else:
                 self.visit(stmt, envi)
         return is_return
@@ -265,12 +260,15 @@ class StaticChecker(BaseVisitor,Utils):
         is_match = isinstance(expr1_type, IntType) \
             and isinstance(expr2_type, BoolType) \
             and isinstance(expr3_type, IntType)
+
         if not is_match:
             raise TypeMismatchInStatement(ast)
+
         if not isinstance(ast.loop, Expr):
             is_in_loop = True
             is_return = self.visit(ast.loop, (c[0], c[1], is_in_loop, c[-1]))
             return is_return
+
         else:
             self.visit(ast.loop, envi)
 
@@ -279,20 +277,25 @@ class StaticChecker(BaseVisitor,Utils):
         if not ast.expr:
             if not isinstance(return_type, VoidType):
                 raise TypeMismatchInStatement(ast)
+
         elif isinstance(return_type, VoidType):
             raise TypeMismatchInStatement(ast)
+
         else:
             envi = c[0] + c[1]
             rlt_expr = self.visit(ast.expr, envi)
             if isinstance(return_type, ArrayPointerType):
+
                 if isinstance(rlt_expr, (ArrayPointerType, ArrayType)):
                     if not isinstance(rlt_expr.eleType, type(return_type.eleType)):
                         raise TypeMismatchInStatement(ast)
                 else:
                     raise TypeMismatchInStatement(ast)
+
             elif isinstance(return_type, FloatType):
                 if not isinstance(rlt_expr, (IntType, FloatType)):
                     raise TypeMismatchInStatement(ast)
+
             elif not isinstance(rlt_expr, type(return_type)):
                 raise TypeMismatchInStatement(ast)
         return True # function have returned
@@ -303,8 +306,10 @@ class StaticChecker(BaseVisitor,Utils):
         res = self.lookup(ast.method.name, c, lambda x: x.name)
         if not res:
             raise Undeclared(Function(), ast.method.name)
+
         elif not isinstance(res.mtype, MType) or len(res.mtype.partype) != len(para_list):
             raise TypeMismatchInExpression(ast)
+
         else:
             for i in range(0, len(para_list)):
                 if isinstance(res.mtype.partype[i],ArrayPointerType):
@@ -313,16 +318,18 @@ class StaticChecker(BaseVisitor,Utils):
                             raise TypeMismatchInExpression(ast)
                     else:
                         raise TypeMismatchInExpression(ast)
-                elif isinstance(res.mtype.partype[i],FloatType) and isinstance(para_list[i],(FloatType,IntType)):
+
+                elif isinstance(res.mtype.partype[i],FloatType) and isinstance(para_list[i],(FloatType,IntType)) \
+                    or isinstance(res.mtype.partype[i],type(para_list[i])):
                     continue
-                elif isinstance(res.mtype.partype[i],type(para_list[i])):
-                    continue
+
                 else: 
                     raise TypeMismatchInExpression(ast)
 
         for x in self.func_defined:
             if x.name == ast.method.name:
                 self.func_defined.remove(x)
+        return res.mtype.rettype
 
     def visitArrayCell(self, ast, envi):
         arr = self.visit(ast.arr, envi)
@@ -330,7 +337,8 @@ class StaticChecker(BaseVisitor,Utils):
 
         if not isinstance(idx, IntType):
             raise TypeMismatchInExpression(ast)
-        if not isinstance(arr, ArrayType):
+
+        elif not isinstance(arr, ArrayType):
             raise TypeMismatchInExpression(ast)
 
         return arr.eleType
@@ -354,7 +362,7 @@ class StaticChecker(BaseVisitor,Utils):
     def visitStringType(self, ast, c):
         return StringType()
 
-    def visitBooleanType(self, ast, c):
+    def visitBoolType(self, ast, c):
         return BoolType()
 
     def visitVoidType(self, ast, c):
