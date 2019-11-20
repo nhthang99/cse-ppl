@@ -1,9 +1,7 @@
 
-        int main(){
-            int a;
-            int b;
-            int c;
-            a = 5;
-            c = 1.0 + a + b;
-        }
-        
+                int[] main(int c){
+                    int a[2];
+                    float b;
+                    return c;
+                }
+                

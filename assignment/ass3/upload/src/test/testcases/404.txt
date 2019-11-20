@@ -1,1 +1,32 @@
-Program([FuncDecl(Id(main),[],VoidType,Block([])),FuncDecl(Id(main),[],VoidType,Block([]))])
+int a;
+                   float b;
+                   string c;
+                   boolean d;
+                   int assPPL(int foo) {
+                       float b;
+                       string c;
+                       if (false){
+                           b = 3;
+                           c = "3414";
+                       }
+                       {
+                           {
+                               float b;
+                               boolean b[2];
+                           }
+                       }
+                       return 142;
+                   }
+                   int[] report(boolean day) {
+                       int hung[421];
+                       int a;
+                       a = 2;
+                       if (true) {
+                           a = 3;
+                       }
+                       return hung;
+                   }
+                   boolean main() {
+                       return false;
+                   }
+                   string a1;

@@ -1,1 +1,1 @@
-Type Mismatch In Expression: BinaryOp(=,Id(a),UnaryOp(-,IntLiteral(1)))
+Type Mismatch In Statement: For(BinaryOp(&&,Id(hung),BooleanLiteral(true));BinaryOp(<,Id(a),IntLiteral(10));BinaryOp(=,Id(a),BinaryOp(+,Id(a),IntLiteral(1)));Block([If(BinaryOp(>,BinaryOp(-,BinaryOp(+,Id(a),FloatLiteral(123.4)),BinaryOp(%,IntLiteral(241),Id(a))),IntLiteral(0)),Block([VarDecl(d,IntType),BinaryOp(=,Id(d),Id(e)),VarDecl(t,BoolType),VarDecl(e,BoolType),BinaryOp(=,Id(t),Id(e))]))]))

@@ -1,5 +1,18 @@
 
-        int main(){
-            for (true;1;false){}
-        }
-        
+                int ass;
+                boolean a231[34];
+                float s234;
+                string rq31[42];
+                void main() {
+                    boolean a, b;
+                    if ( a == true ) {
+                        if ( b == false )
+                            return;
+                    } else {
+                        if (2 % 3)
+                            return;
+                        else
+                            return;
+                    }
+                }
+                

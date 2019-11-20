@@ -1,1 +1,1 @@
-Not Left Value: BinaryOp(=,IntLiteral(5),IntLiteral(5))
+Type Mismatch In Statement: For(BinaryOp(||,Id(check),BooleanLiteral(false));BinaryOp(<,Id(j),IntLiteral(200));BinaryOp(=,Id(j),BinaryOp(+,Id(j),IntLiteral(1)));Block([If(BinaryOp(==,Id(i),Id(j)),Block([VarDecl(a,IntType),BinaryOp(=,Id(a),IntLiteral(3213)),VarDecl(b,BoolType),BinaryOp(=,Id(b),BooleanLiteral(true))]))]))

@@ -1,6 +1,13 @@
 
-        void main(){
-            boolean a;
-            a = !4.5e10000;
-        }
-        
+                int x;
+                int a;
+                void main() {
+                    hunG();
+                    return;
+                }
+                int hunG() {
+                    boolean check;
+                    for (check = true ; x < 3 ; x = x + 1 ) a = a + 2 ;
+                    return x;
+                }
+                

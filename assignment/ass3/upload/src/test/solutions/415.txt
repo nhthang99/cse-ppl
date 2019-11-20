@@ -1,1 +1,1 @@
-Undeclared Identifier: b
+Type Mismatch In Statement: If(BinaryOp(=,Id(a),IntLiteral(1)),Block([BinaryOp(=,Id(a),BinaryOp(+,Id(a),IntLiteral(1))),BinaryOp(=,Id(b),IntLiteral(2)),If(BooleanLiteral(true),BinaryOp(=,Id(a),IntLiteral(1)),BinaryOp(=,Id(a),IntLiteral(2)))]),Block([BinaryOp(=,Id(a),IntLiteral(4))]))

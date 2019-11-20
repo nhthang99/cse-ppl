@@ -6,15 +6,17 @@ class CheckSuite(unittest.TestCase):
     def test_main_func_defined(self):
         """ Main Function Defined """
         input = Program([
-                FuncDecl(Id("main"), [], VoidType(), Block([]))
+                FuncDecl(Id("main1"), [], VoidType(), Block([]))
                 ])
-        expect = ""
+        expect = "No Entry Point"
         self.assertTrue(TestChecker.test(input,expect,400))
 
     def test_main_func_undefined(self):
         """ Main Function Undefined """
         input = Program([
             FuncDecl(Id("main1"), [], VoidType(), Block([])),
+            FuncDecl(Id("main2"), [], VoidType(), Block([])),
+            FuncDecl(Id("main3"), [], VoidType(), Block([])),
             ])
         expect = "No Entry Point"
         self.assertTrue(TestChecker.test(input,expect,401))
@@ -64,75 +66,75 @@ class CheckSuite(unittest.TestCase):
         expect = "Undeclared Identifier: a"
         self.assertTrue(TestChecker.test(input,expect,406))
 
-    # def test_mismatch_ifstmt1(self):
-    #     """ Mismatch If Statement"""
-    #     input = """
-    #     int main(){
-    #         if (1){}
-    #     }
-    #     """
-    #     expect = "Type Mismatch In Statement: If(IntLiteral(1),Block([]))"
-    #     self.assertTrue(TestChecker.test(input,expect,406))
+    def test_mismatch_ifstmt1(self):
+        """ Mismatch If Statement"""
+        input = """
+        int main(){
+            if (1){}
+        }
+        """
+        expect = "Type Mismatch In Statement: If(IntLiteral(1),Block([]))"
+        self.assertTrue(TestChecker.test(input,expect,406))
 
-    # def test_mismatch_dowhilestmt1(self):
-    #     """ Mismatch Dowhile Statement"""
-    #     input = """
-    #     int main(){
-    #         do {} while(1);
-    #     }
-    #     """
-    #     expect = "Type Mismatch In Statement: Dowhile([Block([])],IntLiteral(1))"
-    #     self.assertTrue(TestChecker.test(input,expect,407))
+    def test_mismatch_dowhilestmt1(self):
+        """ Mismatch Dowhile Statement"""
+        input = """
+        int main(){
+            do {} while(1);
+        }
+        """
+        expect = "Type Mismatch In Statement: Dowhile([Block([])],IntLiteral(1))"
+        self.assertTrue(TestChecker.test(input,expect,407))
 
-    # def test_mismatch_forstmt1(self):
-    #     """ Mismatch For Statement"""
-    #     input = """
-    #     int main(){
-    #         for (1;2;2){}
-    #     }
-    #     """
-    #     expect = "Type Mismatch In Statement: For(IntLiteral(1);IntLiteral(2);IntLiteral(2);Block([]))"
-    #     self.assertTrue(TestChecker.test(input,expect,408))
+    def test_mismatch_forstmt1(self):
+        """ Mismatch For Statement"""
+        input = """
+        int main(){
+            for (1;2;2){}
+        }
+        """
+        expect = "Type Mismatch In Statement: For(IntLiteral(1);IntLiteral(2);IntLiteral(2);Block([]))"
+        self.assertTrue(TestChecker.test(input,expect,408))
 
-    # def test_mismatch_forstmt2(self):
-    #     """ Mismatch For Statement"""
-    #     input = """
-    #     int main(){
-    #         for (true;true;2){}
-    #     }
-    #     """
-    #     expect = "Type Mismatch In Statement: For(BooleanLiteral(true);BooleanLiteral(true);IntLiteral(2);Block([]))"
-    #     self.assertTrue(TestChecker.test(input,expect,409))
+    def test_mismatch_forstmt2(self):
+        """ Mismatch For Statement"""
+        input = """
+        int main(){
+            for (true;true;2){}
+        }
+        """
+        expect = "Type Mismatch In Statement: For(BooleanLiteral(true);BooleanLiteral(true);IntLiteral(2);Block([]))"
+        self.assertTrue(TestChecker.test(input,expect,409))
 
-    # def test_mismatch_forstmt3(self):
-    #     """ Mismatch For Statement"""
-    #     input = """
-    #     int main(){
-    #         for (true;1;false){}
-    #     }
-    #     """
-    #     expect = "Type Mismatch In Statement: For(BooleanLiteral(true);IntLiteral(1);BooleanLiteral(false);Block([]))"
-    #     self.assertTrue(TestChecker.test(input,expect,410))
+    def test_mismatch_forstmt3(self):
+        """ Mismatch For Statement"""
+        input = """
+        int main(){
+            for (true;1;false){}
+        }
+        """
+        expect = "Type Mismatch In Statement: For(BooleanLiteral(true);IntLiteral(1);BooleanLiteral(false);Block([]))"
+        self.assertTrue(TestChecker.test(input,expect,410))
 
-    # def test_mismatch_return_stmt1(self):
-    #     """ Mismatch Return Statement"""
-    #     input = """
-    #     int main(){
-    #         return;
-    #     }
-    #     """
-    #     expect = "Type Mismatch In Statement: Return()"
-    #     self.assertTrue(TestChecker.test(input,expect,411))
+    def test_mismatch_return_stmt1(self):
+        """ Mismatch Return Statement"""
+        input = """
+        int main(){
+            return;
+        }
+        """
+        expect = "Type Mismatch In Statement: Return()"
+        self.assertTrue(TestChecker.test(input,expect,411))
 
-    # def test_mismatch_return_stmt2(self):
-    #     """ Mismatch Return Statement"""
-    #     input = """
-    #     void main(){
-    #         return;
-    #     }
-    #     """
-    #     expect = ""
-    #     self.assertTrue(TestChecker.test(input,expect,412))
+    def test_mismatch_return_stmt2(self):
+        """ Mismatch Return Statement"""
+        input = """
+        void main(){
+            return;
+        }
+        """
+        expect = ""
+        self.assertTrue(TestChecker.test(input,expect,412))
 
     def test_id_undeclare1(self):
         input = """void main(){
@@ -336,8 +338,10 @@ class CheckSuite(unittest.TestCase):
         int main(){
             if (true)
                 return 1;
-            else
+            else{
+                int a;
                 a = a + 1;
+            }
         }
         """
         expect = "Function main Not Return "
@@ -346,11 +350,81 @@ class CheckSuite(unittest.TestCase):
     def test_func_not_return_in_ifstmt2(self):
         input = """
         int main(){
-            if (true)
+            if (true){
+                int a;
                 a = a + 1;
+            }
             else
                 return 1;
         }
         """
         expect = "Function main Not Return "
         self.assertTrue(TestChecker.test(input,expect,432))
+
+    def test_func_not_return_in_forstmt1(self):
+        input = """
+        int main(){
+            int i;
+            int a;
+            for (i=1;i<10;i=i+1)
+                a = a + 1;
+        }
+        """
+        expect = "Function main Not Return "
+        self.assertTrue(TestChecker.test(input,expect,433))
+
+    def test_func_not_return_in_dowhile_stmt1(self):
+        input = """
+        int main(){
+            int i;
+            int a;
+            do a = a + 1; while (true);
+        }
+        """
+        expect = "Function main Not Return "
+        self.assertTrue(TestChecker.test(input,expect,434))
+
+    def test_break_not_in_loop(self):
+        input = """
+        int main(){
+            break;
+        }
+        """
+        expect = "Break Not In Loop"
+        self.assertTrue(TestChecker.test(input,expect,435))
+
+    def test_continue_not_in_loop(self):
+        input = """
+        int main(){
+            continue;
+        }
+        """
+        expect = "Continue Not In Loop"
+        self.assertTrue(TestChecker.test(input,expect,436))
+
+    # def test_unreach_func(self):
+    #     input = """
+    #     void main(){
+    #         int a;
+    #     }
+    #     int main1(){main(); return 1;}
+    #     void main2(){main1();}
+    #     """
+    #     expect = "Unreachable Function: main2"
+    #     self.assertTrue(TestChecker.test(input,expect,437))
+
+    def test_2(self):
+        input = """
+        void main(){
+            if (true){
+                int a;
+                a = 1;
+            }
+            else {
+                a = a + 1;
+            }
+        }
+        """
+        expect = "Undeclared Identifier: a"
+        self.assertTrue(TestChecker.test(input,expect,438))
+        

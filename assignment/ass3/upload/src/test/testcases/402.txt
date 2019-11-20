@@ -1,1 +1,19 @@
-Program([FuncDecl(Id(main),[],VoidType,Block([])),VarDecl(a,IntType),VarDecl(a,IntType)])
+int b;
+                   int foo(int foo) {
+                       return 2;
+                   } 
+                   float h() {
+                       return 3214.4123;
+                   } 
+                   string c() {
+                       return "412312";
+                   } 
+                   int d; 
+                   void foo1(int assPPL, int assCNPM, int assTTCNPM, int assMMT, int assPPL) {
+                       boolean carryTeam;
+                       carryTeam = true;
+                       return;
+                   }
+                   boolean main() {
+                       return true;
+                   }

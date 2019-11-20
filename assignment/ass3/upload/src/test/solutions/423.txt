@@ -1,1 +1,1 @@
-Type Mismatch In Expression: BinaryOp(%,Id(b),Id(a))
+Type Mismatch In Statement: Dowhile([BinaryOp(=,Id(d),StringLiteral(Hung)),If(BinaryOp(==,BinaryOp(+,Id(a),BinaryOp(%,IntLiteral(2),IntLiteral(4))),IntLiteral(2332)),BinaryOp(=,Id(a),IntLiteral(1)))],BinaryOp(%,Id(a),IntLiteral(2)))

@@ -1,1 +1,1 @@
-Type Mismatch In Expression: BinaryOp(&&,Id(a),Id(b))
+Type Mismatch In Statement: Return(IntLiteral(2))

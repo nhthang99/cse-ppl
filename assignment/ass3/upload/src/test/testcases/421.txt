@@ -1,7 +1,38 @@
 
-        int main(){
-            float a;
-            boolean b;
-            a + b;
-        }
-        
+                int i;
+                int j;
+                int k;
+                int h;
+                int t;
+                int a;
+                int b;
+                int c;
+                int d, e, f;
+                int main(){
+                    for (i = 1; i < 1002401; i = i + 1)
+                    {
+                        for (j = 1; j < 1002401; j = j + 1)
+                        {
+                            for (k = 1; k < 1002401; k = k + 1)
+                            {
+                                for (h = 1; h < 1002401; h = h + 1)
+                                {
+                                    for (t = 1; t < 1002401; t = t + 1)
+                                    {
+                                        for (a = 1; a < 1002401; a = a + 1)
+                                        {
+                                            for (b = 1; b < 1002401; b = b + 1)
+                                                for (c = 1; c < 1002401; c = c + 1)
+                                                    for (d = 1; d < 1002401; d = d + 1)
+                                                        for (e = 1; e < 1002401; e = e + 1)
+                                                            for (f = 1; f / 1002401; f = f + 1)
+                                                                (i + j + k + h + t + a + b + c + d + e + f);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return 3214;
+                }
+                

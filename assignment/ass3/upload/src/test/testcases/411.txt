@@ -1,5 +1,32 @@
 
-        int main(){
-            return;
-        }
-        
+                int ass;
+                boolean a;
+                float s234;
+                string rq31[42];
+                int main(){
+                    int a, b, c, d;
+                    if (a == 1)
+                    {
+                        a = a + 1;
+                        if (b == 1)
+                        {
+                            b = b + 1;
+                            if (c + 1)
+                            {
+                                c = c + 1;
+                                if (d == 1)
+                                    d = d + 1;
+                                else
+                                    d = c;
+                            }
+                            else
+                                c = b;
+                        }
+                        else
+                            a = b;
+                    }
+                    else
+                        a = b;
+                    return 2;
+                }
+                

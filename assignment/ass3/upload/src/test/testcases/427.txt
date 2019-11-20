@@ -1,9 +1,7 @@
 
-        int main(){
-            boolean a;
-            boolean b;
-            int c;
-            c = a || b;
-            
-        }
-        
+                int main(){
+                    int a;
+                    float b;
+                    return;
+                }
+                

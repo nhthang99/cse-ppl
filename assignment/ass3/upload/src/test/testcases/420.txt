@@ -1,8 +1,21 @@
 
-        int main(){
-            float a;
-            int b;
-            a = 1;
-            b = a;
-        }
-        
+                int i;
+                int j;
+                boolean check;
+                int main(){
+                    for (i = 1; -i + 10; i = i + 1)
+                    {
+                        for (j = 1; j < 200; j = j + 1)
+                        {
+                            if (i == j)
+                            {
+                                int a;
+                                a = 3213;
+                                boolean b;
+                                b = true;
+                            }
+                        }   
+                    }
+                    return 213;
+                }
+                

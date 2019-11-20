@@ -1,1 +1,11 @@
-Program([FuncDecl(Id(main1),[],VoidType,Block([]))])
+int a; 
+                   float b;
+                   string c;
+                   boolean d;
+                   int a1(int foo) {
+                       return 3214;
+                   } 
+                   boolean main() {
+                       return (false && true);
+                   }
+                   string a;

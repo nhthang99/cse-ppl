@@ -1,1 +1,4 @@
-Program([FuncDecl(Id(main),[VarDecl(a,IntType),VarDecl(a,IntType)],VoidType,Block([]))])
+int main() {
+                        foo();
+                        return 4;
+                    }

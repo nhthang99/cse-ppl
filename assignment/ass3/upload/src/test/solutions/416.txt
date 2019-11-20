@@ -1,1 +1,1 @@
-Type Mismatch In Expression: UnaryOp(!,FloatLiteral(inf))
+Type Mismatch In Statement: For(BinaryOp(=,Id(check),BooleanLiteral(true));BinaryOp(<,Id(x),IntLiteral(3));BinaryOp(=,Id(x),BinaryOp(+,Id(x),IntLiteral(1)));BinaryOp(=,Id(a),BinaryOp(+,Id(a),IntLiteral(2))))

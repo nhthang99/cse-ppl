@@ -1,1 +1,13 @@
-Program([FuncDecl(Id(main),[],VoidType,Block([])),VarDecl(a,IntType),VarDecl(a,VoidType)])
+void main() {
+                        int a;
+                        a = 2;
+                        return;
+                   }
+                   int b() {
+                       int b;
+                       b = 2;
+                       return 3;
+                   }
+                   int getInt() {
+                       return 3123;
+                   }

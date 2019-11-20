@@ -1,1 +1,1 @@
-Redeclared Parameter: a
+Undeclared Function: foo

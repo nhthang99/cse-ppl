@@ -1,5 +1,12 @@
-
-        int main(){
-            do {} while(1);
-        }
-        
+int a;
+                   float b;
+                   string c;
+                   boolean d;
+                   void main() {
+                       a = 2;
+                       b = 32;
+                       c = "312414";
+                       d = true;
+                       hung = 341;
+                       return;
+                   }

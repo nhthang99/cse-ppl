@@ -1,5 +1,26 @@
-
-        int main(){
-            for (1;2;2){}
-        }
-        
+int hunG1()
+                    {
+                        int a;
+                        int x;
+                        a = x;
+                        x = a;
+                        a = 2;
+                        int i;
+                        for (i = 0; i < i + 1; i = i + 1) hunG1();
+                        return 2;
+                    }
+                    void main() {
+                        int a;
+                        int x;
+                        for ( x = 1 ; x < 3 ; x = x + 1 ) {
+                            a = a + 2 ;
+                            {
+                                float b;
+                                b = 23.42;
+                                hunG = 2;
+                            }
+                            break ;
+                        }
+                        a = 2;
+                        return;
+                    }

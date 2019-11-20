@@ -41,6 +41,10 @@ def main(argv):
             from CheckSuite import CheckSuite
             suite = unittest.makeSuite(CheckSuite)
             test(suite)
+        elif argv[1] == 'CheckSuite1':
+            from CheckSuite1 import CheckSuite
+            suite = unittest.makeSuite(CheckSuite)
+            test(suite)
         else:
             printUsage()
     else:
