@@ -43,7 +43,7 @@ class StaticChecker(BaseVisitor,Utils):
 
     def visitProgram(self,ast, global_envi): 
         global_envi = global_envi[:]
-        self.func_defined = []
+        self.func_unused = []
         # Check whether main function exist or not
         is_main_func_defined = False
         for x in ast.decl:
@@ -71,14 +71,14 @@ class StaticChecker(BaseVisitor,Utils):
                 global_envi.append(func)
                 
                 if func.name != 'main':
-                    self.func_defined.append(func)
+                    self.func_unused.append(func)
         
         for decl in ast.decl:
             if isinstance(decl, FuncDecl):
                 self.visit(decl, global_envi)
         
-        if self.func_defined:
-            raise UnreachableFunction(self.func_defined[0].name)
+        if self.func_unused:
+            raise UnreachableFunction(self.func_unused[0].name)
 
     def visitVarDecl(self, ast, envi):
         is_redeclare = self.lookup(ast.variable, envi, lambda x: x.name)
@@ -126,6 +126,9 @@ class StaticChecker(BaseVisitor,Utils):
             elif isinstance(stmt, Expr):
                 self.visit(stmt, global_envi + local_envi)
 
+            elif isinstance(stmt, Block):
+                is_return = self.visit(stmt, (global_envi + local_envi, [], is_in_loop, return_type))
+        
             else:
                 is_return = self.visit(stmt, (global_envi, local_envi, is_in_loop, return_type))
                 
@@ -133,6 +136,16 @@ class StaticChecker(BaseVisitor,Utils):
             local_envi.remove(x)
         
         return is_return
+
+    # def visitStmt(self, ast, c):
+    #     global_envi = c[0]
+    #     local_envi = c[1]
+    #     is_in_loop = c[2]
+    #     return_type = c[3]
+    #     if isinstance(ast, Expr):
+    #         self.visit(ast, global_envi + local_envi)
+    #     else:
+    #         return self.visit(ast, (global_envi, local_envi, is_in_loop, return_type))
     
     def visitUnaryOp(self, ast, c):
         expr = self.visit(ast.body, c)
@@ -173,7 +186,7 @@ class StaticChecker(BaseVisitor,Utils):
 
         if ast.op == '=':
             if not type(ast.left) in (CallExpr, Id, ArrayCell):
-                raise NotLeftValue(ast)
+                raise NotLeftValue(ast.left)
 
             elif isinstance(left, (VoidType, ArrayType, ArrayPointerType)):
                 raise TypeMismatchInExpression(ast)
@@ -241,6 +254,7 @@ class StaticChecker(BaseVisitor,Utils):
         expr_type = self.visit(ast.exp, envi)
         if not isinstance(expr_type, BoolType):
             raise TypeMismatchInStatement(ast)
+        
         is_return = False
         for stmt in ast.sl:
             if not isinstance(stmt, Expr):
@@ -326,9 +340,9 @@ class StaticChecker(BaseVisitor,Utils):
                 else: 
                     raise TypeMismatchInExpression(ast)
 
-        for x in self.func_defined:
+        for x in self.func_unused:
             if x.name == ast.method.name:
-                self.func_defined.remove(x)
+                self.func_unused.remove(x)
         return res.mtype.rettype
 
     def visitArrayCell(self, ast, envi):
