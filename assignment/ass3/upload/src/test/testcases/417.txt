@@ -1,18 +1,9 @@
-
-                int x;
-                int a;
-                boolean hung;
-                int e;
-                int main(){
-                    for (hung && true; a < 10; a=a+1){
-                        if (a + 123.4 - 241%a > 0){
-                            int d;
-                            d = e;
-                            boolean t;
-                            boolean e;
-                            t = e;
-                        }
-                    }
-                    return 2;
-                }
-                
+ 
+        int a;
+        void main(){
+            do{
+                a = 7;  
+            }  
+            while(true);
+        }
+        

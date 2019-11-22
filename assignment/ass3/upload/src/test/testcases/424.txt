@@ -1,26 +1,6 @@
 
-                int a;
-                int main() {
-                    do 
-                        if (a + 2%4 == 2) 
-                            a = 1; 
-                        if (true){
-                            if (a == 23){
-                                if (a != 32){
-                                    a = 123;
-                                    string b;
-                                    b = "Hung";
-                                }
-                                else{
-                                    string b;
-                                    b = "Hung";
-                                }
-                            }
-                            else{
-                                a = 3213;
-                            }
-                        }
-                    while(3213 * a);
-                    return -421;
-                }
-                
+        string[] main(){
+            int a[5];
+            return a;
+        }  
+        

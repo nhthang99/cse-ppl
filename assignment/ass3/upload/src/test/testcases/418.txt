@@ -1,21 +1,9 @@
 
-                int i;
-                int j;
-                boolean check;
-                int main(){
-                    for (i = 1; -i < 10; i = i + 1)
-                    {
-                        for (check || false; j < 200; j = j + 1)
-                        {
-                            if (i == j)
-                            {
-                                int a;
-                                a = 3213;
-                                boolean b;
-                                b = true;
-                            }
-                        }   
-                    }
-                    return 181299;
-                }
-                
+        string a; 
+        void main(){
+            
+            for("a";true;10){
+                int a;
+            }
+        }   
+        

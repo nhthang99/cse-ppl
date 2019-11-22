@@ -29,7 +29,9 @@ class StaticChecker(BaseVisitor,Utils):
         Symbol("putFloatLn", MType([FloatType()], VoidType())),
         Symbol("putBool", MType([BoolType()], VoidType())),
         Symbol("putBoolLn", MType([BoolType()], VoidType())),
-        Symbol("putString", MType([StringType], VoidType()))
+        Symbol("putString", MType([StringType()], VoidType())),
+        Symbol("putStringLn", MType([StringType()], VoidType())),
+        Symbol("putLn", MType([], VoidType()))
     ]
             
     
@@ -44,14 +46,13 @@ class StaticChecker(BaseVisitor,Utils):
     def visitProgram(self,ast, global_envi): 
         global_envi = global_envi[:]
         self.func_unused = []
+        self.func_call_func = None
         # Check whether main function exist or not
         is_main_func_defined = False
         for x in ast.decl:
             if isinstance(x, FuncDecl) and x.name.name == 'main':
                 is_main_func_defined = True
                 break
-        if not is_main_func_defined:
-            raise NoEntryPoint()
         
         # Check Redeclare
         for x in ast.decl:
@@ -73,10 +74,14 @@ class StaticChecker(BaseVisitor,Utils):
                 if func.name != 'main':
                     self.func_unused.append(func)
         
-        for decl in ast.decl:
-            if isinstance(decl, FuncDecl):
-                self.visit(decl, global_envi)
-        
+        if not is_main_func_defined:
+            raise NoEntryPoint()
+
+        for x in ast.decl:
+            if isinstance(x, FuncDecl):
+                self.func_call_func = x.name.name
+                self.visit(x, global_envi)
+
         if self.func_unused:
             raise UnreachableFunction(self.func_unused[0].name)
 
@@ -86,11 +91,13 @@ class StaticChecker(BaseVisitor,Utils):
             raise Redeclared(Variable(), ast.variable)
 
         else:
-            return Symbol(ast.variable, MType(None, ast.varType))
+            vartype = self.visit(ast.varType, None)
+            return Symbol(ast.variable, MType(None, vartype))
     
     def visitFuncDecl(self, ast, global_envi):
         local_envi = []
         para_list = []
+        is_return = False
 
         for param in ast.param:
             if param.variable in para_list:
@@ -101,51 +108,36 @@ class StaticChecker(BaseVisitor,Utils):
                 local_envi.append(self.visit(param, local_envi))
         
         return_type = self.visit(ast.returnType, None)
-        is_return = self.visit(ast.body, (global_envi, local_envi, False, return_type))
+        is_return = self.visit(ast.body, (global_envi + local_envi, False, return_type))
         
         if not is_return and not isinstance(return_type, VoidType):
             raise FunctionNotReturn(ast.name.name)
 
     def visitBlock(self, ast, c):
-        global_envi = c[0]
-        local_envi = c[1]
-        is_in_loop = c[2]
-        return_type = c[3]
+        envi = c[0]
+        is_in_loop = c[1]
+        return_type = c[2]
         is_return = False
         var_decl_in_block = []
         for stmt in ast.member:
+            # is_return = False
             if isinstance(stmt, VarDecl):
-                var_decl = self.visit(stmt, local_envi)
-                for x in global_envi:
+                var_decl = self.visit(stmt, var_decl_in_block)
+                for x in envi:
                     if x.name == var_decl.name:
-                        global_envi.remove(x)
-                        global_envi.append(var_decl)
-                local_envi.append(var_decl)
+                        envi.remove(x)
+                        envi.append(var_decl)
                 var_decl_in_block.append(var_decl)
             
             elif isinstance(stmt, Expr):
-                self.visit(stmt, global_envi + local_envi)
-
-            elif isinstance(stmt, Block):
-                is_return = self.visit(stmt, (global_envi + local_envi, [], is_in_loop, return_type))
+                self.visit(stmt, envi + var_decl_in_block)
         
             else:
-                is_return = self.visit(stmt, (global_envi, local_envi, is_in_loop, return_type))
-                
-        for x in var_decl_in_block:
-            local_envi.remove(x)
-        
-        return is_return
+                if self.visit(stmt, (envi + var_decl_in_block, is_in_loop, return_type)):
+                    is_return = True
 
-    # def visitStmt(self, ast, c):
-    #     global_envi = c[0]
-    #     local_envi = c[1]
-    #     is_in_loop = c[2]
-    #     return_type = c[3]
-    #     if isinstance(ast, Expr):
-    #         self.visit(ast, global_envi + local_envi)
-    #     else:
-    #         return self.visit(ast, (global_envi, local_envi, is_in_loop, return_type))
+        var_decl_in_block.clear()
+        return is_return
     
     def visitUnaryOp(self, ast, c):
         expr = self.visit(ast.body, c)
@@ -185,20 +177,22 @@ class StaticChecker(BaseVisitor,Utils):
                 raise TypeMismatchInExpression(ast)
 
         if ast.op == '=':
-            if not type(ast.left) in (CallExpr, Id, ArrayCell):
+            if not type(ast.left) in (Id,ArrayCell):
                 raise NotLeftValue(ast.left)
 
-            elif isinstance(left, (VoidType, ArrayType, ArrayPointerType)):
+            if isinstance(left,(VoidType,ArrayType,ArrayPointerType)):
                 raise TypeMismatchInExpression(ast)
 
-            elif isinstance(left, FloatType):
-                if not isinstance(right, (IntType, FloatType)):
+            if isinstance(left,FloatType):
+                if not isinstance(right,(IntType,FloatType)):
                     raise TypeMismatchInExpression(ast)
 
-            elif not isinstance(left, type(right)):
+            elif not isinstance(left,type(right)):
                 raise TypeMismatchInExpression(ast)
 
-            return left
+            else:
+                return left
+
         elif ast.op in ['+', '-', '*', '/']:
             return check_type((IntType, FloatType))
 
@@ -225,48 +219,62 @@ class StaticChecker(BaseVisitor,Utils):
         else:
             return is_declare.mtype.rettype
 
-
-    def visitIf(self, ast, c):
-        envi = c[0] + c[1]
-        expr_type = self.visit(ast.expr, envi)
-        if not isinstance(expr_type, BoolType):
+    def visitIf(self,ast,c):
+        envi = c[0]
+        expr= self.visit(ast.expr, envi)
+        if not isinstance(expr, BoolType):
             raise TypeMismatchInStatement(ast)
-
-        is_return_if = False
-        is_return_else = False
-
-        if not isinstance(ast.thenStmt, Expr):
-            self.visit(ast.thenStmt, c)
-        else:
-            is_return_if = self.visit(ast.thenStmt, envi)
-
-        if ast.elseStmt:
-            if not isinstance(ast.elseStmt, Expr):
-                self.visit(ast.elseStmt, c)
-
-            else:
-                is_return_else = self.visit(ast.elseStmt, envi)
         
+        is_return_if = True
+        is_return_else = True
+        if isinstance(ast.thenStmt, (Return, Block, If, Dowhile)):
+            is_return_if = self.visit(ast.thenStmt, c)
+        else:
+            if isinstance(ast.thenStmt, (For, Break, Continue)):
+                self.visit(ast.thenStmt, c)
+            else:
+                self.visit(ast.thenStmt, envi)
+            is_return_if = False
+        
+        if not ast.elseStmt:
+            is_return_else = False
+        else:
+            if isinstance(ast.elseStmt, (Return, Block, If, Dowhile)):
+                is_return_else = self.visit(ast.elseStmt, c)
+            else: 
+                if isinstance(ast.elseStmt, (For, Break, Continue)):
+                    self.visit(ast.elseStmt,  c)
+                else:
+                    self.visit(ast.elseStmt, envi)
+                is_return_else = False
+
         return is_return_if and is_return_else
 
     def visitDowhile(self, ast, c):
-        envi = c[0] + c[1]
+        envi = c[0]
         expr_type = self.visit(ast.exp, envi)
         if not isinstance(expr_type, BoolType):
             raise TypeMismatchInStatement(ast)
         
         is_return = False
+        var_decl_in_while = []
+
         for stmt in ast.sl:
-            if not isinstance(stmt, Expr):
-                is_in_loop = True
-                is_return = self.visit(stmt, (c[0], c[1], is_in_loop, c[-1]))
+            if isinstance(stmt, VarDecl):
+                var_decl_in_while.append(self.visit(stmt, var_decl_in_while))
+
+            elif isinstance(stmt, Expr):
+                self.visit(stmt, envi + var_decl_in_while)
 
             else:
-                self.visit(stmt, envi)
+                is_in_loop = True
+                is_return = self.visit(stmt, (envi, is_in_loop, c[-1]))
+                
         return is_return
     
     def visitFor(self, ast, c):
-        envi = c[0] + c[1]
+        envi = c[0]
+
         expr1_type = self.visit(ast.expr1, envi)
         expr2_type = self.visit(ast.expr2, envi)
         expr3_type = self.visit(ast.expr3, envi)
@@ -278,13 +286,12 @@ class StaticChecker(BaseVisitor,Utils):
         if not is_match:
             raise TypeMismatchInStatement(ast)
 
-        if not isinstance(ast.loop, Expr):
-            is_in_loop = True
-            is_return = self.visit(ast.loop, (c[0], c[1], is_in_loop, c[-1]))
-            return is_return
+        if isinstance(ast.loop, Expr):
+            self.visit(ast.loop, envi)
 
         else:
-            self.visit(ast.loop, envi)
+            is_in_loop = True
+            self.visit(ast.loop, (envi, is_in_loop, c[-1]))
 
     def visitReturn(self, ast, c):
         return_type = c[-1]
@@ -296,7 +303,7 @@ class StaticChecker(BaseVisitor,Utils):
             raise TypeMismatchInStatement(ast)
 
         else:
-            envi = c[0] + c[1]
+            envi = c[0]
             rlt_expr = self.visit(ast.expr, envi)
             if isinstance(return_type, ArrayPointerType):
 
@@ -315,34 +322,38 @@ class StaticChecker(BaseVisitor,Utils):
         return True # function have returned
 
     def visitCallExpr(self, ast, c):
-        para_list = [self.visit(x, c) for x in ast.param]
+        paras = [self.visit(x, c) for x in ast.param]
         
         res = self.lookup(ast.method.name, c, lambda x: x.name)
         if not res:
             raise Undeclared(Function(), ast.method.name)
 
-        elif not isinstance(res.mtype, MType) or len(res.mtype.partype) != len(para_list):
+        elif not isinstance(res.mtype, MType):
             raise TypeMismatchInExpression(ast)
-
+        
+        elif not isinstance(res.mtype.partype, list) or len(res.mtype.partype) != len(paras):
+            raise TypeMismatchInExpression(ast)
         else:
-            for i in range(0, len(para_list)):
-                if isinstance(res.mtype.partype[i],ArrayPointerType):
-                    if isinstance(para_list[i],(ArrayType,ArrayPointerType)):
-                        if not isinstance(res.mtype.partype[i].eleType,type(para_list[i].eleType)):
+            for i in range(0, len(paras)):
+                if isinstance(res.mtype.partype[i], ArrayPointerType):
+                    if isinstance(paras[i], (ArrayType,ArrayPointerType)):
+                        if not isinstance(res.mtype.partype[i].eleType, type(paras[i].eleType)):
                             raise TypeMismatchInExpression(ast)
                     else:
                         raise TypeMismatchInExpression(ast)
 
-                elif isinstance(res.mtype.partype[i],FloatType) and isinstance(para_list[i],(FloatType,IntType)) \
-                    or isinstance(res.mtype.partype[i],type(para_list[i])):
+                elif (isinstance(res.mtype.partype[i], FloatType) and isinstance(paras[i], (FloatType, IntType))) \
+                    or isinstance(res.mtype.partype[i], type(paras[i])):
                     continue
 
                 else: 
                     raise TypeMismatchInExpression(ast)
 
-        for x in self.func_unused:
-            if x.name == ast.method.name:
-                self.func_unused.remove(x)
+        if self.func_call_func != ast.method.name:
+            x = self.lookup(res.name,self.func_unused,lambda x: x.name)
+            if x and res in self.func_unused:
+                self.func_unused.remove(res)
+
         return res.mtype.rettype
 
     def visitArrayCell(self, ast, envi):
@@ -352,18 +363,18 @@ class StaticChecker(BaseVisitor,Utils):
         if not isinstance(idx, IntType):
             raise TypeMismatchInExpression(ast)
 
-        elif not isinstance(arr, ArrayType):
+        elif not isinstance(arr, (ArrayType, ArrayPointerType)):
             raise TypeMismatchInExpression(ast)
 
         return arr.eleType
 
     def visitBreak(self, ast, c):
-        is_in_loop = c[2]
+        is_in_loop = c[1]
         if not is_in_loop:
             raise BreakNotInLoop()
 
     def visitContinue(self, ast, c):
-        is_in_loop = c[2]
+        is_in_loop = c[1]
         if not is_in_loop:
             raise ContinueNotInLoop()
 

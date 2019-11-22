@@ -1,40 +1,8 @@
 
-            void hung() {
-                return;
-            }
-            boolean a32141(boolean a, int b[]) {
-                return false;
-            }
-            int b1da() {
-                int x;
-                int a;
-                for ( x = 1 ; x < 3 ; x = x + 1 ) a = a + 2 ;
-                return 2;
-            }
-            void main(){
-                int a1[32];
-                a1[2] = getInt();
-                hung();
-                a32141(true, a1);
-                b1da();
-                boolean a;
-                a = true;
-                if (true){
-                    if (a == true){
-                        if (!a){
-                            a = false;
-                            string b;
-                            b = "321415";
-                        }
-                        else{
-                            string b;
-                            b = "3241";
-                            docker = 324;
-                        }
-                    }
-                    else{
-                        a = false;
-                    }
-                }
-                return;
-            }
+        int a; 
+        void main(int b,int bb){
+            float a;
+            int m;
+            
+        }   
+        

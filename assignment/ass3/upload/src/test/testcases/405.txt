@@ -1,4 +1,5 @@
-int main() {
-                        foo();
-                        return 4;
-                    }
+
+        void a(){}
+        int a; 
+        void main(){}      
+        

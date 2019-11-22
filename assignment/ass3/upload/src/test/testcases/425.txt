@@ -1,49 +1,6 @@
 
-                boolean a;
-                int main1;
-                int main(){
-                    do 
-                        if (true){
-                            if (a == true){
-                                if (!a){
-                                    a = false;
-                                    boolean b;
-                                    if (b){
-                                        boolean c;
-                                        c = b;
-                                        if (!c){
-                                            int d;
-                                            d = 42;
-                                            if ((d == 12) || !c){
-                                                boolean e;
-                                                e = true;
-                                            }
-                                            else{
-                                                string e;
-                                                e = "Hung";
-                                            }
-                                        }
-                                        else{
-                                            int d;
-                                            d = 122;
-                                            boolean t;
-                                            t = false;
-                                            if ((d == 2) && !t){
-                                                string t;
-                                                t = "Hung";
-                                            }
-                                        }
-                                    }
-                                }
-                                else{
-                                    if (12 == 32){
-                                        int e;
-                                        e = 122;
-                                    }
-                                }
-                            }
-                        }
-                    while(main1 = 23);
-                    return 123;
-                }
-                
+        int[] main(){
+            float a[5];
+            return a;
+        }
+        

@@ -1,35 +1,5 @@
-int a(){
-                        return 2;
-                   }
-                   float[] b(){
-                       float hunG[324];
-                       return hunG;
-                   }
-                   string c(){
-                       return "4123";
-                   }
-                   boolean[] d(){
-                       boolean jfao[1414];
-                       return jfao;
-                   }
-                   float main(){
-                       int a;
-                       int b;
-                       int c;
-                        {
-                            if (a == 1)
-                            {
-                                a = a + 1;
-                                b = 2;
-                                if (true)
-                                    a = 1;
-                                else
-                                    a = 2;
-                                hung(2,41,324);
-                            }
-                            else
-                                a = 4;
-                        }
-                        return 32.424;
-                   }
-                
+
+        int a; 
+        void a(){} 
+        void main(){}      
+        

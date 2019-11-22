@@ -1,24 +1,7 @@
 
-                int a;
-                int b;
-                float c;
-                boolean d;
-                int main(){
-                    if (d = true) {
-                        return 3;
-                    }
-                    if (a = 1)
-                    {
-                        a = a + 1;
-                        b = 2;
-                        if (true)
-                            a = 1;
-                        else
-                            a = 2;
-                    }
-                    else {
-                        a = 4;                   
-                    }
-                    return 424;
-                }
-                
+        void main(){
+            do{
+
+            }while(9.8);
+        }   
+        

@@ -1,1 +1,1 @@
-Redeclared Function: getInt
+Redeclared Parameter: a

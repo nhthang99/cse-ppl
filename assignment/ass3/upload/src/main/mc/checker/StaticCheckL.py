@@ -162,7 +162,7 @@ class StaticChecker(BaseVisitor,Utils):
                 raise FunctionNotReturn(ast.name.name)
 
             elif len(ast.body.member)==1:
-                if isinstance(ast.body.member[0],(Return,Block,If)):
+                if isinstance(ast.body.member[0],(Return,Block,If,Dowhile)):
                     ref_envi=[local_envi,c]
                     func_return= self.visit(ast.body.member[0],[ref_envi,False,returnType])
                     if func_return==False:
@@ -203,10 +203,10 @@ class StaticChecker(BaseVisitor,Utils):
             #return trigger
 
         elif len(ast.member)==1:
-            if isinstance(ast.member[0],(Block,Return,If)):
+            if isinstance(ast.member[0],(Block,Return,If,Dowhile)):
                 trigger= self.visit(ast.member[0],c)                
             else:
-                if isinstance(ast.member[0],(Dowhile,For,Break,Continue)):
+                if isinstance(ast.member[0],(For,Break,Continue)):
                     self.visit(ast.member[0],c)
                 elif isinstance(ast.member[0],VarDecl):
                     self.visit(ast.member[0],[])
@@ -226,8 +226,6 @@ class StaticChecker(BaseVisitor,Utils):
 
             block_envi=[]
             for x in ast.member:
-                if trigger_child==True:
-                    trigger=True
                 if isinstance(x,VarDecl):
                     block_envi+= [self.visit(x,block_envi)]
                 elif not type(x) in [BinaryOp,UnaryOp,CallExpr,Id,ArrayCell,IntLiteral,FloatLiteral,StringLiteral,BooleanLiteral]:
@@ -235,21 +233,60 @@ class StaticChecker(BaseVisitor,Utils):
                     trigger_child= self.visit(x,ref_block)
                 else:
                     self.visit(x,[block_envi]+c[0])
+                if trigger_child==True:
+                    trigger=True
 
         #return trigger
         return True if trigger==True else False
         
     def visitDowhile(self,ast,c):
+        
         expr= self.visit(ast.exp,c[0])
         # if ast.expr.op == '=' and isinstance(expr,IntType):
         #     expr= BoolType()
         if not isinstance(expr,BoolType):
             raise TypeMismatchInStatement(ast)
-        for stmt in ast.sl:
-            if type(stmt) in (BinaryOp,UnaryOp,CallExpr,Id,ArrayCell,IntLiteral,FloatLiteral,StringLiteral,BooleanLiteral):
-                self.visit(stmt,c[0])
+
+        trigger= True
+        if len(ast.sl)==0:
+            trigger= False
+
+        elif len(ast.sl)==1:
+            if isinstance(ast.sl[0],(Block,Return,If,Dowhile)):
+                trigger= self.visit(ast.sl[0],c)                
             else:
-                self.visit(stmt,[c[0],True,c[2]])
+                if isinstance(ast.sl[0],(For,Break,Continue)):
+                    self.visit(ast.sl[0],c)
+                elif isinstance(ast.sl[0],VarDecl):
+                    self.visit(ast.sl[0],[])
+                else:
+                    self.visit(ast.sl[0],c[0])
+                trigger= False
+        
+        elif len(ast.sl)>1:
+            trigger= False
+            trigger_child= False
+            block_envi=[]
+
+            for x in ast.sl:
+                if isinstance(x,VarDecl):
+                    block_envi+= [self.visit(x,block_envi)]  #?????????????????????????????????????
+                elif not isinstance(x,Expr):
+                    ref_block=[[block_envi]+c[0],c[1],c[2]]
+                    trigger_child= self.visit(x,ref_block)
+                else:
+                    self.visit(x,[block_envi]+c[0])
+
+                if trigger_child==True:
+                    trigger= True
+
+        return trigger
+
+        # for stmt in ast.sl:
+        #     if type(stmt) in (BinaryOp,UnaryOp,CallExpr,Id,ArrayCell,IntLiteral,FloatLiteral,StringLiteral,BooleanLiteral):
+        #         self.visit(stmt,c[0])
+        #     else:
+        #         self.visit(stmt,[c[0],True,c[2]])
 
     def visitIf(self,ast,c):
         '''TODO: Return if and else
@@ -265,11 +302,11 @@ class StaticChecker(BaseVisitor,Utils):
         
         returnIf= True
         returnElse=True
-        if isinstance(ast.thenStmt,(Return,Block,If)):
+        if isinstance(ast.thenStmt,(Return,Block,If,Dowhile)):
             returnIf= self.visit(ast.thenStmt,c)
 
         else:
-            if isinstance(ast.thenStmt,(Dowhile,For,Break,Continue)):
+            if isinstance(ast.thenStmt,(For,Break,Continue)):
                 self.visit(ast.thenStmt,c)
             else:
                 self.visit(ast.thenStmt,c[0])
@@ -280,10 +317,10 @@ class StaticChecker(BaseVisitor,Utils):
             returnElse= False
 
         else:
-            if isinstance(ast.elseStmt,(Return,Block,If)):
+            if isinstance(ast.elseStmt,(Return,Block,If,Dowhile)):
                 returnElse= self.visit(ast.elseStmt,c)
             else: 
-                if isinstance(ast.elseStmt,(Dowhile,For,Break,Continue)):
+                if isinstance(ast.elseStmt,(For,Break,Continue)):
                     self.visit(ast.elseStmt,c)
                 else:
                     self.visit(ast.elseStmt,c[0])
@@ -427,7 +464,7 @@ class StaticChecker(BaseVisitor,Utils):
         res= None
         for lst in c:
             res= self.lookup(ast.name,lst,lambda x: x.name)
-            if res:
+            if not res is None:
                 break
 
         if res is None:

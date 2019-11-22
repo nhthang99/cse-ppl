@@ -1,1 +1,1 @@
-Redeclared Function: main
+Type Mismatch In Expression: CallExpr(Id(foo),[])

@@ -1,11 +1,5 @@
-int a; 
-                   float b;
-                   string c;
-                   boolean d;
-                   int a1(int foo) {
-                       return 3214;
-                   } 
-                   boolean main() {
-                       return (false && true);
-                   }
-                   string a;
+
+        void man(int a, float b, string a){
+            
+        }
+        

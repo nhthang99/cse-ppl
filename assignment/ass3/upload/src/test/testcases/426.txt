@@ -1,7 +1,13 @@
 
-                void main(){
-                    int a;
-                    float b;
-                    return 2;
+        
+        void main(){
+            int a;
+            a = 10;
+            {
+                if(a==1){
+                    a = a+1;
                 }
-                
+            }
+            return a + 1;
+        }   
+        

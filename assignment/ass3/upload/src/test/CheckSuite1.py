@@ -1421,7 +1421,7 @@ class CheckSuite(unittest.TestCase):
                     }
                 }
                 """
-        expect = "Function main Not Return "
+        expect = ""
         self.assertTrue(TestChecker.test(input,expect,460))
     
     def test_function_return_in_else_stmt(self):
@@ -1448,9 +1448,14 @@ class CheckSuite(unittest.TestCase):
                         mssv = 1711611;
                         return;
                     }
+                    //hung(2,c, "a");
+                }
+                int a(int a, float b[], string c){
+                    hung(a,b,c);
+                    return 0;
                 }
                 """
-        expect = "Function main Not Return "
+        expect = ""
         self.assertTrue(TestChecker.test(input,expect,461))
     
     def test_function_return_in_for_stmt(self):
@@ -1486,7 +1491,7 @@ class CheckSuite(unittest.TestCase):
                     }
                 }
                 """
-        expect = "Function main Not Return "
+        expect = ""
         self.assertTrue(TestChecker.test(input,expect,462))
 
     def test_function_return_in_dowhile_stmt(self):
@@ -1532,7 +1537,7 @@ class CheckSuite(unittest.TestCase):
                     }
                 }
                 """
-        expect = "Function main Not Return "
+        expect = ""
         self.assertTrue(TestChecker.test(input,expect,464))
 
     def test_break_in_block_stmt(self):
@@ -2002,7 +2007,7 @@ class CheckSuite(unittest.TestCase):
                     }
                 }  
                 """
-        expect = "Function main Not Return "
+        expect = ""
         self.assertTrue(TestChecker.test(input,expect,484))
     
     def test_calsumrandom_program(self):

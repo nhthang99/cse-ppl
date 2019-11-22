@@ -1,13 +1,5 @@
-void main() {
-                        int a;
-                        a = 2;
-                        return;
-                   }
-                   int b() {
-                       int b;
-                       b = 2;
-                       return 3;
-                   }
-                   int getInt() {
-                       return 3123;
-                   }
+
+        int main(int a,float a){
+            return 1;
+        }
+        

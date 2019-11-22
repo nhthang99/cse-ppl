@@ -1,25 +1,5 @@
 
-                int a, b, c, d;
-                int main(){
-                    for (a=1;a<10;a=a*2){
-                        for(b=2;b==10;b=b*2){
-                            int a;
-                            int b;
-                            b = a + 1;
-                        }
-                    }
-                    for(d=1;d!=1;d=d+1){
-                        int e;
-                        e = d;
-                    }
-                    for(c=100;c=0;c=c%2){
-                        for(d=1000;d>0;d=d%10){
-                            int e;
-                            e = d;
-                            int d;
-                            d = e;
-                        }
-                    }
-                    return 5123;
-                }
-                
+        float main(){
+            return "dai";
+        } 
+        

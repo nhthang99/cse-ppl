@@ -1,1 +1,1 @@
-Type Mismatch In Statement: Return(Id(c))
+Undeclared Function: foo

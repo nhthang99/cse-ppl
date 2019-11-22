@@ -1,7 +1,6 @@
 
-                int[] main(int c){
-                    int a[2];
-                    float b;
-                    return c;
-                }
-                
+        
+        void main(){
+            foo();
+        }   
+        

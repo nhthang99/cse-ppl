@@ -1,7 +1,8 @@
-int a;
-                   int main(int foo) {
-                       return 3;
-                   } 
-                   boolean main() {
-                       return false;
-                   }
+
+        int foo() { return 1; }
+        int main(){
+            int foo;
+            foo();
+            return 0;
+        }
+        

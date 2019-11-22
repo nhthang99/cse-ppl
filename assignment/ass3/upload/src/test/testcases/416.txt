@@ -1,13 +1,8 @@
 
-                int x;
-                int a;
-                void main() {
-                    hunG();
-                    return;
-                }
-                int hunG() {
-                    boolean check;
-                    for (check = true ; x < 3 ; x = x + 1 ) a = a + 2 ;
-                    return x;
-                }
-                
+        string a; 
+        void main(){
+            do{
+
+            }while((1 + 3.5)/4);
+        }   
+        
