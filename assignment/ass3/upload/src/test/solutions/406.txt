@@ -1,1 +1,1 @@
-Redeclared Function: foo
+Not Left Value: CallExpr(Id(foo),[])

@@ -48,6 +48,7 @@ class StaticChecker(BaseVisitor,Utils):
         global_envi = global_envi[:]
         self.func_unused = []
         self.func_call_func = None
+
         # Check whether main function exist or not
         is_main_func_defined = False
         for x in ast.decl:
@@ -112,12 +113,7 @@ class StaticChecker(BaseVisitor,Utils):
         # is_return = self.visit(ast.body, (global_envi + local_envi, False, return_type))
         for stmt in ast.body.member:    
             if isinstance(stmt, VarDecl):
-                var_decl = self.visit(stmt, local_envi)
-                # for x in global_envi:
-                #     if x.name == var_decl.name:
-                #         global_envi.remove(x)
-                        
-                local_envi.append(var_decl)
+                local_envi.append(self.visit(stmt, local_envi))
             
             elif isinstance(stmt, Expr):
                 self.visit(stmt, local_envi + global_envi)
@@ -158,6 +154,7 @@ class StaticChecker(BaseVisitor,Utils):
     
     def visitUnaryOp(self, ast, c):
         expr = self.visit(ast.body, c)
+
         if ast.op == '!':
             if isinstance(expr, BoolType):
                 return expr
@@ -171,11 +168,8 @@ class StaticChecker(BaseVisitor,Utils):
                 raise TypeMismatchInExpression(ast)
         
     def visitBinaryOp(self, ast, c):
-        try:
-            left = self.visit(ast.left, c)
-            right = self.visit(ast.right, c)
-        except TypeError:
-            raise TypeMismatchInExpression(ast)
+        left = self.visit(ast.left, c)
+        right = self.visit(ast.right, c)
         
         def check_type(accept_type,return_type=None):
             if not isinstance(left,accept_type) or not isinstance(right,accept_type):
@@ -235,11 +229,11 @@ class StaticChecker(BaseVisitor,Utils):
         if not is_declare:
             raise Undeclared(Identifier(), ast.name)
 
-        elif isinstance(is_declare.mtype.partype, list):
-            return TypeError()
+        elif not is_declare.mtype.partype:
+            return is_declare.mtype.rettype
 
         else:
-            return is_declare.mtype.rettype
+            return None
 
     def visitIf(self,ast,c):
         envi = c[0]

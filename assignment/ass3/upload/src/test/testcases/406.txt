@@ -1,9 +1,10 @@
 
-            int foo(){return 1;}
-            int foo(){}
-            int main(){}
-            int main(int a, int b){
-                int c;
-            }
-            int a;
-        
+        int[] foo(){ 
+            int a[4];
+            return a;}
+        int main(){
+            foo()[0] = 1;
+            foo() = 1;
+            return 0;
+        }
+                

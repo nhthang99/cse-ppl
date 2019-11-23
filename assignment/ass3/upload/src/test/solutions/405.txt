@@ -1,1 +1,1 @@
-Redeclared Variable: b
+Type Mismatch In Expression: CallExpr(Id(foo),[IntLiteral(1),IntLiteral(2)])

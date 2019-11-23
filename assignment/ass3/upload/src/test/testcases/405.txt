@@ -1,13 +1,8 @@
 
+        int foo(){ return 1;}
+        int main(){
             int a;
-            int main(int a, int b){
-                if (a == b){
-                    int a;
-                }
-                else {
-                    int b;
-                    int b;
-                    int a;
-                }
-            }
-        
+            foo(1,2);
+            return 0;
+        }
+                

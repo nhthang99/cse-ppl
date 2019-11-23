@@ -1,7 +1,13 @@
 
-            int a;
-            int main(int a, int b){
-                int c[5];
-                int c;
-            }
-        
+                int[] foo(int n,int r) {
+                    int a[5];
+                    return a;
+                }
+
+                int main() {
+                    int a;
+                    a = foo + 10;
+                    foo(1,1);
+                    return 10;
+                }
+                

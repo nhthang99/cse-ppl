@@ -1,6 +1,11 @@
 
-            int a;
-            int main(int a, int b){
-                int a;
-            }
-        
+                int foo(int n,int r) {
+                    return 1;
+                }
+
+                int main() {
+                    foo = 10;
+                    foo(1,1);
+                    return 10;
+                }
+                
