@@ -1,9 +1,27 @@
 
-        string a; 
-        void main(){
-            
-            for(5;false;10.1){
-                int a;
+            int a;
+            void main(){return;}
+            int f(){
+                a = 1;
+                {
+                    int a;
+                    a = 1;
+                    {
+                        a + a;
+                    }
+                    a = a * a;
+                }
+                {
+                    {
+                        int b;
+                        b = 1;
+                        a = 1;
+                        {b*b;}
+                    }
+                    a * a;
+                    b*b;
+                }
+                int c;
+                return 1;
             }
-        }   
         

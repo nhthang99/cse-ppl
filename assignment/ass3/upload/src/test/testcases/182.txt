@@ -1,6 +1,0 @@
-
-            INT abc = 12;
-            abc = "";
-            float = 2.e2
-            char = ''
-            

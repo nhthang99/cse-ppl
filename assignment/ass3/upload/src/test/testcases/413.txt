@@ -1,8 +1,5 @@
 
-        string a; 
-        void main(){
-            if(1.5){
-                a = "Dai";
+            void main(){return;}
+            int foo(int a, int b, float b){
             }
-        }   
         

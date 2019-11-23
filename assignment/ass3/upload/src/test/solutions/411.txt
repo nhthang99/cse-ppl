@@ -1,1 +1,1 @@
-Type Mismatch In Statement: If(BinaryOp(+,Id(a),IntLiteral(1)),Block([]))
+Redeclared Variable: d

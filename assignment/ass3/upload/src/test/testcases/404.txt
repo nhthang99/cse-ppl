@@ -1,5 +1,8 @@
 
-        int a; 
-        void main(){}  
-        float a;    
+            int a;
+            int main(int a, int b){
+                int c;
+                int d;
+                int c;
+            }
         

@@ -11,7 +11,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["test", "CheckSuite2"]
+            "args": ["test", "CheckSuite1"]
         }
     ]
 }

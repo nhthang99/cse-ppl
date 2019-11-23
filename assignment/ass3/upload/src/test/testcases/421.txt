@@ -1,5 +1,19 @@
 
-        int main(){
-            return 1.1;
-        } 
+            int a;
+            void main(){return;}
+            int f(){
+                int b;
+                b = 1;a = 1;
+               {a *a; b*b;
+               {b*b;
+               {}
+               b*b;
+               }
+               }
+               {a *a ;
+                    {b*b;}
+                    d*d;
+               }
+               return 1;
+            }
         

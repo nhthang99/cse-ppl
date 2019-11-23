@@ -1,1 +1,1 @@
-Type Mismatch In Statement: Dowhile([Block([])],BinaryOp(/,BinaryOp(+,IntLiteral(1),FloatLiteral(3.5)),IntLiteral(4)))
+Redeclared Variable: x

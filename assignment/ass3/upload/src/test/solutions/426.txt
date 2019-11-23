@@ -1,1 +1,1 @@
-Type Mismatch In Statement: Return(BinaryOp(+,Id(a),IntLiteral(1)))
+Type Mismatch In Statement: Return(CallExpr(Id(f),[Id(b),Id(b)]))

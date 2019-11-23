@@ -624,7 +624,7 @@ class CheckSuite(unittest.TestCase):
         expect = ""
         self.assertTrue(TestChecker.test(input,expect,449))
 
-    def test_correct_left_value_with_var(self):
+    def test_correct_left_value_with_var2(self):
         input = """
         int a,b,c;
         void main(){
@@ -1292,3 +1292,13 @@ class CheckSuite(unittest.TestCase):
         """
         expect = ""
         self.assertTrue(TestChecker.test(input,expect,502))
+
+    def test_simple__un_not_left_value_in_nested_assigmnet(self):
+        input = """
+        void main(){
+            float a;
+            a = (a = a-1);
+        }
+        """
+        expect = ""
+        self.assertTrue(TestChecker.test(input,expect,503))

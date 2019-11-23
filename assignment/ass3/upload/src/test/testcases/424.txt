@@ -1,6 +1,10 @@
 
-        string[] main(){
-            int a[5];
-            return a;
-        }  
+            int main(int b){
+                return 1;
+            }
+            int f(){
+                int a;
+                main(x);
+                return 1;
+            }
         

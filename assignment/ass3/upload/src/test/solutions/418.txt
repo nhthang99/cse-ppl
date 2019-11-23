@@ -1,1 +1,1 @@
-Type Mismatch In Statement: For(StringLiteral(a);BooleanLiteral(true);IntLiteral(10);Block([VarDecl(a,IntType)]))
+Undeclared Identifier: a

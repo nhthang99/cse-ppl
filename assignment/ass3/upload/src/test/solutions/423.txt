@@ -1,1 +1,1 @@
-Type Mismatch In Statement: Return(IntLiteral(1))
+Undeclared Function: foo1

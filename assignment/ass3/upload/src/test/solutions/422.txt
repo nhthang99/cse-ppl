@@ -1,1 +1,1 @@
-Type Mismatch In Statement: Return(StringLiteral(dai))
+Undeclared Function: foo

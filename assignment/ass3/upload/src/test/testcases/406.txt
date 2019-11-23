@@ -1,5 +1,9 @@
 
-        int a; 
-        void a(){} 
-        void main(){}      
+            int foo(){return 1;}
+            int foo(){}
+            int main(){}
+            int main(int a, int b){
+                int c;
+            }
+            int a;
         

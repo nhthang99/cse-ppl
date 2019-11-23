@@ -1,6 +1,6 @@
 
-        int main;
-        string foo(int a, string b[]){
-            return "Tan Dai";
-        }
+            int a;
+            int main(int a, int b){
+                int b;
+            }
         

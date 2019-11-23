@@ -1283,11 +1283,11 @@ class CheckSuite(unittest.TestCase):
                    d = true;
                    hung();
                    int a;
-                   a = (2 + b - 2/3 + 4%2 - (b = 2))/(!(a = 2));
+                   a = (2 + b - 2/3 + 4%2 - (b = 2))/3;
                    return;
                }
                 """
-        expect = "Type Mismatch In Expression: UnaryOp(!,BinaryOp(=,Id(a),IntLiteral(2)))"
+        expect = "Type Mismatch In Expression: BinaryOp(=,Id(a),BinaryOp(/,BinaryOp(-,BinaryOp(+,BinaryOp(-,BinaryOp(+,IntLiteral(2),Id(b)),BinaryOp(/,IntLiteral(2),IntLiteral(3))),BinaryOp(%,IntLiteral(4),IntLiteral(2))),BinaryOp(=,Id(b),IntLiteral(2))),IntLiteral(3)))"
         self.assertTrue(TestChecker.test(input,expect,454)) 
       
     def test_return_primitive_type_in_call_exp(self):
@@ -1448,14 +1448,10 @@ class CheckSuite(unittest.TestCase):
                         mssv = 1711611;
                         return;
                     }
-                    //hung(2,c, "a");
-                }
-                int a(int a, float b[], string c){
-                    hung(a,b,c);
-                    return 0;
+                    hung(2,c, "a");
                 }
                 """
-        expect = ""
+        expect = "Type Mismatch In Expression: CallExpr(Id(hung),[IntLiteral(2),Id(c),StringLiteral(a)])"
         self.assertTrue(TestChecker.test(input,expect,461))
     
     def test_function_return_in_for_stmt(self):
@@ -1537,7 +1533,7 @@ class CheckSuite(unittest.TestCase):
                     }
                 }
                 """
-        expect = ""
+        expect = "Function main Not Return "
         self.assertTrue(TestChecker.test(input,expect,464))
 
     def test_break_in_block_stmt(self):

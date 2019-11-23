@@ -1,1 +1,1 @@
-No Entry Point
+Redeclared Variable: b

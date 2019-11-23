@@ -1,6 +1,0 @@
-
-            // \f abc
-            /* // */ acc
-            a++;
-            string a = "a";
-            

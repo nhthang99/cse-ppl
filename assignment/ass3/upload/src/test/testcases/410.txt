@@ -1,14 +1,11 @@
 
-        float a; 
-        void main(int b,int bb){
-            float a;
-            int m;
-            {
-                float a;
+            void main(){return;}
+            int foo(int a, int b){
                 {
-                    float a;
+                    int a;
+                    int b;
+                    int c;
+                    int c;
                 }
             }
-            
-        }    
         

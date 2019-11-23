@@ -1,6 +1,13 @@
 
-        
-        void main(){
-            foo();
-        }   
+            void main(){return;}
+            int m(int a){return 1;}
+            float f(){
+                int a;
+                a = 1;
+                {
+                    float a;
+                    a = 1/4;
+                    return m(a);
+                }
+            }
         

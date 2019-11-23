@@ -1,5 +1,6 @@
 
-        void man(int a, float b, string a){
-            
-        }
+            int a;
+            int main(int a, int b){
+                int a;
+            }
         

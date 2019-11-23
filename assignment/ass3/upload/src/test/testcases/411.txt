@@ -1,7 +1,20 @@
 
-        int a; 
-        void main(){
-            a=1;
-            if(a+1){}
-        }   
+            void main(){return;}  
+            int foo(int a, int b){
+                {
+                    int a;
+                    int b;
+                    int c;
+                }
+                {
+                    int c;
+                }
+                {
+                    int c;
+                }
+                {
+                    int d;
+                    int d;
+                }
+            }
         

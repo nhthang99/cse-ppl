@@ -1,6 +1,0 @@
-
-/* Comment with multiple lines
-    Hello comments
-    This is block comment
-*/
-            

@@ -1,9 +1,7 @@
- 
-        int a;
-        void main(){
-            do{
-                a = 7;  
-            }  
-            while(true);
-        }
+
+            int foo;
+            void main(){return;}
+            int foo(int a, int b, int e){
+                return 1;
+            }
         

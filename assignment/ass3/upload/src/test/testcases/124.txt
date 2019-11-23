@@ -1,5 +1,0 @@
-
-TRUE True TRue TRUe falSe 
-falSE FAlse FAlsE
-truE False FAlSE
-            

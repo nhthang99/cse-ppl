@@ -1,9 +1,6 @@
 
-        string a; 
-        void main(){
-            
-            for("a";true;10){
-                int a;
+            int main(int b){
+                a;
+                return 1;
             }
-        }   
         

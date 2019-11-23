@@ -1,6 +1,7 @@
 
 """
- * @author nhphung
+ * @author nhthang
+ * @id 1713239
 """
 from AST import * 
 from Visitor import *
@@ -108,35 +109,51 @@ class StaticChecker(BaseVisitor,Utils):
                 local_envi.append(self.visit(param, local_envi))
         
         return_type = self.visit(ast.returnType, None)
-        is_return = self.visit(ast.body, (global_envi + local_envi, False, return_type))
-        
+        # is_return = self.visit(ast.body, (global_envi + local_envi, False, return_type))
+        for stmt in ast.body.member:    
+            if isinstance(stmt, VarDecl):
+                var_decl = self.visit(stmt, local_envi)
+                # for x in global_envi:
+                #     if x.name == var_decl.name:
+                #         global_envi.remove(x)
+                        
+                local_envi.append(var_decl)
+            
+            elif isinstance(stmt, Expr):
+                self.visit(stmt, local_envi + global_envi)
+
+            else:
+                is_in_loop = False
+                if self.visit(stmt, (local_envi + global_envi, is_in_loop, return_type)):
+                    is_return = True
+
         if not is_return and not isinstance(return_type, VoidType):
             raise FunctionNotReturn(ast.name.name)
 
     def visitBlock(self, ast, c):
         envi = c[0]
+        local_envi = []
         is_in_loop = c[1]
         return_type = c[2]
         is_return = False
-        var_decl_in_block = []
-        for stmt in ast.member:
-            # is_return = False
+
+        for stmt in ast.member:    
             if isinstance(stmt, VarDecl):
-                var_decl = self.visit(stmt, var_decl_in_block)
+                var_decl = self.visit(stmt, local_envi)
                 for x in envi:
                     if x.name == var_decl.name:
                         envi.remove(x)
-                        envi.append(var_decl)
-                var_decl_in_block.append(var_decl)
+                        
+                local_envi.append(var_decl)
             
             elif isinstance(stmt, Expr):
-                self.visit(stmt, envi + var_decl_in_block)
-        
+                self.visit(stmt, local_envi + envi)
+
             else:
-                if self.visit(stmt, (envi + var_decl_in_block, is_in_loop, return_type)):
+                if self.visit(stmt, (local_envi + envi, is_in_loop, return_type)):
                     is_return = True
 
-        var_decl_in_block.clear()
+        local_envi.clear()
         return is_return
     
     def visitUnaryOp(self, ast, c):
@@ -154,8 +171,11 @@ class StaticChecker(BaseVisitor,Utils):
                 raise TypeMismatchInExpression(ast)
         
     def visitBinaryOp(self, ast, c):
-        left = self.visit(ast.left, c)
-        right = self.visit(ast.right, c)
+        try:
+            left = self.visit(ast.left, c)
+            right = self.visit(ast.right, c)
+        except TypeError:
+            raise TypeMismatchInExpression(ast)
         
         def check_type(accept_type,return_type=None):
             if not isinstance(left,accept_type) or not isinstance(right,accept_type):
@@ -186,6 +206,8 @@ class StaticChecker(BaseVisitor,Utils):
             if isinstance(left,FloatType):
                 if not isinstance(right,(IntType,FloatType)):
                     raise TypeMismatchInExpression(ast)
+                else:
+                    return left
 
             elif not isinstance(left,type(right)):
                 raise TypeMismatchInExpression(ast)
@@ -213,8 +235,8 @@ class StaticChecker(BaseVisitor,Utils):
         if not is_declare:
             raise Undeclared(Identifier(), ast.name)
 
-        elif not isinstance(is_declare.mtype, MType):
-            return is_declare.mtype
+        elif isinstance(is_declare.mtype.partype, list):
+            return TypeError()
 
         else:
             return is_declare.mtype.rettype
@@ -268,7 +290,7 @@ class StaticChecker(BaseVisitor,Utils):
 
             else:
                 is_in_loop = True
-                is_return = self.visit(stmt, (envi, is_in_loop, c[-1]))
+                is_return = self.visit(stmt, (var_decl_in_while + envi, is_in_loop, c[-1]))
                 
         return is_return
     
@@ -327,9 +349,6 @@ class StaticChecker(BaseVisitor,Utils):
         res = self.lookup(ast.method.name, c, lambda x: x.name)
         if not res:
             raise Undeclared(Function(), ast.method.name)
-
-        elif not isinstance(res.mtype, MType):
-            raise TypeMismatchInExpression(ast)
         
         elif not isinstance(res.mtype.partype, list) or len(res.mtype.partype) != len(paras):
             raise TypeMismatchInExpression(ast)

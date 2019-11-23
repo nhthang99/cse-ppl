@@ -1,6 +1,8 @@
 
-        int a; 
-        void a(){} 
-        int a;
-        void main(){}      
+            int main(){return 1;}
+            int foo(int a, int b){
+                return 1;
+            }
+            int foo1(int a, int b){return 1;}
+            int foo(){}
         

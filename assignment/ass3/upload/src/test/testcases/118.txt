@@ -1,4 +1,0 @@
-
-<!-- begin: wsf_resource_nodes -->
-<!-- end: wsf_resource_nodes -->
-            

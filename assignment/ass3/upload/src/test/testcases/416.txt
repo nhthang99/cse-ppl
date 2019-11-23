@@ -1,8 +1,9 @@
 
-        string a; 
-        void main(){
-            do{
-
-            }while((1 + 3.5)/4);
-        }   
+            void main(int e){return;}
+            int foo(int a, int b, int e){
+                int main;
+                int x;
+                int x;
+                return 1;
+            }
         

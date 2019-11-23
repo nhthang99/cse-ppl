@@ -1,5 +1,11 @@
 
-        float main(){
-            return "dai";
-        } 
+            int main(int b){
+                return 1;
+            }
+            int f(){
+                int a;
+                a = 1;
+                foo(a);
+                return 1;
+            }
         

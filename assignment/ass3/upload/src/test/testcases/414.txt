@@ -1,7 +1,6 @@
- 
-        void main(){
-            if(true){
 
+            void main(int e, int e){}
+            int foo(int a, int b, int e){
+                return 1;
             }
-        }
         

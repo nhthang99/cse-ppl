@@ -1,4 +1,0 @@
-
-            for (int a ; b = 2 && c = 2; 2**2)
-            break
-            

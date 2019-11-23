@@ -1,1 +1,1 @@
-Redeclared Parameter: a
+Redeclared Variable: c

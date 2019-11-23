@@ -1,5 +1,14 @@
 
-        string main(){
-            return 1;
-        }
+            int main(int b){
+                return 1;
+            }
+            int f(){
+                int a;
+                foo();
+                foo1();
+                return 1;
+            }
+            int foo(){
+                return 1;
+            }
         

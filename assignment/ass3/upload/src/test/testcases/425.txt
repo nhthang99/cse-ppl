@@ -1,6 +1,15 @@
 
-        int[] main(){
-            float a[5];
-            return a;
-        }
+            int main(int b){
+                return 1;
+            }
+            int f(){
+                int a;
+                a = 1;
+                main(a);
+                foo(x);
+                foo(i);
+                return 1;
+            }
+            int x;
+            int foo(int m){return 1;}
         

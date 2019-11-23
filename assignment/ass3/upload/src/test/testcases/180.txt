@@ -1,5 +1,0 @@
-
-            int a,b       ,c ,a                   b;
-            float a = b (abc).12;
-            str abc[] = {1,2,3};
-            

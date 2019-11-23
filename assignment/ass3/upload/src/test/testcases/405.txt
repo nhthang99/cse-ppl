@@ -1,5 +1,13 @@
 
-        void a(){}
-        int a; 
-        void main(){}      
+            int a;
+            int main(int a, int b){
+                if (a == b){
+                    int a;
+                }
+                else {
+                    int b;
+                    int b;
+                    int a;
+                }
+            }
         

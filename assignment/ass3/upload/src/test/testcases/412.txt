@@ -1,8 +1,5 @@
 
-        int a; 
-        void main(){
-            if("My name is Dai"){
-                a = 1;
+            void main(){return;}
+            int foo(int a, int b, int a){
             }
-        }   
         
